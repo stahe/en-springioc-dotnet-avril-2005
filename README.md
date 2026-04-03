@@ -1,6 +1,6 @@
 # Spring IoC pour .NET
 
-➡️ Cours associé : **[Spring IoC pour .NET](https://stahe.github.io/springioc-dotnet-avril-2005/)**
+➡️ Cours associé : **[Spring IoC pour .NET](https://stahe.github.io/en-springioc-dotnet-avril-2005/)**
 
 Ce document présente les principes de **l'inversion de contrôle (IoC – Inversion of Control)** et leur mise en œuvre dans l'écosystème **.NET** grâce au framework **Spring.NET**, adaptation du framework **Spring** initialement conçu pour Java. 
 
