@@ -1,0 +1,1329 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Spring IoC for .NET">
+      
+      
+        <meta name="author" content="Serge Tahé">
+      
+      
+        <link rel="canonical" href="https://stahe.github.io/en-springioc-dotnet-avril-2005/spring-ioc-in-practice.html">
+      
+      
+        <link rel="prev" href="dependency-injection.html">
+      
+      
+        <link rel="next" href="spring-for-configuring-three-tier-applications.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>5. Spring IoC in Practice - Spring IoC for .NET</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/focus.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EBZC3JVJNR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    var siteName = "Spring IoC for .NET";
+    gtag('config', 'G-EBZC3JVJNR', {
+        'page_title': siteName
+    });
+  </script>
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#5-spring-ioc-in-practice" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="Spring IoC for .NET" class="md-header__button md-logo" aria-label="Spring IoC for .NET" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Spring IoC for .NET
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              5. Spring IoC in Practice
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="purple"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://stahe.github.io/en-springioc-dotnet-avril-2005" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Spring IoC for .NET" class="md-nav__button md-logo" aria-label="Spring IoC for .NET" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Spring IoC for .NET
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://stahe.github.io/en-springioc-dotnet-avril-2005" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Welcome
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="introduction.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="configuring-an-application-with-spring.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Configuring an Application with Spring
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="inversion-of-control-ioc.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Inversion of Control (IoC)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="dependency-injection.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Dependency Injection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Spring IoC in Practice
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="spring-ioc-in-practice.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Spring IoC in Practice
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#51-example-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1. Example 1
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#52-example-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2. Example 2
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#53-example-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3. Example 3
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="spring-for-configuring-three-tier-applications.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Spring for Configuring Three-Tier Applications
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="a-solution.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. A solution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="appendices.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Appendices
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="5-spring-ioc-in-practice">5. <span style="color: #365f91"><strong>Spring IoC in Practice</strong></span></h1>
+<p>We will now use examples to put into practice what we have seen previously.</p>
+<h2 id="51-example-1">5.1. <span style="color: #4f81bd"><strong>Example 1</strong></span></h2>
+<p>The [Person.vb] class is as follows:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">Namespace</span><span class="w"> </span><span class="nn">istia.st.springioc.demos</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="k">Public</span><span class="w"> </span><span class="k">Class</span><span class="w"> </span><span class="nc">Person</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">        </span><span class="c">&#39; private fields</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">        </span><span class="k">Private</span><span class="w"> </span><span class="n">_name</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">String</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">        </span><span class="k">Private</span><span class="w"> </span><span class="n">_age</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Integer</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">        </span><span class="c">&#39; default constructor</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">        </span><span class="k">Public</span><span class="w"> </span><span class="k">Sub</span><span class="w"> </span><span class="nf">New</span><span class="p">()</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">        </span><span class="k">End</span><span class="w"> </span><span class="k">Sub</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">        </span><span class="c">&#39; Properties associated with private fields</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">        </span><span class="k">Public</span><span class="w"> </span><span class="k">Property</span><span class="w"> </span><span class="nf">name</span><span class="p">()</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">String</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">            </span><span class="k">Get</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">                </span><span class="k">Return</span><span class="w"> </span><span class="n">_name</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">            </span><span class="k">End</span><span class="w"> </span><span class="k">Get</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">            </span><span class="k">Set</span><span class="p">(</span><span class="k">ByVal</span><span class="w"> </span><span class="n">Value</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">String</span><span class="p">)</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">                </span><span class="n">_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Value</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">            </span><span class="k">End</span><span class="w"> </span><span class="k">Set</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">        </span><span class="k">End</span><span class="w"> </span><span class="k">Property</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">        </span><span class="k">Public</span><span class="w"> </span><span class="k">Property</span><span class="w"> </span><span class="nf">age</span><span class="p">()</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Integer</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="w">            </span><span class="k">Get</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="w">                </span><span class="k">Return</span><span class="w"> </span><span class="n">_age</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">            </span><span class="k">End</span><span class="w"> </span><span class="k">Get</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="w">            </span><span class="k">Set</span><span class="p">(</span><span class="k">ByVal</span><span class="w"> </span><span class="n">Value</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Integer</span><span class="p">)</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="w">                </span><span class="n">_age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Value</span>
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="w">            </span><span class="k">End</span><span class="w"> </span><span class="k">Set</span>
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="w">        </span><span class="k">End</span><span class="w"> </span><span class="k">Property</span>
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="w">        </span><span class="c">&#39; identity string</span>
+<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a><span class="w">        </span><span class="k">Public</span><span class="w"> </span><span class="k">Overrides</span><span class="w"> </span><span class="k">Function</span><span class="w"> </span><span class="nf">tostring</span><span class="p">()</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">String</span>
+<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="w">            </span><span class="k">Return</span><span class="w"> </span><span class="kt">String</span><span class="p">.</span><span class="n">Format</span><span class="p">(</span><span class="s">&quot;[{0},{1}]&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">age</span><span class="p">)</span>
+<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a><span class="w">        </span><span class="k">End</span><span class="w"> </span><span class="k">Function</span>
+<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a>
+<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a><span class="w">        </span><span class="c">&#39; init method</span>
+<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a><span class="w">        </span><span class="k">Public</span><span class="w"> </span><span class="k">Sub</span><span class="w"> </span><span class="nf">init</span><span class="p">()</span>
+<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a><span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;Initializing person {0}&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">Me</span><span class="p">.</span><span class="n">ToString</span><span class="p">)</span>
+<a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a><span class="w">        </span><span class="k">End</span><span class="w"> </span><span class="k">Sub</span>
+<a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a>
+<a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a><span class="w">        </span><span class="c">&#39; close method</span>
+<a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a><span class="w">        </span><span class="k">Public</span><span class="w"> </span><span class="k">Sub</span><span class="w"> </span><span class="nf">close</span><span class="p">()</span>
+<a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a><span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;destroy person {0}&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">Me</span><span class="p">.</span><span class="n">ToString</span><span class="p">)</span>
+<a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a><span class="w">        </span><span class="k">End</span><span class="w"> </span><span class="k">Sub</span>
+<a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a>
+<a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a><span class="w">    </span><span class="k">End</span><span class="w"> </span><span class="k">Class</span>
+<a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a><span class="k">End</span><span class="w"> </span><span class="k">Namespace</span>
+</code></pre></div>
+<p>The class contains:</p>
+<ul>
+<li>two private fields, <strong>name</strong> and <strong>age,</strong> accessible via properties</li>
+<li>a <strong>toString</strong> method to retrieve the value of the [Person] object as a string</li>
+<li>an <strong>init</strong> method that will be called by Spring when the object is created, and a <strong>close</strong> method that will be called when the object is destroyed</li>
+</ul>
+<p>To create objects of type [Person], we will use the following Spring [spring-config-1.xml] file:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;iso-8859-1&quot; ?&gt;</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="cp">&lt;!DOCTYPE objects PUBLIC &quot;-//SPRING//DTD OBJECT//EN&quot;</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="cp">&quot;http://www.springframework.net/dtd/spring-objects.dtd&quot;&gt;</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="nt">&lt;objects&gt;</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="nt">&lt;object</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;person1&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;istia.st.springioc.demos.Person, demo1&quot;</span><span class="w"> </span><span class="na">init-method=</span><span class="s">&quot;init&quot;</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">        </span><span class="na">destroy-method=</span><span class="s">&quot;close&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">        </span><span class="nt">&lt;property</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">            </span><span class="nt">&lt;value&gt;</span>Simon<span class="nt">&lt;/value&gt;</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">        </span><span class="nt">&lt;/property&gt;</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">        </span><span class="nt">&lt;property</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;age&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">            </span><span class="nt">&lt;value&gt;</span>40<span class="nt">&lt;/value&gt;</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">        </span><span class="nt">&lt;/property&gt;</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">    </span><span class="nt">&lt;/object&gt;</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">    </span><span class="nt">&lt;object</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;person2&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;istia.st.springioc.demos.Person, demo1&quot;</span><span class="w"> </span><span class="na">init-method=</span><span class="s">&quot;init&quot;</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">        </span><span class="na">destroy-method=</span><span class="s">&quot;close&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">        </span><span class="nt">&lt;property</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">            </span><span class="nt">&lt;value&gt;</span>Brigitte<span class="nt">&lt;/value&gt;</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">        </span><span class="nt">&lt;/property&gt;</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">        </span><span class="nt">&lt;property</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;age&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="w">            </span><span class="nt">&lt;value&gt;</span>20<span class="nt">&lt;/value&gt;</span>
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="w">        </span><span class="nt">&lt;/property&gt;</span>
+<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="w">    </span><span class="nt">&lt;/object&gt;</span>
+<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="nt">&lt;/objects&gt;</span>
+</code></pre></div>
+<p>This file </p>
+<ul>
+<li>defines two objects with respective keys &quot;person1&quot; and &quot;person2&quot; of type [Person]</li>
+<li>it initializes the properties [name, age] for each person</li>
+<li>It defines the methods to be called during the initial construction of the object [init-method] and during the destruction of the object [destroy-method]</li>
+</ul>
+<p>For our tests, we will use NUnit test classes. The first will be as follows:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">Imports</span><span class="w"> </span><span class="nn">System</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="k">Imports</span><span class="w"> </span><span class="nn">Spring.Objects.Factory.Xml</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="k">Imports</span><span class="w"> </span><span class="nn">System.IO</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="k">Imports</span><span class="w"> </span><span class="nn">NUnit.Framework</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="k">Imports</span><span class="w"> </span><span class="nn">istia.st.springioc.demos</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="k">Namespace</span><span class="w"> </span><span class="nn">istia.st.springioc.tests</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">    </span><span class="o">&lt;</span><span class="n">TestFixture</span><span class="p">()</span><span class="o">&gt;</span><span class="w"> </span>_
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">    </span><span class="k">Public</span><span class="w"> </span><span class="k">Class</span><span class="w"> </span><span class="nc">NunitTestSpringIocDemo1</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">        </span><span class="c">&#39; the object to be tested</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">        </span><span class="k">Private</span><span class="w"> </span><span class="n">factory</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="n">XmlObjectFactory</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">        </span><span class="o">&lt;</span><span class="n">SetUp</span><span class="p">()</span><span class="o">&gt;</span><span class="w"> </span>_
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">        </span><span class="k">Public</span><span class="w"> </span><span class="k">Sub</span><span class="w"> </span><span class="nf">init</span><span class="p">()</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">            </span><span class="c">&#39; Create an instance of the factory</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">            </span><span class="n">factory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">New</span><span class="w"> </span><span class="n">XmlObjectFactory</span><span class="p">(</span><span class="k">New</span><span class="w"> </span><span class="n">FileStream</span><span class="p">(</span><span class="s">&quot;spring-config-1.xml&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">FileMode</span><span class="p">.</span><span class="n">Open</span><span class="p">))</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">            </span><span class="c">&#39; log</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;setup test&quot;</span><span class="p">)</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="w">        </span><span class="k">End</span><span class="w"> </span><span class="k">Sub</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a>
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="w">        </span><span class="o">&lt;</span><span class="n">Test</span><span class="p">()</span><span class="o">&gt;</span><span class="w"> </span>_
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="w">        </span><span class="k">Public</span><span class="w"> </span><span class="k">Sub</span><span class="w"> </span><span class="nf">demo</span><span class="p">()</span>
+<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="w">            </span><span class="c">&#39; Retrieve [Person] objects from the Spring file using their keys</span>
+<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="w">            </span><span class="k">Dim</span><span class="w"> </span><span class="n">person1</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="n">Person</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">CType</span><span class="p">(</span><span class="n">factory</span><span class="p">.</span><span class="n">GetObject</span><span class="p">(</span><span class="s">&quot;person1&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">Person</span><span class="p">)</span>
+<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a><span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;person1=&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">person1</span><span class="p">.</span><span class="n">ToString</span><span class="p">())</span>
+<a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a><span class="w">            </span><span class="k">Dim</span><span class="w"> </span><span class="n">person2</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="n">Person</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">CType</span><span class="p">(</span><span class="n">factory</span><span class="p">.</span><span class="n">GetObject</span><span class="p">(</span><span class="s">&quot;person2&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">Person</span><span class="p">)</span>
+<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a><span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;person2=&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">person2</span><span class="p">.</span><span class="n">ToString</span><span class="p">())</span>
+<a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a><span class="w">            </span><span class="n">person2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">CType</span><span class="p">(</span><span class="n">factory</span><span class="p">.</span><span class="n">GetObject</span><span class="p">(</span><span class="s">&quot;person2&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">Person</span><span class="p">)</span>
+<a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a><span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;person2=&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">person2</span><span class="p">.</span><span class="n">ToString</span><span class="p">())</span>
+<a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a><span class="w">        </span><span class="k">End</span><span class="w"> </span><span class="k">Sub</span>
+<a id="__codelineno-2-32" name="__codelineno-2-32" href="#__codelineno-2-32"></a>
+<a id="__codelineno-2-33" name="__codelineno-2-33" href="#__codelineno-2-33"></a><span class="w">        </span><span class="o">&lt;</span><span class="n">TearDown</span><span class="p">()</span><span class="o">&gt;</span><span class="w"> </span>_
+<a id="__codelineno-2-34" name="__codelineno-2-34" href="#__codelineno-2-34"></a><span class="w">        </span><span class="k">Public</span><span class="w"> </span><span class="k">Sub</span><span class="w"> </span><span class="nf">destroy</span><span class="p">()</span>
+<a id="__codelineno-2-35" name="__codelineno-2-35" href="#__codelineno-2-35"></a><span class="w">            </span><span class="c">&#39; we destroy the singletons</span>
+<a id="__codelineno-2-36" name="__codelineno-2-36" href="#__codelineno-2-36"></a><span class="w">            </span><span class="n">factory</span><span class="p">.</span><span class="n">Dispose</span><span class="p">()</span>
+<a id="__codelineno-2-37" name="__codelineno-2-37" href="#__codelineno-2-37"></a><span class="w">            </span><span class="c">&#39; release the factory resource</span>
+<a id="__codelineno-2-38" name="__codelineno-2-38" href="#__codelineno-2-38"></a><span class="w">            </span><span class="n">factory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">Nothing</span>
+<a id="__codelineno-2-39" name="__codelineno-2-39" href="#__codelineno-2-39"></a><span class="w">            </span><span class="c">&#39; follow-up</span>
+<a id="__codelineno-2-40" name="__codelineno-2-40" href="#__codelineno-2-40"></a><span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;teardown test&quot;</span><span class="p">)</span>
+<a id="__codelineno-2-41" name="__codelineno-2-41" href="#__codelineno-2-41"></a><span class="w">        </span><span class="k">End</span><span class="w"> </span><span class="k">Sub</span>
+<a id="__codelineno-2-42" name="__codelineno-2-42" href="#__codelineno-2-42"></a>
+<a id="__codelineno-2-43" name="__codelineno-2-43" href="#__codelineno-2-43"></a><span class="w">    </span><span class="k">End</span><span class="w"> </span><span class="k">Class</span>
+<a id="__codelineno-2-44" name="__codelineno-2-44" href="#__codelineno-2-44"></a><span class="k">End</span><span class="w"> </span><span class="k">Namespace</span>
+</code></pre></div>
+<p><strong>Comments</strong>:</p>
+<ul>
+<li>To retrieve the objects defined in the [spring-config-1.xml] file, we use an object of type [XmlObjectFactory]. There are other types of &quot;factory&quot; that allow access to the singletons in the configuration file. The [XmlObjectFactory] object is obtained in the [SetUp] attribute method of the test class and stored in a private variable. Note that the method with the &lt;Setup()&gt; attribute is executed before each test.</li>
+<li>The [spring-config-1.xml] file will be placed in the application’s [bin] folder</li>
+<li>Spring can use configuration files in various formats. The [XmlObjectFactory] object is used to parse a configuration file in XML format.</li>
+<li>Reading a Spring file returns an object of type [XmlObjectFactory], in this case the <strong><code>factory</code></strong> object. Using this object, a singleton identified by the key <code>**C**</code> can be retrieved using <code>**factory.getObject(C)**</code>.</li>
+<li>The [demo] method retrieves and displays the values of the singletons with keys &quot;person1&quot; and &quot;person2&quot;.</li>
+</ul>
+<p>The structure of the Visual Studio project is as follows:</p>
+<p><img src="images/100000000000011F0000017270D06E66.png" style="width:6.366cm;height:8.207cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000000000011F0000017270D06E66.png" /></p>
+<p><strong>Comments</strong>:</p>
+<ul>
+<li>The VS project is named [demo1]</li>
+<li>The [istia] folder contains the source code. The compiled code will go into the [bin] folder in the [demo1.dll] DLL:</li>
+</ul>
+<p><img src="images/1000000000000149000000BDB4B91522.png" style="width:8.701cm;height:4.999cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/1000000000000149000000BDB4B91522.png" /></p>
+<ul>
+<li>The [spring-config-1.xml] file is in the project&#x27;s [bin] folder.</li>
+<li>The [bin] folder contains the files required by the application:<ul>
+<li><strong>Spring.Core.dll, Spring.Core.xml</strong> for Spring classes</li>
+<li><strong>log4net.dll</strong> for Spring logs</li>
+<li><strong>demo1.dll</strong>, which is the DLL generated by the project</li>
+</ul>
+</li>
+</ul>
+<p>The [demo1.dll] DLL generated by the project is loaded into the graphical testing tool [Nunit-Gui 2.2]. This tool automatically displays the Nunit classes present in the DLL:</p>
+<p><img src="images/10000000000002D90000010F89DCB0C5.png" style="width:13.501cm;height:5.018cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000002D90000010F89DCB0C5.png" /></p>
+<p>Executing the [demo] method of the NUnit test yields the results shown above and listed below:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-3-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-3-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-3-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-3-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-3-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-3-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-3-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-3-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-3-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>***** istia.st.springioc.tests.NunitTestSpringIocDemo1.demo
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a>setup test
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a>init person [Simon,40]
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a>person1=[Simon,40]
+<a id="__codelineno-3-5" name="__codelineno-3-5"></a>init person [Brigitte,20]
+<a id="__codelineno-3-6" name="__codelineno-3-6"></a>person2 = [Brigitte, 20]
+<a id="__codelineno-3-7" name="__codelineno-3-7"></a>person2 = [Brigitte, 20]
+<a id="__codelineno-3-8" name="__codelineno-3-8"></a>destroy person [Simon,40]
+<a id="__codelineno-3-9" name="__codelineno-3-9"></a>destroy person [Brigitte,20]
+<a id="__codelineno-3-10" name="__codelineno-3-10"></a>teardown test
+</code></pre></div></td></tr></table></div>
+<p><strong>Comments</strong>:</p>
+<ul>
+<li>line 2: the test starts with the execution of the &lt;Setup()&gt; attribute method</li>
+<li>line 3: the operation </li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="w">            </span><span class="kd">Dim</span><span class="w"> </span><span class="nv">person1</span><span class="w"> </span><span class="n">As</span><span class="w"> </span><span class="n">Person</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CType</span><span class="p">(</span><span class="n">factory</span><span class="p">.</span><span class="nb">GetObject</span><span class="p">(</span><span class="s2">&quot;person1&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">Person</span><span class="p">)</span>
+</code></pre></div>
+<p>forced the creation of the bean [person1]. Because in the definition of the singleton [person1] we had written [init-method=&quot;init&quot;], the [init] method of the created [Person] object was executed. The corresponding message is displayed.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>init person [Simon,40]
+</code></pre></div>
+<ul>
+<li>Line 4: The operation </li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;person1=&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">person1</span><span class="p">.</span><span class="n">ToString</span><span class="p">())</span>
+</code></pre></div>
+<p>displayed the value of the created [Person] object.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>person1=[Simon,40]
+</code></pre></div>
+<ul>
+<li>Lines 5-6: The same thing happens for the key bean [person2].</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>init person [Brigitte,20]
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>person2 = [Brigitte, 20]
+</code></pre></div>
+<ul>
+<li>line 7: the last operation </li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">person2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CType</span><span class="p">(</span><span class="n">factory</span><span class="p">.</span><span class="n">GetObject</span><span class="p">(</span><span class="s">&quot;person2&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">Person</span><span class="p">)</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;person2=&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">person2</span><span class="p">.</span><span class="n">ToString</span><span class="p">())</span>
+</code></pre></div>
+<p>resulted in only one line of output:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>person2=[Brigitte,20]
+</code></pre></div>
+<p>It therefore did not cause the creation of a new object of type [Person]. If that had been the case, the [init] method would have been displayed, which is not the case here. This is the principle of <strong>the singleton</strong>. By default, Spring creates only a single instance of the beans in its configuration file. It is an object reference service. If asked for the reference to an object that has not yet been created, it creates it and returns a reference to it. If the object has already been created, Spring simply returns a reference to it.</p>
+<ul>
+<li>Lines 8–10: The attribute method &lt;TearDown()&gt; is executed (line 10). Inside it, the operation</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="w">            </span><span class="nx">the</span><span class="w"> </span><span class="nx">singletons</span><span class="w"> </span><span class="nx">are</span><span class="w"> </span><span class="nx">destroyed</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">            </span><span class="nx">factory</span><span class="p">.</span><span class="nx">Dispose</span><span class="p">()</span>
+</code></pre></div>
+<p>causes the destruction of the singletons created by Spring. This causes each of them to execute their [close] method because we had written, in the configuration file, for each of them: &quot;destroy-method=close&quot;. This is what the displays indicate:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>destroy person [Simon,40]
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>destroy person [Brigitte,20]
+</code></pre></div>
+<p>Now that we have covered the basics of Spring configuration, we will be able to move a bit faster in our explanations.</p>
+<h2 id="52-example-2">5.2. <span style="color: #4f81bd"><strong>Example 2</strong></span></h2>
+<p>Consider the following new [Car] class:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">Imports</span><span class="w"> </span><span class="nn">istia.st.springioc.demos</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="k">Namespace</span><span class="w"> </span><span class="nn">istia.st.springioc.demos</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="w">    </span><span class="k">Public</span><span class="w"> </span><span class="k">Class</span><span class="w"> </span><span class="nc">Car</span>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="w">        </span><span class="c">&#39; private fields</span>
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="w">        </span><span class="k">Private</span><span class="w"> </span><span class="n">_brand</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">String</span>
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="w">        </span><span class="k">Private</span><span class="w"> </span><span class="n">_type</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">String</span>
+<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a><span class="w">        </span><span class="k">Private</span><span class="w"> </span><span class="n">_owner</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="n">Person</span>
+<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a>
+<a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a><span class="w">        </span><span class="c">&#39; public properties</span>
+<a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a><span class="w">        </span><span class="k">Public</span><span class="w"> </span><span class="k">Property</span><span class="w"> </span><span class="nf">brand</span><span class="p">()</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">String</span>
+<a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a><span class="w">            </span><span class="k">Get</span>
+<a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a><span class="w">                </span><span class="k">Return</span><span class="w"> </span><span class="n">_brand</span>
+<a id="__codelineno-13-15" name="__codelineno-13-15" href="#__codelineno-13-15"></a><span class="w">            </span><span class="k">End</span><span class="w"> </span><span class="k">Get</span>
+<a id="__codelineno-13-16" name="__codelineno-13-16" href="#__codelineno-13-16"></a><span class="w">            </span><span class="k">Set</span><span class="p">(</span><span class="k">ByVal</span><span class="w"> </span><span class="n">Value</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">String</span><span class="p">)</span>
+<a id="__codelineno-13-17" name="__codelineno-13-17" href="#__codelineno-13-17"></a><span class="w">                </span><span class="n">_brand</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Value</span>
+<a id="__codelineno-13-18" name="__codelineno-13-18" href="#__codelineno-13-18"></a><span class="w">            </span><span class="k">End</span><span class="w"> </span><span class="k">Set</span>
+<a id="__codelineno-13-19" name="__codelineno-13-19" href="#__codelineno-13-19"></a><span class="w">        </span><span class="k">End</span><span class="w"> </span><span class="k">Property</span>
+<a id="__codelineno-13-20" name="__codelineno-13-20" href="#__codelineno-13-20"></a>
+<a id="__codelineno-13-21" name="__codelineno-13-21" href="#__codelineno-13-21"></a><span class="w">        </span><span class="k">Public</span><span class="w"> </span><span class="k">Property</span><span class="w"> </span><span class="nf">type</span><span class="p">()</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">String</span>
+<a id="__codelineno-13-22" name="__codelineno-13-22" href="#__codelineno-13-22"></a><span class="w">            </span><span class="k">Get</span>
+<a id="__codelineno-13-23" name="__codelineno-13-23" href="#__codelineno-13-23"></a><span class="w">                </span><span class="k">Return</span><span class="w"> </span><span class="n">_type</span>
+<a id="__codelineno-13-24" name="__codelineno-13-24" href="#__codelineno-13-24"></a><span class="w">            </span><span class="k">End</span><span class="w"> </span><span class="k">Get</span>
+<a id="__codelineno-13-25" name="__codelineno-13-25" href="#__codelineno-13-25"></a><span class="w">            </span><span class="k">Set</span><span class="p">(</span><span class="k">ByVal</span><span class="w"> </span><span class="n">Value</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">String</span><span class="p">)</span>
+<a id="__codelineno-13-26" name="__codelineno-13-26" href="#__codelineno-13-26"></a><span class="w">                </span><span class="n">_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Value</span>
+<a id="__codelineno-13-27" name="__codelineno-13-27" href="#__codelineno-13-27"></a><span class="w">            </span><span class="k">End</span><span class="w"> </span><span class="k">Set</span>
+<a id="__codelineno-13-28" name="__codelineno-13-28" href="#__codelineno-13-28"></a><span class="w">        </span><span class="k">End</span><span class="w"> </span><span class="k">Property</span>
+<a id="__codelineno-13-29" name="__codelineno-13-29" href="#__codelineno-13-29"></a>
+<a id="__codelineno-13-30" name="__codelineno-13-30" href="#__codelineno-13-30"></a><span class="w">        </span><span class="k">Public</span><span class="w"> </span><span class="k">Property</span><span class="w"> </span><span class="nf">owner</span><span class="p">()</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="n">Person</span>
+<a id="__codelineno-13-31" name="__codelineno-13-31" href="#__codelineno-13-31"></a><span class="w">            </span><span class="k">Get</span>
+<a id="__codelineno-13-32" name="__codelineno-13-32" href="#__codelineno-13-32"></a><span class="w">                </span><span class="k">Return</span><span class="w"> </span><span class="n">_owner</span>
+<a id="__codelineno-13-33" name="__codelineno-13-33" href="#__codelineno-13-33"></a><span class="w">            </span><span class="k">End</span><span class="w"> </span><span class="k">Get</span>
+<a id="__codelineno-13-34" name="__codelineno-13-34" href="#__codelineno-13-34"></a><span class="w">            </span><span class="k">Set</span><span class="p">(</span><span class="k">ByVal</span><span class="w"> </span><span class="n">Value</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="n">Person</span><span class="p">)</span>
+<a id="__codelineno-13-35" name="__codelineno-13-35" href="#__codelineno-13-35"></a><span class="w">                </span><span class="n">_owner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Value</span>
+<a id="__codelineno-13-36" name="__codelineno-13-36" href="#__codelineno-13-36"></a><span class="w">            </span><span class="k">End</span><span class="w"> </span><span class="k">Set</span>
+<a id="__codelineno-13-37" name="__codelineno-13-37" href="#__codelineno-13-37"></a><span class="w">        </span><span class="k">End</span><span class="w"> </span><span class="k">Property</span>
+<a id="__codelineno-13-38" name="__codelineno-13-38" href="#__codelineno-13-38"></a>
+<a id="__codelineno-13-39" name="__codelineno-13-39" href="#__codelineno-13-39"></a><span class="w">        </span><span class="c">&#39; default constructor</span>
+<a id="__codelineno-13-40" name="__codelineno-13-40" href="#__codelineno-13-40"></a><span class="w">        </span><span class="k">Public</span><span class="w"> </span><span class="k">Sub</span><span class="w"> </span><span class="nf">New</span><span class="p">()</span>
+<a id="__codelineno-13-41" name="__codelineno-13-41" href="#__codelineno-13-41"></a>
+<a id="__codelineno-13-42" name="__codelineno-13-42" href="#__codelineno-13-42"></a><span class="w">        </span><span class="k">End</span><span class="w"> </span><span class="k">Sub</span>
+<a id="__codelineno-13-43" name="__codelineno-13-43" href="#__codelineno-13-43"></a>
+<a id="__codelineno-13-44" name="__codelineno-13-44" href="#__codelineno-13-44"></a><span class="w">        </span><span class="c">&#39; Three-parameter constructor</span>
+<a id="__codelineno-13-45" name="__codelineno-13-45" href="#__codelineno-13-45"></a><span class="w">        </span><span class="k">Public</span><span class="w"> </span><span class="k">Sub</span><span class="w"> </span><span class="nf">New</span><span class="p">(</span><span class="k">ByVal</span><span class="w"> </span><span class="n">brand</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">String</span><span class="p">,</span><span class="w"> </span><span class="k">ByVal</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">String</span><span class="p">,</span><span class="w"> </span><span class="k">ByVal</span><span class="w"> </span><span class="n">owner</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="n">Person</span><span class="p">)</span>
+<a id="__codelineno-13-46" name="__codelineno-13-46" href="#__codelineno-13-46"></a><span class="w">            </span><span class="c">&#39; Initialize the private fields via their associated properties</span>
+<a id="__codelineno-13-47" name="__codelineno-13-47" href="#__codelineno-13-47"></a><span class="w">            </span><span class="k">With</span><span class="w"> </span><span class="k">Me</span>
+<a id="__codelineno-13-48" name="__codelineno-13-48" href="#__codelineno-13-48"></a><span class="w">                </span><span class="p">.</span><span class="n">brand</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">brand</span>
+<a id="__codelineno-13-49" name="__codelineno-13-49" href="#__codelineno-13-49"></a><span class="w">                </span><span class="p">.</span><span class="n">model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">model</span>
+<a id="__codelineno-13-50" name="__codelineno-13-50" href="#__codelineno-13-50"></a><span class="w">                </span><span class="p">.</span><span class="n">owner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">owner</span>
+<a id="__codelineno-13-51" name="__codelineno-13-51" href="#__codelineno-13-51"></a><span class="w">            </span><span class="k">End</span><span class="w"> </span><span class="k">With</span>
+<a id="__codelineno-13-52" name="__codelineno-13-52" href="#__codelineno-13-52"></a><span class="w">        </span><span class="k">End</span><span class="w"> </span><span class="k">Sub</span>
+<a id="__codelineno-13-53" name="__codelineno-13-53" href="#__codelineno-13-53"></a>
+<a id="__codelineno-13-54" name="__codelineno-13-54" href="#__codelineno-13-54"></a><span class="w">        </span><span class="c">&#39; identity string of the Car object</span>
+<a id="__codelineno-13-55" name="__codelineno-13-55" href="#__codelineno-13-55"></a><span class="w">        </span><span class="k">Public</span><span class="w"> </span><span class="k">Overrides</span><span class="w"> </span><span class="k">Function</span><span class="w"> </span><span class="nf">tostring</span><span class="p">()</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">String</span>
+<a id="__codelineno-13-56" name="__codelineno-13-56" href="#__codelineno-13-56"></a><span class="w">            </span><span class="k">Return</span><span class="w"> </span><span class="kt">String</span><span class="p">.</span><span class="n">Format</span><span class="p">(</span><span class="s">&quot;[{0},{1},{2}]&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">make</span><span class="p">,</span><span class="w"> </span><span class="n">model</span><span class="p">,</span><span class="w"> </span><span class="n">owner</span><span class="p">.</span><span class="n">ToString</span><span class="p">)</span>
+<a id="__codelineno-13-57" name="__codelineno-13-57" href="#__codelineno-13-57"></a><span class="w">        </span><span class="k">End</span><span class="w"> </span><span class="k">Function</span>
+<a id="__codelineno-13-58" name="__codelineno-13-58" href="#__codelineno-13-58"></a>
+<a id="__codelineno-13-59" name="__codelineno-13-59" href="#__codelineno-13-59"></a><span class="w">        </span><span class="c">&#39; init-destroy methods</span>
+<a id="__codelineno-13-60" name="__codelineno-13-60" href="#__codelineno-13-60"></a><span class="w">        </span><span class="k">Public</span><span class="w"> </span><span class="k">Sub</span><span class="w"> </span><span class="nf">init</span><span class="p">()</span>
+<a id="__codelineno-13-61" name="__codelineno-13-61" href="#__codelineno-13-61"></a><span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;init car {0}&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">Me</span><span class="p">.</span><span class="n">ToString</span><span class="p">)</span>
+<a id="__codelineno-13-62" name="__codelineno-13-62" href="#__codelineno-13-62"></a><span class="w">        </span><span class="k">End</span><span class="w"> </span><span class="k">Sub</span>
+<a id="__codelineno-13-63" name="__codelineno-13-63" href="#__codelineno-13-63"></a>
+<a id="__codelineno-13-64" name="__codelineno-13-64" href="#__codelineno-13-64"></a><span class="w">        </span><span class="k">Public</span><span class="w"> </span><span class="k">Sub</span><span class="w"> </span><span class="nf">destroy</span><span class="p">()</span>
+<a id="__codelineno-13-65" name="__codelineno-13-65" href="#__codelineno-13-65"></a><span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;destroy car {0}&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">Me</span><span class="p">.</span><span class="n">ToString</span><span class="p">)</span>
+<a id="__codelineno-13-66" name="__codelineno-13-66" href="#__codelineno-13-66"></a><span class="w">        </span><span class="k">End</span><span class="w"> </span><span class="k">Sub</span>
+<a id="__codelineno-13-67" name="__codelineno-13-67" href="#__codelineno-13-67"></a>
+<a id="__codelineno-13-68" name="__codelineno-13-68" href="#__codelineno-13-68"></a><span class="w">    </span><span class="k">End</span><span class="w"> </span><span class="k">Class</span>
+<a id="__codelineno-13-69" name="__codelineno-13-69" href="#__codelineno-13-69"></a><span class="k">End</span><span class="w"> </span><span class="k">Namespace</span>
+</code></pre></div>
+<p>The class has:</p>
+<ul>
+<li>three private fields: <strong>_type</strong>, <strong>_make</strong>, and <strong>_owner</strong>. These fields can be initialized and read via public properties. They can also be initialized using the <strong>Car(String, String, Person)</strong> constructor. The class also has a no-argument constructor that allows you to first create an uninitialized [Car] object and then initialize it via its public properties.</li>
+<li>a <strong>toString</strong> method to retrieve the value of the [Car] object as a string</li>
+<li>an <strong>init</strong> method that will be called by Spring immediately after the object is created, a <strong>destroy</strong> method that will be called when the object is destroyed</li>
+</ul>
+<p>To create objects of type [Car], we will use the following Spring [<strong>spring-config-2.xml</strong>] file:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;iso-8859-1&quot; ?&gt;</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="cp">&lt;!DOCTYPE objects PUBLIC &quot;-//SPRING//DTD OBJECT//EN&quot;</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="cp">&quot;http://www.springframework.net/dtd/spring-objects.dtd&quot;&gt;</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="nt">&lt;objects&gt;</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="w">    </span><span class="cm">&lt;!-- people --&gt;</span>
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="w">    </span><span class="nt">&lt;object</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;person1&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;istia.st.springioc.demos.Person, demo1&quot;</span><span class="w"> </span><span class="na">init-method=</span><span class="s">&quot;init&quot;</span>
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="w">        </span><span class="na">destroy-method=</span><span class="s">&quot;close&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="w">        </span><span class="nt">&lt;property</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a><span class="w">            </span><span class="nt">&lt;value&gt;</span>Simon<span class="nt">&lt;/value&gt;</span>
+<a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a><span class="w">        </span><span class="nt">&lt;/property&gt;</span>
+<a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a><span class="w">        </span><span class="nt">&lt;property</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;age&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a><span class="w">            </span><span class="nt">&lt;value&gt;</span>40<span class="nt">&lt;/value&gt;</span>
+<a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a><span class="w">        </span><span class="nt">&lt;/property&gt;</span>
+<a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a><span class="w">    </span><span class="nt">&lt;/object&gt;</span>
+<a id="__codelineno-14-15" name="__codelineno-14-15" href="#__codelineno-14-15"></a><span class="w">    </span><span class="nt">&lt;object</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;person2&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;istia.st.springioc.demos.Person, demo1&quot;</span><span class="w"> </span><span class="na">init-method=</span><span class="s">&quot;init&quot;</span>
+<a id="__codelineno-14-16" name="__codelineno-14-16" href="#__codelineno-14-16"></a><span class="w">        </span><span class="na">destroy-method=</span><span class="s">&quot;close&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-14-17" name="__codelineno-14-17" href="#__codelineno-14-17"></a><span class="w">        </span><span class="nt">&lt;property</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-14-18" name="__codelineno-14-18" href="#__codelineno-14-18"></a><span class="w">            </span><span class="nt">&lt;value&gt;</span>Brigitte<span class="nt">&lt;/value&gt;</span>
+<a id="__codelineno-14-19" name="__codelineno-14-19" href="#__codelineno-14-19"></a><span class="w">        </span><span class="nt">&lt;/property&gt;</span>
+<a id="__codelineno-14-20" name="__codelineno-14-20" href="#__codelineno-14-20"></a><span class="w">        </span><span class="nt">&lt;property</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;age&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-14-21" name="__codelineno-14-21" href="#__codelineno-14-21"></a><span class="w">            </span><span class="nt">&lt;value&gt;</span>20<span class="nt">&lt;/value&gt;</span>
+<a id="__codelineno-14-22" name="__codelineno-14-22" href="#__codelineno-14-22"></a><span class="w">        </span><span class="nt">&lt;/property&gt;</span>
+<a id="__codelineno-14-23" name="__codelineno-14-23" href="#__codelineno-14-23"></a><span class="w">    </span><span class="nt">&lt;/object&gt;</span>
+<a id="__codelineno-14-24" name="__codelineno-14-24" href="#__codelineno-14-24"></a><span class="w">    </span><span class="cm">&lt;!-- a car --&gt;</span>
+<a id="__codelineno-14-25" name="__codelineno-14-25" href="#__codelineno-14-25"></a><span class="w">    </span><span class="nt">&lt;object</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;car1&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;istia.st.springioc.demos.Car, demo1&quot;</span><span class="w"> </span><span class="na">init-method=</span><span class="s">&quot;init&quot;</span>
+<a id="__codelineno-14-26" name="__codelineno-14-26" href="#__codelineno-14-26"></a><span class="w">        </span><span class="na">destroy-method=</span><span class="s">&quot;destroy&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-14-27" name="__codelineno-14-27" href="#__codelineno-14-27"></a><span class="w">        </span><span class="nt">&lt;constructor-arg</span><span class="w"> </span><span class="na">index=</span><span class="s">&quot;0&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-14-28" name="__codelineno-14-28" href="#__codelineno-14-28"></a><span class="w">            </span><span class="nt">&lt;value&gt;</span>Peugeot<span class="nt">&lt;/value&gt;</span>
+<a id="__codelineno-14-29" name="__codelineno-14-29" href="#__codelineno-14-29"></a><span class="w">        </span><span class="nt">&lt;/constructor-arg&gt;</span>
+<a id="__codelineno-14-30" name="__codelineno-14-30" href="#__codelineno-14-30"></a><span class="w">        </span><span class="nt">&lt;constructor-arg</span><span class="w"> </span><span class="na">index=</span><span class="s">&quot;1&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-14-31" name="__codelineno-14-31" href="#__codelineno-14-31"></a><span class="w">            </span><span class="nt">&lt;value&gt;</span>307<span class="nt">&lt;/value&gt;</span>
+<a id="__codelineno-14-32" name="__codelineno-14-32" href="#__codelineno-14-32"></a><span class="w">        </span><span class="nt">&lt;/constructor-arg&gt;</span>
+<a id="__codelineno-14-33" name="__codelineno-14-33" href="#__codelineno-14-33"></a><span class="w">        </span><span class="nt">&lt;constructor-arg</span><span class="w"> </span><span class="na">index=</span><span class="s">&quot;2&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-14-34" name="__codelineno-14-34" href="#__codelineno-14-34"></a><span class="w">            </span><span class="nt">&lt;ref</span><span class="w"> </span><span class="na">object=</span><span class="s">&quot;person2&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-14-35" name="__codelineno-14-35" href="#__codelineno-14-35"></a><span class="w">        </span><span class="nt">&lt;/constructor-arg&gt;</span>
+<a id="__codelineno-14-36" name="__codelineno-14-36" href="#__codelineno-14-36"></a><span class="w">    </span><span class="nt">&lt;/object&gt;</span>
+<a id="__codelineno-14-37" name="__codelineno-14-37" href="#__codelineno-14-37"></a><span class="nt">&lt;/objects&gt;</span>
+</code></pre></div>
+<p>This file adds an object with the key &quot;car1&quot; of type [Car] to the previous definitions. To initialize this object, we could have written:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="w">    </span><span class="nt">&lt;object</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;car1&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;istia.st.springioc.demos.Car, demo1&quot;</span><span class="w"> </span><span class="na">init-method=</span><span class="s">&quot;init&quot;</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="w">        </span><span class="na">destroy-method=</span><span class="s">&quot;destroy&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="w">        </span><span class="nt">&lt;constructor-arg</span><span class="w"> </span><span class="na">index=</span><span class="s">&quot;0&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="w">            </span><span class="nt">&lt;value&gt;</span>Peugeot<span class="nt">&lt;/value&gt;</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="w">        </span><span class="nt">&lt;/constructor-arg&gt;</span>
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="w">        </span><span class="nt">&lt;constructor-arg</span><span class="w"> </span><span class="na">index=</span><span class="s">&quot;1&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="w">            </span><span class="nt">&lt;value&gt;</span>307<span class="nt">&lt;/value&gt;</span>
+<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="w">        </span><span class="nt">&lt;/constructor-arg&gt;</span>
+<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="w">        </span><span class="nt">&lt;constructor-arg</span><span class="w"> </span><span class="na">index=</span><span class="s">&quot;2&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a><span class="w">            </span><span class="nt">&lt;ref</span><span class="w"> </span><span class="na">object=</span><span class="s">&quot;person2&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a><span class="w">        </span><span class="nt">&lt;/constructor-arg&gt;</span>
+<a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a><span class="w">    </span><span class="nt">&lt;/object&gt;</span>
+</code></pre></div>
+<p>Instead of choosing the method already presented, we have chosen here to use the class’s <strong>Car(String, String, Person)</strong> constructor. Additionally, the singleton [car1] defines the method to be called during the object’s initial construction [init-method] and the method to be called during the object’s destruction [destroy-method].</p>
+<p>For our tests, we will use the following NUnit test class [NunitTestSpringIocDemo2]:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="k">Imports</span><span class="w"> </span><span class="nn">System</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="k">Imports</span><span class="w"> </span><span class="nn">Spring.Objects.Factory.Xml</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="k">Imports</span><span class="w"> </span><span class="nn">System.IO</span>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="k">Imports</span><span class="w"> </span><span class="nn">NUnit.Framework</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="k">Imports</span><span class="w"> </span><span class="nn">istia.st.springioc.demos</span>
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="k">Namespace</span><span class="w"> </span><span class="nn">istia.st.springioc.tests</span>
+<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>
+<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a><span class="w">    </span><span class="o">&lt;</span><span class="n">TestFixture</span><span class="p">()</span><span class="o">&gt;</span><span class="w"> </span>_
+<a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a><span class="w">    </span><span class="k">Public</span><span class="w"> </span><span class="k">Class</span><span class="w"> </span><span class="nc">NunitTestSpringIocDemo2</span>
+<a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a><span class="w">        </span><span class="c">&#39; the singleton factory</span>
+<a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a><span class="w">        </span><span class="k">Private</span><span class="w"> </span><span class="n">factory</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="n">XmlObjectFactory</span>
+<a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a>
+<a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a><span class="w">        </span><span class="o">&lt;</span><span class="n">SetUp</span><span class="p">()</span><span class="o">&gt;</span><span class="w"> </span>_
+<a id="__codelineno-16-15" name="__codelineno-16-15" href="#__codelineno-16-15"></a><span class="w">        </span><span class="k">Public</span><span class="w"> </span><span class="k">Sub</span><span class="w"> </span><span class="nf">init</span><span class="p">()</span>
+<a id="__codelineno-16-16" name="__codelineno-16-16" href="#__codelineno-16-16"></a><span class="w">            </span><span class="c">&#39; Create an instance of the factory</span>
+<a id="__codelineno-16-17" name="__codelineno-16-17" href="#__codelineno-16-17"></a><span class="w">            </span><span class="n">factory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">New</span><span class="w"> </span><span class="n">XmlObjectFactory</span><span class="p">(</span><span class="k">New</span><span class="w"> </span><span class="n">FileStream</span><span class="p">(</span><span class="s">&quot;spring-config-2.xml&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">FileMode</span><span class="p">.</span><span class="n">Open</span><span class="p">))</span>
+<a id="__codelineno-16-18" name="__codelineno-16-18" href="#__codelineno-16-18"></a><span class="w">            </span><span class="c">&#39; log</span>
+<a id="__codelineno-16-19" name="__codelineno-16-19" href="#__codelineno-16-19"></a><span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;setup test&quot;</span><span class="p">)</span>
+<a id="__codelineno-16-20" name="__codelineno-16-20" href="#__codelineno-16-20"></a><span class="w">        </span><span class="k">End</span><span class="w"> </span><span class="k">Sub</span>
+<a id="__codelineno-16-21" name="__codelineno-16-21" href="#__codelineno-16-21"></a>
+<a id="__codelineno-16-22" name="__codelineno-16-22" href="#__codelineno-16-22"></a><span class="w">        </span><span class="o">&lt;</span><span class="n">TearDown</span><span class="p">()</span><span class="o">&gt;</span><span class="w"> </span>_
+<a id="__codelineno-16-23" name="__codelineno-16-23" href="#__codelineno-16-23"></a><span class="w">    </span><span class="k">Public</span><span class="w"> </span><span class="k">Sub</span><span class="w"> </span><span class="nf">destroy</span><span class="p">()</span>
+<a id="__codelineno-16-24" name="__codelineno-16-24" href="#__codelineno-16-24"></a><span class="w">            </span><span class="c">&#39; destroy the singletons</span>
+<a id="__codelineno-16-25" name="__codelineno-16-25" href="#__codelineno-16-25"></a><span class="w">            </span><span class="n">factory</span><span class="p">.</span><span class="n">Dispose</span><span class="p">()</span>
+<a id="__codelineno-16-26" name="__codelineno-16-26" href="#__codelineno-16-26"></a><span class="w">            </span><span class="c">&#39; release the factory</span>
+<a id="__codelineno-16-27" name="__codelineno-16-27" href="#__codelineno-16-27"></a><span class="w">            </span><span class="n">factory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">Nothing</span>
+<a id="__codelineno-16-28" name="__codelineno-16-28" href="#__codelineno-16-28"></a><span class="w">            </span><span class="c">&#39; follow-up</span>
+<a id="__codelineno-16-29" name="__codelineno-16-29" href="#__codelineno-16-29"></a><span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;teardown test&quot;</span><span class="p">)</span>
+<a id="__codelineno-16-30" name="__codelineno-16-30" href="#__codelineno-16-30"></a><span class="w">        </span><span class="k">End</span><span class="w"> </span><span class="k">Sub</span>
+<a id="__codelineno-16-31" name="__codelineno-16-31" href="#__codelineno-16-31"></a>
+<a id="__codelineno-16-32" name="__codelineno-16-32" href="#__codelineno-16-32"></a><span class="w">        </span><span class="o">&lt;</span><span class="n">Test</span><span class="p">()</span><span class="o">&gt;</span><span class="w"> </span>_
+<a id="__codelineno-16-33" name="__codelineno-16-33" href="#__codelineno-16-33"></a><span class="w">        </span><span class="k">Public</span><span class="w"> </span><span class="k">Sub</span><span class="w"> </span><span class="nf">demo2</span><span class="p">()</span>
+<a id="__codelineno-16-34" name="__codelineno-16-34" href="#__codelineno-16-34"></a><span class="w">            </span><span class="c">&#39; Retrieve the singleton [car1]</span>
+<a id="__codelineno-16-35" name="__codelineno-16-35" href="#__codelineno-16-35"></a><span class="w">            </span><span class="k">Dim</span><span class="w"> </span><span class="n">car1</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="n">Car</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">CType</span><span class="p">(</span><span class="n">factory</span><span class="p">.</span><span class="n">GetObject</span><span class="p">(</span><span class="s">&quot;car1&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">Car</span><span class="p">)</span>
+<a id="__codelineno-16-36" name="__codelineno-16-36" href="#__codelineno-16-36"></a><span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;Car1=[{0}]&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">car1</span><span class="p">)</span>
+<a id="__codelineno-16-37" name="__codelineno-16-37" href="#__codelineno-16-37"></a><span class="w">        </span><span class="k">End</span><span class="w"> </span><span class="k">Sub</span>
+<a id="__codelineno-16-38" name="__codelineno-16-38" href="#__codelineno-16-38"></a>
+<a id="__codelineno-16-39" name="__codelineno-16-39" href="#__codelineno-16-39"></a><span class="w">    </span><span class="k">End</span><span class="w"> </span><span class="k">Class</span>
+<a id="__codelineno-16-40" name="__codelineno-16-40" href="#__codelineno-16-40"></a><span class="k">End</span><span class="w"> </span><span class="k">Namespace</span>
+</code></pre></div>
+<p><strong>Comments</strong>:</p>
+<ul>
+<li>The &lt;Setup()&gt; and &lt;TearDown()&gt; attribute methods remain unchanged.</li>
+<li>The [demo2] method retrieves a reference to the [car1] singleton and displays it.</li>
+</ul>
+<p>The Visual Studio project structure remains the same as before. Only two new classes have been added, along with a Spring configuration file:</p>
+<p><img src="images/10000000000001240000010BFB8B3103.png" style="width:6.181cm;height:5.652cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000001240000010BFB8B3103.png" /></p>
+<p>Running the NUnit test yields the following results:</p>
+<p><img src="images/10000000000002DA000000F1AA779A3B.png" style="width:16.401cm;height:5.415cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000002DA000000F1AA779A3B.png" /></p>
+<p>Let’s comment on the screen outputs:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-17-1">1</a></span>
+<span class="normal"><a href="#__codelineno-17-2">2</a></span>
+<span class="normal"><a href="#__codelineno-17-3">3</a></span>
+<span class="normal"><a href="#__codelineno-17-4">4</a></span>
+<span class="normal"><a href="#__codelineno-17-5">5</a></span>
+<span class="normal"><a href="#__codelineno-17-6">6</a></span>
+<span class="normal"><a href="#__codelineno-17-7">7</a></span>
+<span class="normal"><a href="#__codelineno-17-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1"></a>***** istia.st.springioc.tests.NunitTestSpringIocDemo2.demo2
+<a id="__codelineno-17-2" name="__codelineno-17-2"></a>setup test
+<a id="__codelineno-17-3" name="__codelineno-17-3"></a>init person [Brigitte,20]
+<a id="__codelineno-17-4" name="__codelineno-17-4"></a>init car [Peugeot,307,[Brigitte,20]]
+<a id="__codelineno-17-5" name="__codelineno-17-5"></a>Car1=[[Peugeot,307,[Brigitte,20]]]
+<a id="__codelineno-17-6" name="__codelineno-17-6"></a>destroy car [Peugeot,307,[Brigitte,20]]
+<a id="__codelineno-17-7" name="__codelineno-17-7"></a>destroy person [Brigitte,20]
+<a id="__codelineno-17-8" name="__codelineno-17-8"></a>teardown test
+</code></pre></div></td></tr></table></div>
+<p><strong>Comments</strong>:</p>
+<ul>
+<li>line 2: attribute method [Setup] executed before each test, here [demo]</li>
+<li>line 3: Spring begins creating the singleton [car1]. This singleton has a dependency on the singleton [person2], which does not yet exist. The latter is therefore created and its [init] method executed.</li>
+<li>line 4: the singleton [car1] can now be created. Its [init] method is then executed.</li>
+<li>Line 5: The [demo2] method displays the value of the singleton [car1]</li>
+<li>Lines 6–8: The test’s [TearDown] method is executed. The singletons are destroyed, triggering the execution of their [destroy] methods</li>
+</ul>
+<h2 id="53-example-3">5.3. <span style="color: #4f81bd"><strong>Example 3</strong></span></h2>
+<p>We introduce the following new class [PersonGroup]:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="k">Imports</span><span class="w"> </span><span class="nn">istia.st.springioc.demos</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="k">Namespace</span><span class="w"> </span><span class="nn">istia.st.springioc.demos</span>
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="w">    </span><span class="k">Public</span><span class="w"> </span><span class="k">Class</span><span class="w"> </span><span class="nc">PeopleGroup</span>
+<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="w">        </span><span class="c">&#39; private fields</span>
+<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a><span class="w">        </span><span class="k">Private</span><span class="w"> </span><span class="n">_members</span><span class="p">()</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="n">Person</span>
+<a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a><span class="w">        </span><span class="k">Private</span><span class="w"> </span><span class="n">_workGroups</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="n">Hashtable</span>
+<a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a>
+<a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a><span class="w">        </span><span class="c">&#39; public properties</span>
+<a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a><span class="w">        </span><span class="k">Public</span><span class="w"> </span><span class="k">Property</span><span class="w"> </span><span class="nf">members</span><span class="p">()</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="n">Person</span><span class="p">()</span>
+<a id="__codelineno-18-12" name="__codelineno-18-12" href="#__codelineno-18-12"></a><span class="w">            </span><span class="k">Get</span>
+<a id="__codelineno-18-13" name="__codelineno-18-13" href="#__codelineno-18-13"></a><span class="w">                </span><span class="k">Return</span><span class="w"> </span><span class="n">_members</span>
+<a id="__codelineno-18-14" name="__codelineno-18-14" href="#__codelineno-18-14"></a><span class="w">            </span><span class="k">End</span><span class="w"> </span><span class="k">Get</span>
+<a id="__codelineno-18-15" name="__codelineno-18-15" href="#__codelineno-18-15"></a><span class="w">            </span><span class="k">Set</span><span class="p">(</span><span class="k">ByVal</span><span class="w"> </span><span class="n">Value</span><span class="p">()</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="n">Person</span><span class="p">)</span>
+<a id="__codelineno-18-16" name="__codelineno-18-16" href="#__codelineno-18-16"></a><span class="w">                </span><span class="n">_members</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Value</span>
+<a id="__codelineno-18-17" name="__codelineno-18-17" href="#__codelineno-18-17"></a><span class="w">            </span><span class="k">End</span><span class="w"> </span><span class="k">Set</span>
+<a id="__codelineno-18-18" name="__codelineno-18-18" href="#__codelineno-18-18"></a><span class="w">        </span><span class="k">End</span><span class="w"> </span><span class="k">Property</span>
+<a id="__codelineno-18-19" name="__codelineno-18-19" href="#__codelineno-18-19"></a>
+<a id="__codelineno-18-20" name="__codelineno-18-20" href="#__codelineno-18-20"></a><span class="w">        </span><span class="k">Public</span><span class="w"> </span><span class="k">Property</span><span class="w"> </span><span class="nf">workGroups</span><span class="p">()</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="n">Hashtable</span>
+<a id="__codelineno-18-21" name="__codelineno-18-21" href="#__codelineno-18-21"></a><span class="w">            </span><span class="k">Get</span>
+<a id="__codelineno-18-22" name="__codelineno-18-22" href="#__codelineno-18-22"></a><span class="w">                </span><span class="k">Return</span><span class="w"> </span><span class="n">_workGroups</span>
+<a id="__codelineno-18-23" name="__codelineno-18-23" href="#__codelineno-18-23"></a><span class="w">            </span><span class="k">End</span><span class="w"> </span><span class="k">Get</span>
+<a id="__codelineno-18-24" name="__codelineno-18-24" href="#__codelineno-18-24"></a><span class="w">            </span><span class="k">Set</span><span class="p">(</span><span class="k">ByVal</span><span class="w"> </span><span class="n">Value</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="n">Hashtable</span><span class="p">)</span>
+<a id="__codelineno-18-25" name="__codelineno-18-25" href="#__codelineno-18-25"></a><span class="w">                </span><span class="n">_workgroups</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Value</span>
+<a id="__codelineno-18-26" name="__codelineno-18-26" href="#__codelineno-18-26"></a><span class="w">            </span><span class="k">End</span><span class="w"> </span><span class="k">Set</span>
+<a id="__codelineno-18-27" name="__codelineno-18-27" href="#__codelineno-18-27"></a><span class="w">        </span><span class="k">End</span><span class="w"> </span><span class="k">Property</span>
+<a id="__codelineno-18-28" name="__codelineno-18-28" href="#__codelineno-18-28"></a>
+<a id="__codelineno-18-29" name="__codelineno-18-29" href="#__codelineno-18-29"></a><span class="w">        </span><span class="c">&#39; default constructor</span>
+<a id="__codelineno-18-30" name="__codelineno-18-30" href="#__codelineno-18-30"></a><span class="w">        </span><span class="k">Public</span><span class="w"> </span><span class="k">Sub</span><span class="w"> </span><span class="nf">New</span><span class="p">()</span>
+<a id="__codelineno-18-31" name="__codelineno-18-31" href="#__codelineno-18-31"></a>
+<a id="__codelineno-18-32" name="__codelineno-18-32" href="#__codelineno-18-32"></a><span class="w">        </span><span class="k">End</span><span class="w"> </span><span class="k">Sub</span>
+<a id="__codelineno-18-33" name="__codelineno-18-33" href="#__codelineno-18-33"></a>
+<a id="__codelineno-18-34" name="__codelineno-18-34" href="#__codelineno-18-34"></a><span class="w">        </span><span class="c">&#39; identity string of the PeopleGroup object</span>
+<a id="__codelineno-18-35" name="__codelineno-18-35" href="#__codelineno-18-35"></a><span class="w">        </span><span class="k">Public</span><span class="w"> </span><span class="k">Overrides</span><span class="w"> </span><span class="k">Function</span><span class="w"> </span><span class="nf">tostring</span><span class="p">()</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">String</span>
+<a id="__codelineno-18-36" name="__codelineno-18-36" href="#__codelineno-18-36"></a><span class="w">            </span><span class="c">&#39; iterate through the list of group members</span>
+<a id="__codelineno-18-37" name="__codelineno-18-37" href="#__codelineno-18-37"></a><span class="w">            </span><span class="k">Dim</span><span class="w"> </span><span class="n">identity</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;[members=(&quot;</span>
+<a id="__codelineno-18-38" name="__codelineno-18-38" href="#__codelineno-18-38"></a><span class="w">            </span><span class="k">Dim</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Integer</span>
+<a id="__codelineno-18-39" name="__codelineno-18-39" href="#__codelineno-18-39"></a><span class="w">            </span><span class="k">For</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">To</span><span class="w"> </span><span class="n">members</span><span class="p">.</span><span class="n">Length</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">2</span>
+<a id="__codelineno-18-40" name="__codelineno-18-40" href="#__codelineno-18-40"></a><span class="w">                </span><span class="n">identity</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">members</span><span class="p">(</span><span class="n">i</span><span class="p">).</span><span class="n">ToString</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;,&quot;</span>
+<a id="__codelineno-18-41" name="__codelineno-18-41" href="#__codelineno-18-41"></a><span class="w">            </span><span class="k">Next</span>
+<a id="__codelineno-18-42" name="__codelineno-18-42" href="#__codelineno-18-42"></a><span class="w">            </span><span class="n">identity</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">members</span><span class="p">(</span><span class="n">i</span><span class="p">).</span><span class="n">ToString</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;), workgroups=(&quot;</span>
+<a id="__codelineno-18-43" name="__codelineno-18-43" href="#__codelineno-18-43"></a><span class="w">            </span><span class="c">&#39; iterate through the workgroups dictionary</span>
+<a id="__codelineno-18-44" name="__codelineno-18-44" href="#__codelineno-18-44"></a><span class="w">            </span><span class="k">Dim</span><span class="w"> </span><span class="n">keys</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="n">IEnumerator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">workingGroups</span><span class="p">.</span><span class="n">Keys</span><span class="p">.</span><span class="n">GetEnumerator</span>
+<a id="__codelineno-18-45" name="__codelineno-18-45" href="#__codelineno-18-45"></a><span class="w">            </span><span class="k">Dim</span><span class="w"> </span><span class="n">key</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Object</span>
+<a id="__codelineno-18-46" name="__codelineno-18-46" href="#__codelineno-18-46"></a><span class="w">            </span><span class="k">While</span><span class="w"> </span><span class="n">keys</span><span class="p">.</span><span class="n">MoveNext</span>
+<a id="__codelineno-18-47" name="__codelineno-18-47" href="#__codelineno-18-47"></a><span class="w">                </span><span class="n">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">keys</span><span class="p">.</span><span class="n">Current</span>
+<a id="__codelineno-18-48" name="__codelineno-18-48" href="#__codelineno-18-48"></a><span class="w">                </span><span class="n">identity</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="kt">String</span><span class="p">.</span><span class="n">Format</span><span class="p">(</span><span class="s">&quot;[{0},{1}] &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="n">workgroups</span><span class="p">(</span><span class="n">key</span><span class="p">))</span>
+<a id="__codelineno-18-49" name="__codelineno-18-49" href="#__codelineno-18-49"></a><span class="w">            </span><span class="k">End</span><span class="w"> </span><span class="k">While</span>
+<a id="__codelineno-18-50" name="__codelineno-18-50" href="#__codelineno-18-50"></a><span class="w">            </span><span class="c">&#39; return the result</span>
+<a id="__codelineno-18-51" name="__codelineno-18-51" href="#__codelineno-18-51"></a><span class="w">            </span><span class="k">Return</span><span class="w"> </span><span class="n">identity</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;]&quot;</span>
+<a id="__codelineno-18-52" name="__codelineno-18-52" href="#__codelineno-18-52"></a><span class="w">        </span><span class="k">End</span><span class="w"> </span><span class="k">Function</span>
+<a id="__codelineno-18-53" name="__codelineno-18-53" href="#__codelineno-18-53"></a>
+<a id="__codelineno-18-54" name="__codelineno-18-54" href="#__codelineno-18-54"></a><span class="w">        </span><span class="c">&#39; init-destroy methods</span>
+<a id="__codelineno-18-55" name="__codelineno-18-55" href="#__codelineno-18-55"></a><span class="w">        </span><span class="k">Public</span><span class="w"> </span><span class="k">Sub</span><span class="w"> </span><span class="nf">init</span><span class="p">()</span>
+<a id="__codelineno-18-56" name="__codelineno-18-56" href="#__codelineno-18-56"></a><span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;init PeopleGroup {0}&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">Me</span><span class="p">.</span><span class="n">ToString</span><span class="p">)</span>
+<a id="__codelineno-18-57" name="__codelineno-18-57" href="#__codelineno-18-57"></a><span class="w">        </span><span class="k">End</span><span class="w"> </span><span class="k">Sub</span>
+<a id="__codelineno-18-58" name="__codelineno-18-58" href="#__codelineno-18-58"></a>
+<a id="__codelineno-18-59" name="__codelineno-18-59" href="#__codelineno-18-59"></a><span class="w">        </span><span class="k">Public</span><span class="w"> </span><span class="k">Sub</span><span class="w"> </span><span class="nf">destroy</span><span class="p">()</span>
+<a id="__codelineno-18-60" name="__codelineno-18-60" href="#__codelineno-18-60"></a><span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;destroy PeopleGroup {0}&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">Me</span><span class="p">.</span><span class="n">ToString</span><span class="p">)</span>
+<a id="__codelineno-18-61" name="__codelineno-18-61" href="#__codelineno-18-61"></a><span class="w">        </span><span class="k">End</span><span class="w"> </span><span class="k">Sub</span>
+<a id="__codelineno-18-62" name="__codelineno-18-62" href="#__codelineno-18-62"></a>
+<a id="__codelineno-18-63" name="__codelineno-18-63" href="#__codelineno-18-63"></a><span class="w">    </span><span class="k">End</span><span class="w"> </span><span class="k">Class</span>
+<a id="__codelineno-18-64" name="__codelineno-18-64" href="#__codelineno-18-64"></a><span class="k">End</span><span class="w"> </span><span class="k">Namespace</span>
+</code></pre></div>
+<p>Its two private members are:</p>
+<p><strong>_members</strong>: an array of people who are members of the group</p>
+<p><strong>_workGroups</strong>: a dictionary mapping a person to a work group</p>
+<p>These private members are made accessible via public properties. The goal here is to demonstrate how Spring allows you to initialize complex objects, such as those with array or dictionary fields.</p>
+<p>The Spring configuration file [spring-config-3.xml] will be as follows:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;iso-8859-1&quot; ?&gt;</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="cp">&lt;!DOCTYPE objects PUBLIC &quot;-//SPRING//DTD OBJECT//EN&quot;</span>
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="cp">&quot;http://www.springframework.net/dtd/spring-objects.dtd&quot;&gt;</span>
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="nt">&lt;objects&gt;</span>
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="w">    </span><span class="cm">&lt;!-- people --&gt;</span>
+<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a><span class="w">    </span><span class="nt">&lt;object</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;person1&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;istia.st.springioc.demos.Person, demo1&quot;</span><span class="w"> </span><span class="na">init-method=</span><span class="s">&quot;init&quot;</span>
+<a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="w">        </span><span class="na">destroy-method=</span><span class="s">&quot;close&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a><span class="w">        </span><span class="nt">&lt;property</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a><span class="w">            </span><span class="nt">&lt;value&gt;</span>Simon<span class="nt">&lt;/value&gt;</span>
+<a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a><span class="w">        </span><span class="nt">&lt;/property&gt;</span>
+<a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a><span class="w">        </span><span class="nt">&lt;property</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;age&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-19-12" name="__codelineno-19-12" href="#__codelineno-19-12"></a><span class="w">            </span><span class="nt">&lt;value&gt;</span>40<span class="nt">&lt;/value&gt;</span>
+<a id="__codelineno-19-13" name="__codelineno-19-13" href="#__codelineno-19-13"></a><span class="w">        </span><span class="nt">&lt;/property&gt;</span>
+<a id="__codelineno-19-14" name="__codelineno-19-14" href="#__codelineno-19-14"></a><span class="w">    </span><span class="nt">&lt;/object&gt;</span>
+<a id="__codelineno-19-15" name="__codelineno-19-15" href="#__codelineno-19-15"></a><span class="w">    </span><span class="nt">&lt;object</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;person2&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;istia.st.springioc.demos.Person, demo1&quot;</span><span class="w"> </span><span class="na">init-method=</span><span class="s">&quot;init&quot;</span>
+<a id="__codelineno-19-16" name="__codelineno-19-16" href="#__codelineno-19-16"></a><span class="w">        </span><span class="na">destroy-method=</span><span class="s">&quot;close&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-19-17" name="__codelineno-19-17" href="#__codelineno-19-17"></a><span class="w">        </span><span class="nt">&lt;property</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-19-18" name="__codelineno-19-18" href="#__codelineno-19-18"></a><span class="w">            </span><span class="nt">&lt;value&gt;</span>Brigitte<span class="nt">&lt;/value&gt;</span>
+<a id="__codelineno-19-19" name="__codelineno-19-19" href="#__codelineno-19-19"></a><span class="w">        </span><span class="nt">&lt;/property&gt;</span>
+<a id="__codelineno-19-20" name="__codelineno-19-20" href="#__codelineno-19-20"></a><span class="w">        </span><span class="nt">&lt;property</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;age&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-19-21" name="__codelineno-19-21" href="#__codelineno-19-21"></a><span class="w">            </span><span class="nt">&lt;value&gt;</span>20<span class="nt">&lt;/value&gt;</span>
+<a id="__codelineno-19-22" name="__codelineno-19-22" href="#__codelineno-19-22"></a><span class="w">        </span><span class="nt">&lt;/property&gt;</span>
+<a id="__codelineno-19-23" name="__codelineno-19-23" href="#__codelineno-19-23"></a><span class="w">    </span><span class="nt">&lt;/object&gt;</span>
+<a id="__codelineno-19-24" name="__codelineno-19-24" href="#__codelineno-19-24"></a><span class="w">    </span><span class="cm">&lt;!-- a car --&gt;</span>
+<a id="__codelineno-19-25" name="__codelineno-19-25" href="#__codelineno-19-25"></a><span class="w">    </span><span class="nt">&lt;object</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;car1&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;istia.st.springioc.demos.Car, demo1&quot;</span><span class="w"> </span><span class="na">init-method=</span><span class="s">&quot;init&quot;</span>
+<a id="__codelineno-19-26" name="__codelineno-19-26" href="#__codelineno-19-26"></a><span class="w">        </span><span class="na">destroy-method=</span><span class="s">&quot;destroy&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-19-27" name="__codelineno-19-27" href="#__codelineno-19-27"></a><span class="w">        </span><span class="nt">&lt;constructor-arg</span><span class="w"> </span><span class="na">index=</span><span class="s">&quot;0&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-19-28" name="__codelineno-19-28" href="#__codelineno-19-28"></a><span class="w">            </span><span class="nt">&lt;value&gt;</span>Peugeot<span class="nt">&lt;/value&gt;</span>
+<a id="__codelineno-19-29" name="__codelineno-19-29" href="#__codelineno-19-29"></a><span class="w">        </span><span class="nt">&lt;/constructor-arg&gt;</span>
+<a id="__codelineno-19-30" name="__codelineno-19-30" href="#__codelineno-19-30"></a><span class="w">        </span><span class="nt">&lt;constructor-arg</span><span class="w"> </span><span class="na">index=</span><span class="s">&quot;1&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-19-31" name="__codelineno-19-31" href="#__codelineno-19-31"></a><span class="w">            </span><span class="nt">&lt;value&gt;</span>307<span class="nt">&lt;/value&gt;</span>
+<a id="__codelineno-19-32" name="__codelineno-19-32" href="#__codelineno-19-32"></a><span class="w">        </span><span class="nt">&lt;/constructor-arg&gt;</span>
+<a id="__codelineno-19-33" name="__codelineno-19-33" href="#__codelineno-19-33"></a><span class="w">        </span><span class="nt">&lt;constructor-arg</span><span class="w"> </span><span class="na">index=</span><span class="s">&quot;2&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-19-34" name="__codelineno-19-34" href="#__codelineno-19-34"></a><span class="w">            </span><span class="nt">&lt;ref</span><span class="w"> </span><span class="na">object=</span><span class="s">&quot;person2&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<a id="__codelineno-19-35" name="__codelineno-19-35" href="#__codelineno-19-35"></a><span class="w">        </span><span class="nt">&lt;/constructor-arg&gt;</span>
+<a id="__codelineno-19-36" name="__codelineno-19-36" href="#__codelineno-19-36"></a><span class="w">    </span><span class="nt">&lt;/object&gt;</span>
+<a id="__codelineno-19-37" name="__codelineno-19-37" href="#__codelineno-19-37"></a><span class="w">    </span><span class="cm">&lt;!-- a group of people --&gt;</span>
+<a id="__codelineno-19-38" name="__codelineno-19-38" href="#__codelineno-19-38"></a><span class="w">    </span><span class="nt">&lt;object</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;group1&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;istia.st.springioc.demos.PeopleGroup&quot;</span><span class="w"> </span><span class="na">init-method=</span><span class="s">&quot;init&quot;</span>
+<a id="__codelineno-19-39" name="__codelineno-19-39" href="#__codelineno-19-39"></a><span class="w">        </span><span class="na">destroy-method=</span><span class="s">&quot;destroy&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-19-40" name="__codelineno-19-40" href="#__codelineno-19-40"></a><span class="w">        </span><span class="nt">&lt;property</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;members&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-19-41" name="__codelineno-19-41" href="#__codelineno-19-41"></a><span class="w">            </span><span class="nt">&lt;list&gt;</span>
+<a id="__codelineno-19-42" name="__codelineno-19-42" href="#__codelineno-19-42"></a><span class="w">                </span><span class="nt">&lt;ref</span><span class="w"> </span><span class="na">object=</span><span class="s">&quot;person1&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<a id="__codelineno-19-43" name="__codelineno-19-43" href="#__codelineno-19-43"></a><span class="w">                </span><span class="nt">&lt;ref</span><span class="w"> </span><span class="na">object=</span><span class="s">&quot;person2&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<a id="__codelineno-19-44" name="__codelineno-19-44" href="#__codelineno-19-44"></a><span class="w">            </span><span class="nt">&lt;/list&gt;</span>
+<a id="__codelineno-19-45" name="__codelineno-19-45" href="#__codelineno-19-45"></a><span class="w">        </span><span class="nt">&lt;/property&gt;</span>
+<a id="__codelineno-19-46" name="__codelineno-19-46" href="#__codelineno-19-46"></a><span class="w">        </span><span class="nt">&lt;property</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;workgroups&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-19-47" name="__codelineno-19-47" href="#__codelineno-19-47"></a><span class="w">            </span><span class="nt">&lt;dictionary&gt;</span>
+<a id="__codelineno-19-48" name="__codelineno-19-48" href="#__codelineno-19-48"></a><span class="w">                </span><span class="nt">&lt;entry</span><span class="w"> </span><span class="na">key=</span><span class="s">&quot;Brigitte&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-19-49" name="__codelineno-19-49" href="#__codelineno-19-49"></a><span class="w">                    </span><span class="nt">&lt;value&gt;</span>Marketing<span class="nt">&lt;/value&gt;</span>
+<a id="__codelineno-19-50" name="__codelineno-19-50" href="#__codelineno-19-50"></a><span class="w">                </span><span class="nt">&lt;/entry&gt;</span>
+<a id="__codelineno-19-51" name="__codelineno-19-51" href="#__codelineno-19-51"></a><span class="w">                </span><span class="nt">&lt;entry</span><span class="w"> </span><span class="na">key=</span><span class="s">&quot;Simon&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-19-52" name="__codelineno-19-52" href="#__codelineno-19-52"></a><span class="w">                    </span><span class="nt">&lt;value&gt;</span>Human<span class="w"> </span>Resources<span class="nt">&lt;/value&gt;</span>
+<a id="__codelineno-19-53" name="__codelineno-19-53" href="#__codelineno-19-53"></a><span class="w">                </span><span class="nt">&lt;/entry&gt;</span>
+<a id="__codelineno-19-54" name="__codelineno-19-54" href="#__codelineno-19-54"></a><span class="w">            </span><span class="nt">&lt;/dictionary&gt;</span>
+<a id="__codelineno-19-55" name="__codelineno-19-55" href="#__codelineno-19-55"></a><span class="w">        </span><span class="nt">&lt;/property&gt;</span>
+<a id="__codelineno-19-56" name="__codelineno-19-56" href="#__codelineno-19-56"></a><span class="w">    </span><span class="nt">&lt;/object&gt;</span>
+<a id="__codelineno-19-57" name="__codelineno-19-57" href="#__codelineno-19-57"></a><span class="nt">&lt;/objects&gt;</span>
+</code></pre></div>
+<ol>
+<li>The &lt;<strong>list</strong>&gt; tag allows you to initialize an array-type or <strong>IList-type</strong> field with different values.</li>
+</ol>
+<ol start="2">
+  <li>The &lt;<b>dictionary</b>&gt; tag allows you to do the same with a field that implements the <b>IDictionary</b> interface
+  </li>
+</ol>
+
+<p>For our tests, we will use the following NUnit test class [NunitTestSpringIocDemo3]:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="k">Imports</span><span class="w"> </span><span class="nn">System</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="k">Imports</span><span class="w"> </span><span class="nn">Spring.Objects.Factory.Xml</span>
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="k">Imports</span><span class="w"> </span><span class="nn">System.IO</span>
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="k">Imports</span><span class="w"> </span><span class="nn">NUnit.Framework</span>
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a><span class="k">Imports</span><span class="w"> </span><span class="nn">istia.st.springioc.demos</span>
+<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a>
+<a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a><span class="k">Namespace</span><span class="w"> </span><span class="nn">istia.st.springioc.tests</span>
+<a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a>
+<a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a><span class="w">    </span><span class="o">&lt;</span><span class="n">TestFixture</span><span class="p">()</span><span class="o">&gt;</span><span class="w"> </span>_
+<a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a><span class="w">    </span><span class="k">Public</span><span class="w"> </span><span class="k">Class</span><span class="w"> </span><span class="nc">NunitTestSpringIocDemo3</span>
+<a id="__codelineno-20-11" name="__codelineno-20-11" href="#__codelineno-20-11"></a><span class="w">        </span><span class="c">&#39; the object to be tested</span>
+<a id="__codelineno-20-12" name="__codelineno-20-12" href="#__codelineno-20-12"></a><span class="w">        </span><span class="k">Private</span><span class="w"> </span><span class="n">factory</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="n">XmlObjectFactory</span>
+<a id="__codelineno-20-13" name="__codelineno-20-13" href="#__codelineno-20-13"></a>
+<a id="__codelineno-20-14" name="__codelineno-20-14" href="#__codelineno-20-14"></a><span class="w">        </span><span class="o">&lt;</span><span class="n">SetUp</span><span class="p">()</span><span class="o">&gt;</span><span class="w"> </span>_
+<a id="__codelineno-20-15" name="__codelineno-20-15" href="#__codelineno-20-15"></a><span class="w">        </span><span class="k">Public</span><span class="w"> </span><span class="k">Sub</span><span class="w"> </span><span class="nf">init</span><span class="p">()</span>
+<a id="__codelineno-20-16" name="__codelineno-20-16" href="#__codelineno-20-16"></a><span class="w">            </span><span class="c">&#39; Create an instance of the factory</span>
+<a id="__codelineno-20-17" name="__codelineno-20-17" href="#__codelineno-20-17"></a><span class="w">            </span><span class="n">factory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">New</span><span class="w"> </span><span class="n">XmlObjectFactory</span><span class="p">(</span><span class="k">New</span><span class="w"> </span><span class="n">FileStream</span><span class="p">(</span><span class="s">&quot;spring-config-3.xml&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">FileMode</span><span class="p">.</span><span class="n">Open</span><span class="p">))</span>
+<a id="__codelineno-20-18" name="__codelineno-20-18" href="#__codelineno-20-18"></a><span class="w">            </span><span class="c">&#39; log</span>
+<a id="__codelineno-20-19" name="__codelineno-20-19" href="#__codelineno-20-19"></a><span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;setup test&quot;</span><span class="p">)</span>
+<a id="__codelineno-20-20" name="__codelineno-20-20" href="#__codelineno-20-20"></a><span class="w">        </span><span class="k">End</span><span class="w"> </span><span class="k">Sub</span>
+<a id="__codelineno-20-21" name="__codelineno-20-21" href="#__codelineno-20-21"></a>
+<a id="__codelineno-20-22" name="__codelineno-20-22" href="#__codelineno-20-22"></a><span class="w">        </span><span class="o">&lt;</span><span class="n">TearDown</span><span class="p">()</span><span class="o">&gt;</span><span class="w"> </span>_
+<a id="__codelineno-20-23" name="__codelineno-20-23" href="#__codelineno-20-23"></a><span class="w">        </span><span class="k">Public</span><span class="w"> </span><span class="k">Sub</span><span class="w"> </span><span class="nf">destroy</span><span class="p">()</span>
+<a id="__codelineno-20-24" name="__codelineno-20-24" href="#__codelineno-20-24"></a><span class="w">            </span><span class="c">&#39; destroy the singletons</span>
+<a id="__codelineno-20-25" name="__codelineno-20-25" href="#__codelineno-20-25"></a><span class="w">            </span><span class="n">factory</span><span class="p">.</span><span class="n">Dispose</span><span class="p">()</span>
+<a id="__codelineno-20-26" name="__codelineno-20-26" href="#__codelineno-20-26"></a><span class="w">            </span><span class="c">&#39; followed by</span>
+<a id="__codelineno-20-27" name="__codelineno-20-27" href="#__codelineno-20-27"></a><span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;teardown test&quot;</span><span class="p">)</span>
+<a id="__codelineno-20-28" name="__codelineno-20-28" href="#__codelineno-20-28"></a><span class="w">        </span><span class="k">End</span><span class="w"> </span><span class="k">Sub</span>
+<a id="__codelineno-20-29" name="__codelineno-20-29" href="#__codelineno-20-29"></a>
+<a id="__codelineno-20-30" name="__codelineno-20-30" href="#__codelineno-20-30"></a><span class="w">        </span><span class="o">&lt;</span><span class="n">Test</span><span class="p">()</span><span class="o">&gt;</span><span class="w"> </span>_
+<a id="__codelineno-20-31" name="__codelineno-20-31" href="#__codelineno-20-31"></a><span class="w">    </span><span class="k">Public</span><span class="w"> </span><span class="k">Sub</span><span class="w"> </span><span class="nf">demo3</span><span class="p">()</span>
+<a id="__codelineno-20-32" name="__codelineno-20-32" href="#__codelineno-20-32"></a><span class="w">            </span><span class="c">&#39; Retrieve the singleton [group1]</span>
+<a id="__codelineno-20-33" name="__codelineno-20-33" href="#__codelineno-20-33"></a><span class="w">            </span><span class="k">Dim</span><span class="w"> </span><span class="n">group1</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="n">PeopleGroup</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">CType</span><span class="p">(</span><span class="n">factory</span><span class="p">.</span><span class="n">GetObject</span><span class="p">(</span><span class="s">&quot;group1&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">PeopleGroup</span><span class="p">)</span>
+<a id="__codelineno-20-34" name="__codelineno-20-34" href="#__codelineno-20-34"></a><span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;group1={0}&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">group1</span><span class="p">)</span>
+<a id="__codelineno-20-35" name="__codelineno-20-35" href="#__codelineno-20-35"></a><span class="w">        </span><span class="k">End</span><span class="w"> </span><span class="k">Sub</span>
+<a id="__codelineno-20-36" name="__codelineno-20-36" href="#__codelineno-20-36"></a>
+<a id="__codelineno-20-37" name="__codelineno-20-37" href="#__codelineno-20-37"></a><span class="w">    </span><span class="k">End</span><span class="w"> </span><span class="k">Class</span>
+<a id="__codelineno-20-38" name="__codelineno-20-38" href="#__codelineno-20-38"></a><span class="k">End</span><span class="w"> </span><span class="k">Namespace</span>
+</code></pre></div>
+<p>The [demo3] method retrieves the singleton [group1] and displays it.</p>
+<p>The structure of the Visual Studio project remains the same as before, except that it now has two additional classes and a configuration file.</p>
+<p><img src="images/10000000000001280000011D4A7B3342.png" style="width:5.479cm;height:5.276cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000001280000011D4A7B3342.png" /></p>
+<p>Executing the [demo3] method in the NUnit test yields the following results:</p>
+<p><img src="images/10000000000003B60000010A61F01CE6.png" style="width:17.995cm;height:5.039cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000003B60000010A61F01CE6.png" /></p>
+<p><strong>Comments</strong>:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-21-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-21-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-21-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-21-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-21-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-21-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-21-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-21-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-21-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-21-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1"></a><span class="o">*****</span><span class="w"> </span><span class="nx">istia</span><span class="p">.</span><span class="nx">st</span><span class="p">.</span><span class="nx">springioc</span><span class="p">.</span><span class="nx">tests</span><span class="p">.</span><span class="nx">NunitTestSpringIocDemo3</span><span class="p">.</span><span class="nx">demo3</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2"></a><span class="nx">setup</span><span class="w"> </span><span class="nx">test</span>
+<a id="__codelineno-21-3" name="__codelineno-21-3"></a><span class="nx">init</span><span class="w"> </span><span class="nx">person</span><span class="w"> </span><span class="p">[</span><span class="nx">Simon</span><span class="p">,</span><span class="mf">40</span><span class="p">]</span>
+<a id="__codelineno-21-4" name="__codelineno-21-4"></a><span class="nx">init</span><span class="w"> </span><span class="nx">person</span><span class="w"> </span><span class="p">[</span><span class="nx">Brigitte</span><span class="p">,</span><span class="mf">20</span><span class="p">]</span>
+<a id="__codelineno-21-5" name="__codelineno-21-5"></a><span class="nx">init</span><span class="w"> </span><span class="nx">GroupOfPeople</span><span class="w"> </span><span class="p">[</span><span class="nx">members</span><span class="o">=</span><span class="p">([</span><span class="nx">Simon</span><span class="p">,</span><span class="mf">40</span><span class="p">],[</span><span class="nx">Brigitte</span><span class="p">,</span><span class="mf">20</span><span class="p">]),</span><span class="w"> </span><span class="nx">workgroups</span><span class="o">=</span><span class="p">([</span><span class="nx">Brigitte</span><span class="p">,</span><span class="nx">Marketing</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="nx">Simon</span><span class="p">,</span><span class="nx">Human</span><span class="w"> </span><span class="nx">Resources</span><span class="p">]</span><span class="w"> </span><span class="p">]</span>
+<a id="__codelineno-21-6" name="__codelineno-21-6"></a><span class="nx">group1</span><span class="o">=</span><span class="p">[</span><span class="nx">members</span><span class="o">=</span><span class="p">([</span><span class="nx">Simon</span><span class="p">,</span><span class="mf">40</span><span class="p">],[</span><span class="nx">Brigitte</span><span class="p">,</span><span class="mf">20</span><span class="p">]),</span><span class="w"> </span><span class="nx">workgroups</span><span class="o">=</span><span class="p">([</span><span class="nx">Brigitte</span><span class="p">,</span><span class="nx">Marketing</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="nx">Simon</span><span class="p">,</span><span class="nx">Human</span><span class="w"> </span><span class="nx">Resources</span><span class="p">]</span><span class="w"> </span><span class="p">]</span>
+<a id="__codelineno-21-7" name="__codelineno-21-7"></a><span class="nx">destroy</span><span class="w"> </span><span class="nx">GroupOfPeople</span><span class="w"> </span><span class="p">[</span><span class="nx">members</span><span class="o">=</span><span class="p">([</span><span class="nx">Simon</span><span class="p">,</span><span class="mf">40</span><span class="p">],[</span><span class="nx">Brigitte</span><span class="p">,</span><span class="mf">20</span><span class="p">]),</span><span class="w"> </span><span class="nx">workgroups</span><span class="o">=</span><span class="p">([</span><span class="nx">Brigitte</span><span class="p">,</span><span class="nx">Marketing</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="nx">Simon</span><span class="p">,</span><span class="nx">Human</span><span class="w"> </span><span class="nx">Resources</span><span class="p">]</span><span class="w"> </span><span class="p">]</span>
+<a id="__codelineno-21-8" name="__codelineno-21-8"></a><span class="ow">delete</span><span class="w"> </span><span class="nx">person</span><span class="w"> </span><span class="p">[</span><span class="nx">Simon</span><span class="p">,</span><span class="mf">40</span><span class="p">]</span>
+<a id="__codelineno-21-9" name="__codelineno-21-9"></a><span class="nx">destroy</span><span class="w"> </span><span class="nx">person</span><span class="w"> </span><span class="p">[</span><span class="nx">Brigitte</span><span class="p">,</span><span class="mf">20</span><span class="p">]</span>
+<a id="__codelineno-21-10" name="__codelineno-21-10"></a><span class="nx">teardown</span><span class="w"> </span><span class="nx">test</span>
+</code></pre></div></td></tr></table></div>
+<ul>
+  <li>line 2: [Setup] attribute method executed before each test, here [demo]
+  </li>
+  <li>lines 3-4: Spring begins creating the singleton [group1]. This singleton depends on the singletons [person1, person2], which do not yet exist. These singletons are created and their [init] methods are executed.
+  </li>
+  <li>line 5: the singleton [group1] can now be created. Its [init] method is then executed.
+  </li>
+  <li>line 6: the [demo3] method displays the value of the singleton [group1]
+  </li>
+  <li>Lines 7–10: The test’s [TearDown] method is executed. The singletons are destroyed, triggering the execution of their [destroy] methods
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner">
+
+      <div>
+        <a href="https://tahe.developpez.com" target="_blank">
+          https://tahe.developpez.com
+        </a>
+        <br>
+        This tutorial written by <strong>Serge Tahé</strong> is made available to the public under the terms of the
+<em>Creative Commons Attribution – Non-Commercial –
+ShareAlike 3.0 Unported</em>.
+      </div>
+
+    </div>
+  </div>
+
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.sections", "navigation.indexes", "navigation.expand", "toc.integrate", "navigation.top"], "search": "assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+        <script src="javascripts/focus.js"></script>
+      
+    
+  </body>
+</html>
