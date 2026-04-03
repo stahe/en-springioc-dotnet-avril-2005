@@ -508,6 +508,50 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#62-the-data-access-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2. The Data Access Layer
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#63-the-business-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3. The business layer
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#64-the-user-interface-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4. The user interface layer
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#65-integration-with-spring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.5. Integration with Spring
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -588,8 +632,6 @@
 
 
 <h1 id="6-spring-for-configuring-three-tier-applications">6. <span style="color: #365f91"><strong>Spring for Configuring Three-Tier Applications</strong></span></h1>
-<p></li>
-</ul></p>
 <p>Here, we will use an example to explore how Spring can be used to configure three-tier applications. A common example of this type of application is web applications.</p>
 <h2 id="61-the-problem">6.1. <span style="color: #4f81bd"><strong>The Problem</strong></span></h2>
 <p>We want to build a three-tier application with the following structure:</p>
@@ -601,11 +643,9 @@
   <li>The integration of the three layers will be handled by Spring
   </li>
   <li>We will create separate packages for each of the three layers, which we will call [<b>control]</b>, [<b>domain], </b>and [<b>dao]</b>. An additional [<b>tests] </b>package will contain the test applications.
-## 6.2. <span style="color: #4f81bd">**The Data Access Layer**</span>
-
   </li>
 </ul>
-
+<h2 id="62-the-data-access-layer">6.2. <span style="color: #4f81bd"><strong>The Data Access Layer</strong></span></h2>
 <p>The DAO layer will implement the following interface:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">Namespace</span><span class="w"> </span><span class="nn">istia.st.spring3tier.dao</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="k">Public</span><span class="w"> </span><span class="k">Interface</span><span class="w"> </span><span class="n">IDao</span>
@@ -618,11 +658,9 @@
   <li>Write two classes, <b>Dao1Impl1 </b>and <b>Dao1Impl2</b>, that implement the <b>IDao</b> interface. The <b>Dao1Impl1</b>.<b>doSomethingInDaoLayer </b>method will return a+b, and the <b>Dao1Impl2</b>.<b>doSomethingInDaoLayer </b>method will return a-b.
   </li>
   <li>Write a NUnit test class to test the two previous classes
-## 6.3. <span style="color: #4f81bd">**The business layer**</span>
-
   </li>
 </ul>
-
+<h2 id="63-the-business-layer">6.3. <span style="color: #4f81bd"><strong>The business layer</strong></span></h2>
 <p>The business layer will implement the following interface:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">Namespace</span><span class="w"> </span><span class="nn">istia.st.spring3tier.domain</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="k">Public</span><span class="w"> </span><span class="k">Interface</span><span class="w"> </span><span class="n">IDomain</span>
@@ -635,11 +673,9 @@
   <li>Write two classes, <b>Domain1Impl1 </b>and <b>Domain1Impl2, </b>that implement the <b>IDomain</b> interface. These classes will have a private field of type <b>IDao </b>that can be initialized via a public property. The <b>doSomethingInDomainLayer</b> method of the [<b>DomainImpl1] </b>class will increment a and b by one, then pass these two parameters to the <b>doSomethingInDaoLayer</b> method of the received <b>IDao1</b> object. The <b>doSomethingInDomainLayer</b> method of the [Domain1Impl2] class will decrement a and b by one before doing the same thing.
   </li>
   <li>Write a NUnit test class to test the two previous classes
-## 6.4. <span style="color: #4f81bd">**The user interface layer**</span>
-
   </li>
 </ul>
-
+<h2 id="64-the-user-interface-layer">6.4. <span style="color: #4f81bd"><strong>The user interface layer</strong></span></h2>
 <p>The user interface layer will implement the following interface:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">Namespace</span><span class="w"> </span><span class="nn">istia.st.spring3tier.control</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="k">Public</span><span class="w"> </span><span class="k">Interface</span><span class="w"> </span><span class="n">IControl</span>
@@ -652,14 +688,17 @@
   <li>Write two classes, <b>Control1Impl1 </b>and <b>Control1Impl2, </b>that implement the <b>IControl1</b> interface. These classes will have a private field of type <b>IDomain </b>that can be initialized via a public property. The <b>doSomethingInControlLayer</b> method of the [<b>Control1Impl1] </b>class will increment a and b by one, then pass these two parameters to the <b>doSomethingInDomainLayer</b> method of the received <b>IDomain1</b> object. The <b>doSomethingInControlLayer</b> method of the [<b>Control1Impl2] </b>class, on the other hand, will decrement a and b by one before doing the same thing.
   </li>
   <li>Write a NUnit test class to test the two previous classes
-## 6.5. <span style="color: #4f81bd">**Integration with Spring**</span>
-
   </li>
+</ul>
+<h2 id="65-integration-with-spring">6.5. <span style="color: #4f81bd"><strong>Integration with Spring</strong></span></h2>
+<ul>
   <li>Write a Spring configuration file that will determine which classes each of the three previous layers should use
   </li>
   <li>Write a NUnit test class using different Spring configurations to highlight the flexibility of the application
   </li>
   <li>Write a standalone application (main method) that passes two parameters to the [doSomethingInControlLayer] method of the implemented <b>IControl</b> interface and displays the result returned by the interface.
+  </li>
+</ul>
 
 
 

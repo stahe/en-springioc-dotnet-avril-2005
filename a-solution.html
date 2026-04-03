@@ -547,6 +547,39 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#73-the-istiastspring3tierdomain-package" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3. The [istia.st.spring3tier.domain] package
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#74-the-istiastspring3tiercontrol-package" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4. The [istia.st.spring3tier.control] package
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#75-the-spring-configuration-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.5. The [Spring] configuration files
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#76-the-test-package-istiastspring3tiertests" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -633,8 +666,6 @@
 
 <h1 id="7-a-solution">7. <span style="color: #365f91"><strong>A solution</strong></span></h1>
 <h2 id="71-the-visual-studio-project">7.1. <span style="color: #4f81bd"><strong>The Visual Studio project</strong></span></h2>
-<p></li>
-</ul></p>
 <table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/10000000000000DB0000016CB0410FE4.png" style="display:inline-block; margin:4px;width:5.793cm;height:9.629cm;" class="odt-zoomable" data-zoom-src="images/10000000000000DB0000016CB0410FE4.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/10000000000001040000019F04D12BF4.png" style="display:inline-block; margin:4px;width:6.877cm;height:10.977cm;" class="odt-zoomable" data-zoom-src="images/10000000000001040000019F04D12BF4.png" /></td></tr></table>
 
 <p><strong>Comments</strong>:</p>
@@ -697,11 +728,9 @@
   <li>The class has no private fields
   </li>
   <li>The [doSomethingInDaoLayer] method returns the difference between its parameters as requested.
-## 7.3. <span style="color: #4f81bd">**The [istia.st.spring3tier.domain] package**</span>
-
   </li>
 </ul>
-
+<h2 id="73-the-istiastspring3tierdomain-package">7.3. <span style="color: #4f81bd"><strong>The [istia.st.spring3tier.domain] package</strong></span></h2>
 <p>The <strong>IDomain</strong> interface:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">Namespace</span><span class="w"> </span><span class="nn">istia.st.spring3tier.domain</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="k">Public</span><span class="w"> </span><span class="k">Interface</span><span class="w"> </span><span class="n">IDomain</span>
@@ -783,11 +812,9 @@
   <li>The class has a private field that is a reference to the [IDao] singleton, which provides access to the [Dao] layer. This field will be initialized by Spring (dependency injection) when the object is constructed.
   </li>
   <li>The [doSomethingInDomainLayer] method decrements its parameters and then passes them to the [doSomethingInDaoLayer] method of the [dao] singleton
-## 7.4. <span style="color: #4f81bd">**The [istia.st.spring3tier.control] package**</span>
-
   </li>
 </ul>
-
+<h2 id="74-the-istiastspring3tiercontrol-package">7.4. <span style="color: #4f81bd"><strong>The [istia.st.spring3tier.control] package</strong></span></h2>
 <p>The <strong>IControl</strong> interface:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">Namespace</span><span class="w"> </span><span class="nn">istia.st.spring3tier.control</span>
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="k">Public</span><span class="w"> </span><span class="k">Interface</span><span class="w"> </span><span class="n">IControl</span>
@@ -869,11 +896,9 @@
   <li>The class has a private field that is a reference to the singleton of type [IDomain], which provides access to the [Domain] layer. This field will be initialized by Spring (dependency injection) when the object is constructed.
   </li>
   <li>The [doSomethingInControlLayer] method decrements its parameters and then passes them to the [doSomethingInDomainLayer] method of the [domain] singleton.
-## 7.5. <span style="color: #4f81bd">**The [Spring] configuration files**</span>
-
   </li>
 </ul>
-
+<h2 id="75-the-spring-configuration-files">7.5. <span style="color: #4f81bd"><strong>The [Spring] configuration files</strong></span></h2>
 <p>The [spring-config-3tier-1.xml] file uses version 1 of the implementations:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;iso-8859-1&quot; ?&gt;</span>
 <a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="cp">&lt;!DOCTYPE objects PUBLIC &quot;-//SPRING//DTD OBJECT//EN&quot;</span>
