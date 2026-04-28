@@ -541,7 +541,7 @@
 
 <h1 id="2-configuring-an-application-with-spring">2. <span style="color: #365f91">Configuring an Application with Spring</span></h1>
 <p>Consider a classic 3-tier application:</p>
-<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/10000000000006EA000001322F08DDC2.png" style="display:inline-block; margin:4px;width:17.997cm;height:3.112cm;" class="odt-zoomable" data-zoom-src="images/10000000000006EA000001322F08DDC2.png" /></td></tr></table>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/10000000000006EA000001322F08DDC2.png" width="680" height="118" style="display:inline-block; margin:4px;width:17.997cm;height:3.112cm;" class="odt-zoomable" data-zoom-src="images/10000000000006EA000001322F08DDC2.png" /></td></tr></table>
 
 <p>We will assume that access to the DAO layer is controlled by an interface [IArticlesDao]:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">....</span>
@@ -606,7 +606,7 @@
 </div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">the password associated with this identity</div></td></tr></table>
 
 <p>Our [ArticlesDaoPlainODBC] class obtains this information via the external agent that instantiates an instance of the class. One might wonder how the agent obtains the three pieces of information required to instantiate the [ArticlesDaoPlainODBC] class. Let’s consider an example. Suppose we want to write a test class for the [Dao] layer. We would have the following architecture:</p>
-<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/100000000000055B000000C7F7381DD1.png" style="display:inline-block; margin:4px;width:17.997cm;height:2.612cm;" class="odt-zoomable" data-zoom-src="images/100000000000055B000000C7F7381DD1.png" /></td></tr></table>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/100000000000055B000000C7F7381DD1.png" width="680" height="99" style="display:inline-block; margin:4px;width:17.997cm;height:2.612cm;" class="odt-zoomable" data-zoom-src="images/100000000000055B000000C7F7381DD1.png" /></td></tr></table>
 
 <p>The skeleton of a NUnit test class [<a href="http://www.nunit.org/"><u><span style="color: #0563c1">http://www.nunit.org/</span></u></a>] could look like this:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">Imports</span><span class="w"> </span><span class="nn">System</span>
@@ -653,7 +653,7 @@
 <a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="cp">&quot;http://www.springframework.net/dtd/spring-objects.dtd&quot;&gt;</span>
 <a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
 <a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="nt">&lt;objects&gt;</span>
-<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">        </span><span class="cm">&lt;!-- the IArticlesDao interface implementation class --&gt;</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">     </span><span class="cm">&lt;!-- the IArticlesDao interface implementation class --&gt;</span>
 <a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">    </span><span class="nt">&lt;description&gt;</span>Gestion<span class="w"> </span>d&#39;une<span class="w"> </span>table<span class="w"> </span>d&#39;articles<span class="nt">&lt;/description&gt;</span>
 <a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">    </span><span class="nt">&lt;object</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;articlesdao&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;istia.st.articles.dao.ArticlesDaoPlainODBC, articlesdao&quot;</span><span class="nt">&gt;</span>
 <a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="w">      </span><span class="nt">&lt;constructor-arg</span><span class="w"> </span><span class="na">index=</span><span class="s">&quot;0&quot;</span><span class="nt">&gt;</span>
@@ -771,13 +771,13 @@
 <p>That is the whole point of Spring. If we change the implementation class, our test class will not need to be changed. We will simply modify the Spring configuration file. The test class, for its part, simply works with an interface rather than a class.</p>
 <p>Let’s wrap up this presentation with a few practical points.</p>
 <p>When we write &quot;Spring will instantiate...&quot;, what exactly do we mean? For the .NET platform, Spring is contained in three files:</p>
-<p><img src="images/10000000000001460000004E5F4351A0.png" style="width:8.624cm;height:2.064cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000001460000004E5F4351A0.png" /></p>
+<p><img src="images/10000000000001460000004E5F4351A0.png" width="326" height="78" style="width:8.624cm;height:2.064cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000001460000004E5F4351A0.png" /></p>
 <p>For a .NET project built with Visual Studio that needs to use Spring, proceed as follows: </p>
 <ul>
 <li>The three files above will be placed in the project’s [bin] folder</li>
 <li>[Spring.Core.dll] must be included in the project references:</li>
 </ul>
-<p><img src="images/10000000000000970000006133FAC914.png" style="width:3.993cm;height:2.565cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000000970000006133FAC914.png" /></p>
+<p><img src="images/10000000000000970000006133FAC914.png" width="151" height="97" style="width:3.993cm;height:2.565cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000000970000006133FAC914.png" /></p>
 <ul>
 <li>and the classes that use Spring must import certain namespaces, often including the following:</li>
 </ul>

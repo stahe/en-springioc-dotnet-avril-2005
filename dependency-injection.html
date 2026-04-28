@@ -541,7 +541,7 @@
 
 <h1 id="4-dependency-injection">4. <span style="color: #365f91">Dependency Injection</span></h1>
 <p>Dependency injection can be considered a consequence of inversion of control. We will illustrate this with a new example. Consider the following 3-tier web application:</p>
-<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/10000000000006E400000137452FE004.png" style="display:inline-block; margin:4px;width:17.997cm;height:3.173cm;" class="odt-zoomable" data-zoom-src="images/10000000000006E400000137452FE004.png" /></td></tr></table>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/10000000000006E400000137452FE004.png" width="680" height="120" style="display:inline-block; margin:4px;width:17.997cm;height:3.173cm;" class="odt-zoomable" data-zoom-src="images/10000000000006E400000137452FE004.png" /></td></tr></table>
 
 <p>We will assume that access to the DAO layer is controlled by the [IArticlesDao] interface discussed earlier and that the entire application is a web-based shopping application. The items are those managed by the [Dao] layer. We assume that access to the business layer is controlled by the following interface:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">Public</span><span class="w"> </span><span class="k">Interface</span><span class="w"> </span><span class="n">IArticlesDomain</span>
@@ -605,7 +605,7 @@
 <a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="nt">&lt;objects&gt;</span>
 <a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="nt">&lt;description&gt;</span>Gestion<span class="w"> </span>d&#39;une<span class="w"> </span>table<span class="w"> </span>d&#39;articles<span class="nt">&lt;/description&gt;</span>
 <a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>
-<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">        </span><span class="cm">&lt;!-- the IArticlesDao interface implementation class --&gt;</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">     </span><span class="cm">&lt;!-- the IArticlesDao interface implementation class --&gt;</span>
 <a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">    </span><span class="nt">&lt;object</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;articlesdao&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;istia.st.articles.dao.ArticlesDaoPlainODBC, articlesdao&quot;</span><span class="nt">&gt;</span>
 <a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">      </span><span class="nt">&lt;constructor-arg</span><span class="w"> </span><span class="na">index=</span><span class="s">&quot;0&quot;</span><span class="nt">&gt;</span>
 <a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">            </span><span class="nt">&lt;value&gt;</span>odbc-firebird-articles<span class="nt">&lt;/value&gt;</span>
@@ -618,7 +618,7 @@
 <a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="w">        </span><span class="nt">&lt;/constructor-arg&gt;</span>
 <a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="w">    </span><span class="nt">&lt;/object&gt;</span>
 <a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a>
-<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="w">        </span><span class="cm">&lt;!-- the IArticlesDomain interface implementation class --&gt;</span>
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="w">     </span><span class="cm">&lt;!-- the IArticlesDomain interface implementation class --&gt;</span>
 <a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="w">  </span><span class="nt">&lt;object</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;articlesdomain&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;istia.st.articles.domain.AchatsArticles, articlesdomain&quot;</span><span class="nt">&gt;</span>
 <a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="w">      </span><span class="nt">&lt;constructor-arg</span><span class="w"> </span><span class="na">index=</span><span class="s">&quot;0&quot;</span><span class="nt">&gt;</span>
 <a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a><span class="w">        </span><span class="nt">&lt;ref</span><span class="w"> </span><span class="na">object=</span><span class="s">&quot;articlesdao&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
@@ -652,7 +652,7 @@
 <li>Once this is done, it can instantiate the &quot;articlesdomain&quot; singleton and return a reference to it to the code that requested it.</li>
 </ul>
 <p>This mechanism could be diagrammed as follows:</p>
-<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/100000000000052A000001C675CF8BE7.png" style="display:inline-block; margin:4px;width:17.489cm;height:6.006cm;" class="odt-zoomable" data-zoom-src="images/100000000000052A000001C675CF8BE7.png" /></td></tr></table>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/100000000000052A000001C675CF8BE7.png" width="661" height="227" style="display:inline-block; margin:4px;width:17.489cm;height:6.006cm;" class="odt-zoomable" data-zoom-src="images/100000000000052A000001C675CF8BE7.png" /></td></tr></table>
 
 <p>We can see that Spring has managed the dependency that the &quot;articlesdomain&quot; singleton had on the &quot;articlesdao&quot; singleton. To use Spring in this way, we had to build a class with a constructor that accepts the dependent singleton as an argument:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">Imports</span><span class="w"> </span><span class="nn">istia.st.articles.dao</span>

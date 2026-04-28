@@ -541,7 +541,7 @@
 
 <h1 id="3-inversion-of-control-ioc">3. <span style="color: #365f91">Inversion of Control (IoC)</span></h1>
 <p>Let’s now focus on the concept of <strong>Inversion of Control</strong> (IoC) used by Spring to configure applications. To illustrate this concept, let’s return to the architecture of our previous test application:</p>
-<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/1000000000000563000000E5510FF327.png" style="display:inline-block; margin:4px;width:17.997cm;height:2.99cm;" class="odt-zoomable" data-zoom-src="images/1000000000000563000000E5510FF327.png" /></td></tr></table>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/1000000000000563000000E5510FF327.png" width="680" height="113" style="display:inline-block; margin:4px;width:17.997cm;height:2.99cm;" class="odt-zoomable" data-zoom-src="images/1000000000000563000000E5510FF327.png" /></td></tr></table>
 
 <p>To access data from the DBMS, the test class must use the services of an object implementing the [IArticlesDao] interface, for example, an object of type [ArticlesDaoPlainODBC]. We have examined two possible solutions for instantiating such an object:</p>
 <ul>
@@ -562,7 +562,7 @@
 <a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">    </span><span class="k">End</span><span class="w"> </span><span class="k">Class</span>
 </code></pre></div>
 <p>There is a <strong>hard-coded dependency on the class name in the code</strong>. If the class implementing the [IArticlesDao] interface were to change, the code in the [init] method <strong>would need to be modified</strong>. The following relationships exist between the objects:</p>
-<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/100000000000061E0000016399938C98.png" style="display:inline-block; margin:4px;width:17.997cm;height:4.08cm;" class="odt-zoomable" data-zoom-src="images/100000000000061E0000016399938C98.png" /></td></tr></table>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/100000000000061E0000016399938C98.png" width="680" height="154" style="display:inline-block; margin:4px;width:17.997cm;height:4.08cm;" class="odt-zoomable" data-zoom-src="images/100000000000061E0000016399938C98.png" /></td></tr></table>
 
 <p>The [NunitTestArticlesDaoPlainOdbc] class takes the initiative to create the [ArticlesDaoPlainODBC] object it needs. Returning to the term &quot;inversion of control,&quot; we can say that it is the one that has &quot;control&quot; over creating the object it needs.</p>
 <ul>
@@ -585,7 +585,7 @@
 <a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">    </span><span class="k">End</span><span class="w"> </span><span class="k">Class</span>
 </code></pre></div>
 <p>This mechanism could be summarized as follows:</p>
-<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/10000000000005B7000001798106E4DD.png" style="display:inline-block; margin:4px;width:17.997cm;height:4.637cm;" class="odt-zoomable" data-zoom-src="images/10000000000005B7000001798106E4DD.png" /></td></tr></table>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/10000000000005B7000001798106E4DD.png" width="680" height="175" style="display:inline-block; margin:4px;width:17.997cm;height:4.637cm;" class="odt-zoomable" data-zoom-src="images/10000000000005B7000001798106E4DD.png" /></td></tr></table>
 
 <p>Here, the test class does not take the initiative to request the creation of an [ArticlesDaoPlainODBC] object. It simply asks Spring for a reference to such an object. If the object exists, Spring returns a reference to it. If it does not exist, Spring creates it. The test class has lost control over the creation of the [ArticlesDaoPlainODBC] object. It simply requests a reference to this object. This request will force Spring to create the object in this case. However, in another context, one could imagine that the requested object has already been created at the application’s request. Spring then does not recreate the object but returns a reference to the existing object (singleton). The concept of Inversion of Control (IoC) means here:</p>
 <ul>
