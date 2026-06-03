@@ -57,6 +57,8 @@
     
       <link rel="stylesheet" href="stylesheets/focus.css">
     
+      <link rel="stylesheet" href="stylesheets/bidi.css">
+    
     <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -374,7 +376,7 @@
   <span class="md-ellipsis">
     
   
-    3. Inversion of Control (IoC)
+    3. Inversion of Control IoC
   
 
     
@@ -539,21 +541,21 @@
 
 
 
-<h1 id="1-introduction">1. <span style="color: #365f91"><strong>Introduction</strong></span></h1>
-<p>The PDF of the document is available |<a href="https://1drv.ms/b/c/f53a919f43d27eb5/IQCO8DWv0E8WT4TnW5JVx7V_ARNOKFqUrOZGIUXg3Gl16RM?e=vr7I6G">HERE</a>|.</p>
-<p>The examples in this document are |<a href="https://1drv.ms/u/c/f53a919f43d27eb5/IQBD8ilkSZuHSZM0jwgG8gHWAYT09DIhc4b_VvzfCtVhHq4?e=sddRXx">HERE</a>|.</p>
-<p><strong>Purpose of this document</strong>:</p>
+<h1 id="1-introduction">1. <span style="color: #365f91">Introduction</span></h1>
+<p>The PDF for the document is available |<a href="https://1drv.ms/b/c/f53a919f43d27eb5/IQCO8DWv0E8WT4TnW5JVx7V_ARNOKFqUrOZGIUXg3Gl16RM?e=PmRMIp">HERE</a>|.</p>
+<p>The examples in this document are |<a href="https://1drv.ms/u/c/f53a919f43d27eb5/IQBD8ilkSZuHSZM0jwgG8gHWAYT09DIhc4b_VvzfCtVhHq4?e=LwSfVD">HERE</a>|.</p>
+<p><strong>Objectives of this document</strong>:</p>
 <ul>
-<li>Explore the configuration and integration options of the Spring framework (<a href="http://www.springframework.org/"><u><span style="color: #0563c1">http://www.springframework.org</span></u></a>) for a .NET application (<a href="http://www.springframework.net/"><u><span style="color: #0563c1">http://www.springframework.net/</span></u></a>)</li>
-<li>define and use the concept of IoC (Inversion of Control), also known as Dependency Injection</li>
+<li>to explore the configuration and integration possibilities of the Spring framework (<a href="http://www.springframework.org/"><u><span style="color: #0563c1">http://www.springframework.org</span></u></a>) for a .NET application (<a href="http://www.springframework.net/"><u><span style="color: #0563c1">http://www.springframework.net/</span></u></a>)</li>
+<li>Defining and using the concept of IoC (Inversion of Control), also known as Dependency Injection</li>
 </ul>
 <hr style="border:0; border-top:0.99pt solid #000000; margin:0.75em 0;" data-odt-border="top" />
-<p>The ideas presented in this document are based on a book I read in the summer of 2004, a magnificent work by <strong>Rod Johnson: J2EE Development without EJB,</strong> published by <strong>Wrox</strong>.</p>
+<p>The ideas expressed in this document originate from a book I read during the summer of 2004, a magnificent work by <strong>Rod Johnson: J2EE Development without EJB,</strong> published by <strong>Wrox</strong>.</p>
 <hr style="border:0; border-top:0.99pt solid #000000; margin:0.75em 0;" data-odt-border="bottom" />
-<p>A <strong>Spring IoC</strong> document <strong>for Java</strong> has already been written [<a href="https://stahe.github.io/en-java-spring-dec-2015/course-introduction-to-the-spring-framework.html">https://stahe.github.io/en-java-spring-dec-2015/course-introduction-to-the-spring-framework.html</a>]. This document covers the same content but adapts it to the .NET platform. The .NET language used for the examples is VB.NET.</p>
-<p><strong>Spring.net</strong> is currently only at version 0.6 RC3 (April 2005). See the appendix for where to find it. Since <strong>Spring.net</strong> is still under development, only some of the features of Spring/Java have been ported so far, but these are the ones that form the core of Spring: <strong>inversion of control</strong> (IoC) and <strong>aspect-oriented programming</strong> (AOP). We present here only the concept of inversion of control.</p>
+<p>A <strong>Spring IoC</strong> document <strong>for Java</strong> has already been written [https://tahe.developpez.com/java/springioc]. This document covers the same content but adapts it to the .NET platform. The .NET language used for the examples is VB.NET.</p>
+<p><strong>Spring.net</strong> is currently at version version 0.6 RC3 (April 2005). See the appendix for where to find it. Since <strong>Spring.net</strong> is currently under development, to date only some of Spring/Java’s features have been ported, but these are the ones that form the core of Spring: <strong>inversion of control</strong> (IoC) and <strong>aspect-oriented programming</strong> (AOP). We present here only the concept of inversion of control.</p>
 <p>It is possible that some of the technical details presented here may change in the future. The value of Spring lies not in these technical details but rather in its philosophy. It is this philosophy that the reader is invited to discover.</p>
-<p>The practical section of this document provides several examples. They use <strong>NUnit</strong> test classes. These are the .NET equivalent of Java’s <strong>JUnit</strong> test classes. In the appendix, you will find where to obtain [NUnit] and how to install it. </p>
+<p>The practical section of this document provides several examples. They use <strong>Nunit</strong> test classes. These are the .NET equivalent of Java’s <strong>Junit</strong> test classes. In the appendix, you will find where to obtain [Nunit] and how to install it. </p>
 
 
 

@@ -57,6 +57,8 @@
     
       <link rel="stylesheet" href="stylesheets/focus.css">
     
+      <link rel="stylesheet" href="stylesheets/bidi.css">
+    
     <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -364,7 +366,7 @@
   <span class="md-ellipsis">
     
   
-    3. Inversion of Control (IoC)
+    3. Inversion of Control IoC
   
 
     
@@ -536,10 +538,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#72-the-package-istiastspring3tierdao" class="md-nav__link">
+  <a href="#72-the-istiastspring3tierdao-package" class="md-nav__link">
     <span class="md-ellipsis">
       
-        7.2. The package [istia.st.spring3tier.dao]
+        7.2. The [istia.st.spring3tier.dao] package
       
     </span>
   </a>
@@ -547,10 +549,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#73-the-istiastspring3tierdomain-package" class="md-nav__link">
+  <a href="#73-the-package-istiastspring3tierdomain" class="md-nav__link">
     <span class="md-ellipsis">
       
-        7.3. The [istia.st.spring3tier.domain] package
+        7.3. The package [istia.st.spring3tier.domain]
       
     </span>
   </a>
@@ -580,10 +582,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#76-the-test-package-istiastspring3tiertests" class="md-nav__link">
+  <a href="#76-the-istiastspring3tiertests-test-suite" class="md-nav__link">
     <span class="md-ellipsis">
       
-        7.6. The test package [istia.st.spring3tier.tests]
+        7.6. The [istia.st.spring3tier.tests] test suite
       
     </span>
   </a>
@@ -666,42 +668,42 @@
 
 <h1 id="7-a-solution">7. <span style="color: #365f91">A solution</span></h1>
 <h2 id="71-the-visual-studio-project">7.1. <span style="color: #4f81bd">The Visual Studio project</span></h2>
-<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/10000000000000DB0000016CB0410FE4.png" width="219" height="364" style="display:inline-block; margin:4px;width:5.793cm;height:9.629cm;" class="odt-zoomable" data-zoom-src="images/10000000000000DB0000016CB0410FE4.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/10000000000001040000019F04D12BF4.png" width="260" height="415" style="display:inline-block; margin:4px;width:6.877cm;height:10.977cm;" class="odt-zoomable" data-zoom-src="images/10000000000001040000019F04D12BF4.png" /></td></tr></table>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000000DB0000016CB0410FE4.png" width="219" height="364" style="display:inline-block; margin:4px;width:5.793cm;height:9.629cm;" class="odt-zoomable" data-zoom-src="images/10000000000000DB0000016CB0410FE4.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000001040000019F04D12BF4.png" width="260" height="415" style="display:inline-block; margin:4px;width:6.877cm;height:10.977cm;" class="odt-zoomable" data-zoom-src="images/10000000000001040000019F04D12BF4.png" /></td></tr></table>
 
 <p><strong>Comments</strong>:</p>
 <ul>
-  <li>The files required by Spring have been placed in the [bin] folder: Spring.Core.dll, log4net.dll, Spring.Core.xml
+  <li>The files required for Spring have been placed in the [bin] folder: Spring.Core.dll, log4net.dll,  Spring.Core.xml
   </li>
   <li>The Spring configuration files [spring-config-3tier-*.xml] have also been placed in the [bin] folder
   </li>
-  <li>Under the [istia] root directory, you will find the various classes of the application
+  <li>under the root directory [istia], you will find the various classes of the application
   </li>
 </ul>
 
-<p>The project has been configured to generate the [spring3tier.dll] DLL in the [bin] folder:</p>
+<p>The project has been configured to generate DLL and [spring3tier.dll] in the [bin] folder:</p>
 <p><img src="images/10000000000001DB000000C4643F7B40.png" width="475" height="196" style="width:12.564cm;height:5.184cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000001DB000000C4643F7B40.png" /></p>
-<h2 id="72-the-package-istiastspring3tierdao">7.2. <span style="color: #4f81bd"><strong>The package [istia.st.spring3tier.dao]</strong></span></h2>
+<h2 id="72-the-istiastspring3tierdao-package">7.2. <span style="color: #4f81bd">The [istia.st.spring3tier.dao] package</span></h2>
 <p>The <strong>IDao</strong> interface:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">Namespace</span><span class="w"> </span><span class="nn">istia.st.spring3tier.dao</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="k">Public</span><span class="w"> </span><span class="k">Interface</span><span class="w"> </span><span class="n">IDao</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">        </span><span class="c">&#39; do something in the [dao] layer</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">        </span><span class="k">Function</span><span class="w"> </span><span class="nf">doSomethingInDaoLayer</span><span class="p">(</span><span class="k">ByVal</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Integer</span><span class="p">,</span><span class="w"> </span><span class="k">ByVal</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Integer</span><span class="p">)</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Integer</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="k">End</span><span class="w"> </span><span class="k">Interface</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="k">End</span><span class="w"> </span><span class="k">Namespace</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Namespace istia.st.spring3tier.dao
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    Public Interface IDao
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>         &#39; do something in the [dao] layer
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>        Function doSomethingInDaoLayer(ByVal a As Integer, ByVal b As Integer) As Integer
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    End Interface
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>End Namespace
 </code></pre></div>
 <p>A first implementation class:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">Namespace</span><span class="w"> </span><span class="nn">istia.st.spring3tier.dao</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="k">Public</span><span class="w"> </span><span class="k">Class</span><span class="w"> </span><span class="nc">DaoImpl1</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">        </span><span class="k">Implements</span><span class="w"> </span><span class="n">istia</span><span class="p">.</span><span class="n">st</span><span class="p">.</span><span class="n">spring3tier</span><span class="p">.</span><span class="n">dao</span><span class="p">.</span><span class="n">IDao</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Namespace istia.st.spring3tier.dao
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    Public Class DaoImpl1
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>        Implements istia.st.spring3tier.dao.IDao
 <a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">        </span><span class="c">&#39; do something in the diaper [dao]</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">        </span><span class="k">Public</span><span class="w"> </span><span class="k">Function</span><span class="w"> </span><span class="nf">doSomethingInDaoLayer</span><span class="p">(</span><span class="k">ByVal</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Integer</span><span class="p">,</span><span class="w"> </span><span class="k">ByVal</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Integer</span><span class="p">)</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Integer</span><span class="w"> </span><span class="k">Implements</span><span class="w"> </span><span class="n">IDao</span><span class="p">.</span><span class="n">doSomethingInDaoLayer</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>         &#39; do something in the [dao] layer
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>        Public Function doSomethingInDaoLayer(ByVal a As Integer, ByVal b As Integer) As Integer Implements IDao.doSomethingInDaoLayer
 <a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">            </span><span class="k">Return</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span>
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">        </span><span class="k">End</span><span class="w"> </span><span class="k">Function</span>
-<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">    </span><span class="k">End</span><span class="w"> </span><span class="k">Class</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>            Return a + b
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>        End Function
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>    End Class
 <a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>
-<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="k">End</span><span class="w"> </span><span class="k">Namespace</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>End Namespace
 </code></pre></div>
 <ul>
   <li>The class has no private fields
@@ -711,18 +713,18 @@
 </ul>
 
 <p>A second implementation class:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">Namespace</span><span class="w"> </span><span class="nn">istia.st.spring3tier.dao</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="k">Public</span><span class="w"> </span><span class="k">Class</span><span class="w"> </span><span class="nc">DaoImpl2</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">        </span><span class="k">Implements</span><span class="w"> </span><span class="n">istia</span><span class="p">.</span><span class="n">st</span><span class="p">.</span><span class="n">spring3tier</span><span class="p">.</span><span class="n">dao</span><span class="p">.</span><span class="n">IDao</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Namespace istia.st.spring3tier.dao
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    Public Class DaoImpl2
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>        Implements istia.st.spring3tier.dao.IDao
 <a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">        </span><span class="c">&#39; do something in the diaper [dao]</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">        </span><span class="k">Public</span><span class="w"> </span><span class="k">Function</span><span class="w"> </span><span class="nf">doSomethingInDaoLayer</span><span class="p">(</span><span class="k">ByVal</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Integer</span><span class="p">,</span><span class="w"> </span><span class="k">ByVal</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Integer</span><span class="p">)</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Integer</span><span class="w"> </span><span class="k">Implements</span><span class="w"> </span><span class="n">IDao</span><span class="p">.</span><span class="n">doSomethingInDaoLayer</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>         &#39; do something in the [dao] layer
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>        Public Function doSomethingInDaoLayer(ByVal a As Integer, ByVal b As Integer) As Integer Implements IDao.doSomethingInDaoLayer
 <a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>
-<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">            </span><span class="k">Return</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">b</span>
-<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">        </span><span class="k">End</span><span class="w"> </span><span class="k">Function</span>
-<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">    </span><span class="k">End</span><span class="w"> </span><span class="k">Class</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>            Return a - b
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>        End Function
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>    End Class
 <a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>
-<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="k">End</span><span class="w"> </span><span class="k">Namespace</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>End Namespace
 </code></pre></div>
 <ul>
   <li>The class has no private fields
@@ -730,45 +732,45 @@
   <li>The [doSomethingInDaoLayer] method returns the difference between its parameters as requested.
   </li>
 </ul>
-<h2 id="73-the-istiastspring3tierdomain-package">7.3. <span style="color: #4f81bd">The [istia.st.spring3tier.domain] package</span></h2>
+<h2 id="73-the-package-istiastspring3tierdomain">7.3. <span style="color: #4f81bd">The package [istia.st.spring3tier.domain]</span></h2>
 <p>The <strong>IDomain</strong> interface:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">Namespace</span><span class="w"> </span><span class="nn">istia.st.spring3tier.domain</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="k">Public</span><span class="w"> </span><span class="k">Interface</span><span class="w"> </span><span class="n">IDomain</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">        </span><span class="c">&#39; do something in the [domain] layer</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">        </span><span class="k">Function</span><span class="w"> </span><span class="nf">doSomethingInDomainLayer</span><span class="p">(</span><span class="k">ByVal</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Integer</span><span class="p">,</span><span class="w"> </span><span class="k">ByVal</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Integer</span><span class="p">)</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Integer</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="k">End</span><span class="w"> </span><span class="k">Interface</span>
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="k">End</span><span class="w"> </span><span class="k">Namespace</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Namespace istia.st.spring3tier.domain
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    Public Interface IDomain
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>         &#39; do something in the [domain] layer
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>        Function doSomethingInDomainLayer(ByVal a As Integer, ByVal b As Integer) As Integer
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>    End Interface
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>End Namespace
 </code></pre></div>
 <p>A first implementation class <strong>IDomainImpl1</strong>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">Imports</span><span class="w"> </span><span class="nn">istia.st.spring3tier.dao</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">Imports</span> <span class="n">istia</span><span class="o">.</span><span class="n">st</span><span class="o">.</span><span class="n">spring3tier</span><span class="o">.</span><span class="n">dao</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="k">Namespace</span><span class="w"> </span><span class="nn">istia.st.spring3tier.domain</span>
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="k">Public</span><span class="w"> </span><span class="k">Class</span><span class="w"> </span><span class="nc">DomainImpl1</span>
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">        </span><span class="k">Implements</span><span class="w"> </span><span class="n">istia</span><span class="p">.</span><span class="n">st</span><span class="p">.</span><span class="n">spring3tier</span><span class="p">.</span><span class="n">domain</span><span class="p">.</span><span class="n">IDomain</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">Namespace</span> <span class="n">istia</span><span class="o">.</span><span class="n">st</span><span class="o">.</span><span class="n">spring3tier</span><span class="o">.</span><span class="n">domain</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    <span class="n">Public</span> <span class="n">Class</span> <span class="n">DomainImpl1</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>        <span class="n">Implements</span> <span class="n">istia</span><span class="o">.</span><span class="n">st</span><span class="o">.</span><span class="n">spring3tier</span><span class="o">.</span><span class="n">domain</span><span class="o">.</span><span class="n">IDomain</span>
 <a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>
-<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">        </span><span class="c">&#39; private fields</span>
-<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">        </span><span class="k">Private</span><span class="w"> </span><span class="n">_dao</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="n">IDao</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>         <span class="s1">&#39; private fields</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>        <span class="n">Private</span> <span class="n">_dao</span> <span class="n">As</span> <span class="n">IDao</span>
 <a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>
-<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">        </span><span class="c">&#39; associated property</span>
-<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">        </span><span class="k">Public</span><span class="w"> </span><span class="k">WriteOnly</span><span class="w"> </span><span class="k">Property</span><span class="w"> </span><span class="nf">dao</span><span class="p">()</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="n">IDao</span>
-<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">            </span><span class="k">Set</span><span class="p">(</span><span class="k">ByVal</span><span class="w"> </span><span class="n">Value</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="n">IDao</span><span class="p">)</span>
-<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">                </span><span class="n">_dao</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Value</span>
-<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">            </span><span class="k">End</span><span class="w"> </span><span class="k">Set</span>
-<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="w">        </span><span class="k">End</span><span class="w"> </span><span class="k">Property</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>         <span class="s1">&#39; associated property</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>        <span class="n">Public</span> <span class="n">WriteOnly</span> <span class="n">Property</span> <span class="n">dao</span><span class="p">()</span> <span class="n">As</span> <span class="n">IDao</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>            <span class="n">Set</span><span class="p">(</span><span class="n">ByVal</span> <span class="n">Value</span> <span class="n">As</span> <span class="n">IDao</span><span class="p">)</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>                <span class="n">_dao</span> <span class="o">=</span> <span class="n">Value</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>            <span class="n">End</span> <span class="n">Set</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>        <span class="n">End</span> <span class="n">Property</span>
 <a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>
-<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="w">        </span><span class="c">&#39; default builder</span>
-<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="w">        </span><span class="k">Public</span><span class="w"> </span><span class="k">Sub</span><span class="w"> </span><span class="nf">New</span><span class="p">()</span>
-<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="w">        </span><span class="k">End</span><span class="w"> </span><span class="k">Sub</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>         <span class="s1">&#39; default builder</span>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a>        <span class="n">Public</span> <span class="n">Sub</span> <span class="n">New</span><span class="p">()</span>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a>        <span class="n">End</span> <span class="n">Sub</span>
 <a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a>
-<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="w">        </span><span class="c">&#39; do something in the [domain] layer</span>
-<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a><span class="w">        </span><span class="k">Public</span><span class="w"> </span><span class="k">Function</span><span class="w"> </span><span class="nf">doSomethingInDomainLayer</span><span class="p">(</span><span class="k">ByVal</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Integer</span><span class="p">,</span><span class="w"> </span><span class="k">ByVal</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Integer</span><span class="p">)</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Integer</span><span class="w"> </span><span class="k">Implements</span><span class="w"> </span><span class="n">IDomain</span><span class="p">.</span><span class="n">doSomethingInDomainLayer</span>
-<a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a><span class="w">            </span><span class="n">a</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span>
-<a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a><span class="w">            </span><span class="n">b</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span>
-<a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a><span class="w">            </span><span class="k">Return</span><span class="w"> </span><span class="n">_dao</span><span class="p">.</span><span class="n">doSomethingInDaoLayer</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">)</span>
-<a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a><span class="w">        </span><span class="k">End</span><span class="w"> </span><span class="k">Function</span>
-<a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a><span class="w">    </span><span class="k">End</span><span class="w"> </span><span class="k">Class</span>
+<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a>         <span class="s1">&#39; do something in the [domain] layer</span>
+<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a>        <span class="n">Public</span> <span class="n">Function</span> <span class="n">doSomethingInDomainLayer</span><span class="p">(</span><span class="n">ByVal</span> <span class="n">a</span> <span class="n">As</span> <span class="n">Integer</span><span class="p">,</span> <span class="n">ByVal</span> <span class="n">b</span> <span class="n">As</span> <span class="n">Integer</span><span class="p">)</span> <span class="n">As</span> <span class="n">Integer</span> <span class="n">Implements</span> <span class="n">IDomain</span><span class="o">.</span><span class="n">doSomethingInDomainLayer</span>
+<a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a>            <span class="n">a</span> <span class="o">+=</span> <span class="mi">1</span>
+<a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a>            <span class="n">b</span> <span class="o">+=</span> <span class="mi">1</span>
+<a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a>            <span class="n">Return</span> <span class="n">_dao</span><span class="o">.</span><span class="n">doSomethingInDaoLayer</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a>        <span class="n">End</span> <span class="n">Function</span>
+<a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a>    <span class="n">End</span> <span class="n">Class</span>
 <a id="__codelineno-4-28" name="__codelineno-4-28" href="#__codelineno-4-28"></a>
-<a id="__codelineno-4-29" name="__codelineno-4-29" href="#__codelineno-4-29"></a><span class="k">End</span><span class="w"> </span><span class="k">Namespace</span>
+<a id="__codelineno-4-29" name="__codelineno-4-29" href="#__codelineno-4-29"></a><span class="n">End</span> <span class="n">Namespace</span>
 </code></pre></div>
 <ul>
   <li>The class has a private field that is a reference to the singleton of type [IDao], which provides access to the [Dao] layer. This field will be initialized by Spring (dependency injection) when the object is constructed.
@@ -778,81 +780,81 @@
 </ul>
 
 <p>A second implementation class, <strong>IDomainImpl2</strong>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">Imports</span><span class="w"> </span><span class="nn">istia.st.spring3tier.dao</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">Imports</span> <span class="n">istia</span><span class="o">.</span><span class="n">st</span><span class="o">.</span><span class="n">spring3tier</span><span class="o">.</span><span class="n">dao</span>
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="k">Namespace</span><span class="w"> </span><span class="nn">istia.st.spring3tier.domain</span>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="k">Public</span><span class="w"> </span><span class="k">Class</span><span class="w"> </span><span class="nc">DomainImpl2</span>
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">        </span><span class="k">Implements</span><span class="w"> </span><span class="n">istia</span><span class="p">.</span><span class="n">st</span><span class="p">.</span><span class="n">spring3tier</span><span class="p">.</span><span class="n">domain</span><span class="p">.</span><span class="n">IDomain</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="n">Namespace</span> <span class="n">istia</span><span class="o">.</span><span class="n">st</span><span class="o">.</span><span class="n">spring3tier</span><span class="o">.</span><span class="n">domain</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>    <span class="n">Public</span> <span class="n">Class</span> <span class="n">DomainImpl2</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>        <span class="n">Implements</span> <span class="n">istia</span><span class="o">.</span><span class="n">st</span><span class="o">.</span><span class="n">spring3tier</span><span class="o">.</span><span class="n">domain</span><span class="o">.</span><span class="n">IDomain</span>
 <a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
-<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">        </span><span class="c">&#39; private fields</span>
-<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">        </span><span class="k">Private</span><span class="w"> </span><span class="n">_dao</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="n">IDao</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>         <span class="s1">&#39; private fields</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>        <span class="n">Private</span> <span class="n">_dao</span> <span class="n">As</span> <span class="n">IDao</span>
 <a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>
-<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">        </span><span class="c">&#39; associated property</span>
-<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">        </span><span class="k">Public</span><span class="w"> </span><span class="k">WriteOnly</span><span class="w"> </span><span class="k">Property</span><span class="w"> </span><span class="nf">dao</span><span class="p">()</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="n">IDao</span>
-<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">            </span><span class="k">Set</span><span class="p">(</span><span class="k">ByVal</span><span class="w"> </span><span class="n">Value</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="n">IDao</span><span class="p">)</span>
-<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="w">                </span><span class="n">_dao</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Value</span>
-<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="w">            </span><span class="k">End</span><span class="w"> </span><span class="k">Set</span>
-<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="w">        </span><span class="k">End</span><span class="w"> </span><span class="k">Property</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>         <span class="s1">&#39; associated property</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>        <span class="n">Public</span> <span class="n">WriteOnly</span> <span class="n">Property</span> <span class="n">dao</span><span class="p">()</span> <span class="n">As</span> <span class="n">IDao</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>            <span class="n">Set</span><span class="p">(</span><span class="n">ByVal</span> <span class="n">Value</span> <span class="n">As</span> <span class="n">IDao</span><span class="p">)</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>                <span class="n">_dao</span> <span class="o">=</span> <span class="n">Value</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>            <span class="n">End</span> <span class="n">Set</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>        <span class="n">End</span> <span class="n">Property</span>
 <a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>
-<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="w">        </span><span class="c">&#39; default builder</span>
-<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="w">        </span><span class="k">Public</span><span class="w"> </span><span class="k">Sub</span><span class="w"> </span><span class="nf">New</span><span class="p">()</span>
-<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="w">        </span><span class="k">End</span><span class="w"> </span><span class="k">Sub</span>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a>         <span class="s1">&#39; default builder</span>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a>        <span class="n">Public</span> <span class="n">Sub</span> <span class="n">New</span><span class="p">()</span>
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a>        <span class="n">End</span> <span class="n">Sub</span>
 <a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a>
-<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="w">        </span><span class="c">&#39; do something in the [domain] layer</span>
-<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a><span class="w">        </span><span class="k">Public</span><span class="w"> </span><span class="k">Function</span><span class="w"> </span><span class="nf">doSomethingInDomainLayer</span><span class="p">(</span><span class="k">ByVal</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Integer</span><span class="p">,</span><span class="w"> </span><span class="k">ByVal</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Integer</span><span class="p">)</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Integer</span><span class="w"> </span><span class="k">Implements</span><span class="w"> </span><span class="n">IDomain</span><span class="p">.</span><span class="n">doSomethingInDomainLayer</span>
-<a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a><span class="w">            </span><span class="n">a</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="mi">1</span>
-<a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a><span class="w">            </span><span class="n">b</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="mi">1</span>
-<a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a><span class="w">            </span><span class="k">Return</span><span class="w"> </span><span class="n">_dao</span><span class="p">.</span><span class="n">doSomethingInDaoLayer</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">)</span>
-<a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a><span class="w">        </span><span class="k">End</span><span class="w"> </span><span class="k">Function</span>
-<a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a><span class="w">    </span><span class="k">End</span><span class="w"> </span><span class="k">Class</span>
+<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a>         <span class="s1">&#39; do something in the [domain] layer</span>
+<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a>        <span class="n">Public</span> <span class="n">Function</span> <span class="n">doSomethingInDomainLayer</span><span class="p">(</span><span class="n">ByVal</span> <span class="n">a</span> <span class="n">As</span> <span class="n">Integer</span><span class="p">,</span> <span class="n">ByVal</span> <span class="n">b</span> <span class="n">As</span> <span class="n">Integer</span><span class="p">)</span> <span class="n">As</span> <span class="n">Integer</span> <span class="n">Implements</span> <span class="n">IDomain</span><span class="o">.</span><span class="n">doSomethingInDomainLayer</span>
+<a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a>            <span class="n">a</span> <span class="o">-=</span> <span class="mi">1</span>
+<a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a>            <span class="n">b</span> <span class="o">-=</span> <span class="mi">1</span>
+<a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a>            <span class="n">Return</span> <span class="n">_dao</span><span class="o">.</span><span class="n">doSomethingInDaoLayer</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a>        <span class="n">End</span> <span class="n">Function</span>
+<a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a>    <span class="n">End</span> <span class="n">Class</span>
 <a id="__codelineno-5-28" name="__codelineno-5-28" href="#__codelineno-5-28"></a>
-<a id="__codelineno-5-29" name="__codelineno-5-29" href="#__codelineno-5-29"></a><span class="k">End</span><span class="w"> </span><span class="k">Namespace</span>
+<a id="__codelineno-5-29" name="__codelineno-5-29" href="#__codelineno-5-29"></a><span class="n">End</span> <span class="n">Namespace</span>
 </code></pre></div>
 <ul>
-  <li>The class has a private field that is a reference to the [IDao] singleton, which provides access to the [Dao] layer. This field will be initialized by Spring (dependency injection) when the object is constructed.
+  <li>The class has a private field that is a reference to the singleton of type [IDao], which provides access to the [Dao] layer. This field will be initialized by Spring (dependency injection) when the object is constructed.
   </li>
   <li>The [doSomethingInDomainLayer] method decrements its parameters and then passes them to the [doSomethingInDaoLayer] method of the [dao] singleton
   </li>
 </ul>
 <h2 id="74-the-istiastspring3tiercontrol-package">7.4. <span style="color: #4f81bd">The [istia.st.spring3tier.control] package</span></h2>
 <p>The <strong>IControl</strong> interface:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">Namespace</span><span class="w"> </span><span class="nn">istia.st.spring3tier.control</span>
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="k">Public</span><span class="w"> </span><span class="k">Interface</span><span class="w"> </span><span class="n">IControl</span>
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">        </span><span class="c">&#39; do something in the [control] layer</span>
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">        </span><span class="k">Function</span><span class="w"> </span><span class="nf">doSomethingInControlLayer</span><span class="p">(</span><span class="k">ByVal</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Integer</span><span class="p">,</span><span class="w"> </span><span class="k">ByVal</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Integer</span><span class="p">)</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Integer</span>
-<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">    </span><span class="k">End</span><span class="w"> </span><span class="k">Interface</span>
-<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="k">End</span><span class="w"> </span><span class="k">Namespace</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>Namespace istia.st.spring3tier.control
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>    Public Interface IControl
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>         &#39; do something in the [control] layer
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>        Function doSomethingInControlLayer(ByVal a As Integer, ByVal b As Integer) As Integer
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>    End Interface
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>End Namespace
 </code></pre></div>
 <p>A first implementation class <strong>ControlImpl1</strong>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">Imports</span><span class="w"> </span><span class="nn">istia.st.spring3tier.domain</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">Imports</span> <span class="n">istia</span><span class="o">.</span><span class="n">st</span><span class="o">.</span><span class="n">spring3tier</span><span class="o">.</span><span class="n">domain</span>
 <a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="k">Namespace</span><span class="w"> </span><span class="nn">istia.st.spring3tier.control</span>
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">    </span><span class="k">Public</span><span class="w"> </span><span class="k">Class</span><span class="w"> </span><span class="nc">ControlImpl1</span>
-<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">        </span><span class="k">Implements</span><span class="w"> </span><span class="n">istia</span><span class="p">.</span><span class="n">st</span><span class="p">.</span><span class="n">spring3tier</span><span class="p">.</span><span class="n">control</span><span class="p">.</span><span class="n">IControl</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="n">Namespace</span> <span class="n">istia</span><span class="o">.</span><span class="n">st</span><span class="o">.</span><span class="n">spring3tier</span><span class="o">.</span><span class="n">control</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>    <span class="n">Public</span> <span class="n">Class</span> <span class="n">ControlImpl1</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>        <span class="n">Implements</span> <span class="n">istia</span><span class="o">.</span><span class="n">st</span><span class="o">.</span><span class="n">spring3tier</span><span class="o">.</span><span class="n">control</span><span class="o">.</span><span class="n">IControl</span>
 <a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>
-<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">        </span><span class="c">&#39; private fields</span>
-<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">        </span><span class="k">Private</span><span class="w"> </span><span class="n">_domain</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="n">IDomain</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>         <span class="s1">&#39; private fields</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>        <span class="n">Private</span> <span class="n">_domain</span> <span class="n">As</span> <span class="n">IDomain</span>
 <a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>
-<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="w">        </span><span class="c">&#39; associated property</span>
-<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="w">        </span><span class="k">Public</span><span class="w"> </span><span class="k">WriteOnly</span><span class="w"> </span><span class="k">Property</span><span class="w"> </span><span class="nf">domain</span><span class="p">()</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="n">IDomain</span>
-<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="w">            </span><span class="k">Set</span><span class="p">(</span><span class="k">ByVal</span><span class="w"> </span><span class="n">Value</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="n">IDomain</span><span class="p">)</span>
-<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="w">                </span><span class="n">_domain</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Value</span>
-<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="w">            </span><span class="k">End</span><span class="w"> </span><span class="k">Set</span>
-<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a><span class="w">        </span><span class="k">End</span><span class="w"> </span><span class="k">Property</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>         <span class="s1">&#39; associated property</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>        <span class="n">Public</span> <span class="n">WriteOnly</span> <span class="n">Property</span> <span class="n">domain</span><span class="p">()</span> <span class="n">As</span> <span class="n">IDomain</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>            <span class="n">Set</span><span class="p">(</span><span class="n">ByVal</span> <span class="n">Value</span> <span class="n">As</span> <span class="n">IDomain</span><span class="p">)</span>
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>                <span class="n">_domain</span> <span class="o">=</span> <span class="n">Value</span>
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>            <span class="n">End</span> <span class="n">Set</span>
+<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a>        <span class="n">End</span> <span class="n">Property</span>
 <a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a>
-<a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a><span class="w">        </span><span class="c">&#39; default builder</span>
-<a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a><span class="w">        </span><span class="k">Public</span><span class="w"> </span><span class="k">Sub</span><span class="w"> </span><span class="nf">New</span><span class="p">()</span>
-<a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a><span class="w">        </span><span class="k">End</span><span class="w"> </span><span class="k">Sub</span>
+<a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a>         <span class="s1">&#39; default builder</span>
+<a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a>        <span class="n">Public</span> <span class="n">Sub</span> <span class="n">New</span><span class="p">()</span>
+<a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a>        <span class="n">End</span> <span class="n">Sub</span>
 <a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a>
-<a id="__codelineno-7-21" name="__codelineno-7-21" href="#__codelineno-7-21"></a><span class="w">        </span><span class="c">&#39; do something in the [control] layer</span>
-<a id="__codelineno-7-22" name="__codelineno-7-22" href="#__codelineno-7-22"></a><span class="w">        </span><span class="k">Public</span><span class="w"> </span><span class="k">Function</span><span class="w"> </span><span class="nf">doSomethingInControlLayer</span><span class="p">(</span><span class="k">ByVal</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Integer</span><span class="p">,</span><span class="w"> </span><span class="k">ByVal</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Integer</span><span class="p">)</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Integer</span><span class="w"> </span><span class="k">Implements</span><span class="w"> </span><span class="n">IControl</span><span class="p">.</span><span class="n">doSomethingInControlLayer</span>
-<a id="__codelineno-7-23" name="__codelineno-7-23" href="#__codelineno-7-23"></a><span class="w">            </span><span class="n">a</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span>
-<a id="__codelineno-7-24" name="__codelineno-7-24" href="#__codelineno-7-24"></a><span class="w">            </span><span class="n">b</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span>
-<a id="__codelineno-7-25" name="__codelineno-7-25" href="#__codelineno-7-25"></a><span class="w">            </span><span class="k">Return</span><span class="w"> </span><span class="n">_domain</span><span class="p">.</span><span class="n">doSomethingInDomainLayer</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">)</span>
-<a id="__codelineno-7-26" name="__codelineno-7-26" href="#__codelineno-7-26"></a><span class="w">        </span><span class="k">End</span><span class="w"> </span><span class="k">Function</span>
-<a id="__codelineno-7-27" name="__codelineno-7-27" href="#__codelineno-7-27"></a><span class="w">    </span><span class="k">End</span><span class="w"> </span><span class="k">Class</span>
+<a id="__codelineno-7-21" name="__codelineno-7-21" href="#__codelineno-7-21"></a>         <span class="s1">&#39; do something in the [control] layer</span>
+<a id="__codelineno-7-22" name="__codelineno-7-22" href="#__codelineno-7-22"></a>        <span class="n">Public</span> <span class="n">Function</span> <span class="n">doSomethingInControlLayer</span><span class="p">(</span><span class="n">ByVal</span> <span class="n">a</span> <span class="n">As</span> <span class="n">Integer</span><span class="p">,</span> <span class="n">ByVal</span> <span class="n">b</span> <span class="n">As</span> <span class="n">Integer</span><span class="p">)</span> <span class="n">As</span> <span class="n">Integer</span> <span class="n">Implements</span> <span class="n">IControl</span><span class="o">.</span><span class="n">doSomethingInControlLayer</span>
+<a id="__codelineno-7-23" name="__codelineno-7-23" href="#__codelineno-7-23"></a>            <span class="n">a</span> <span class="o">+=</span> <span class="mi">1</span>
+<a id="__codelineno-7-24" name="__codelineno-7-24" href="#__codelineno-7-24"></a>            <span class="n">b</span> <span class="o">+=</span> <span class="mi">1</span>
+<a id="__codelineno-7-25" name="__codelineno-7-25" href="#__codelineno-7-25"></a>            <span class="n">Return</span> <span class="n">_domain</span><span class="o">.</span><span class="n">doSomethingInDomainLayer</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<a id="__codelineno-7-26" name="__codelineno-7-26" href="#__codelineno-7-26"></a>        <span class="n">End</span> <span class="n">Function</span>
+<a id="__codelineno-7-27" name="__codelineno-7-27" href="#__codelineno-7-27"></a>    <span class="n">End</span> <span class="n">Class</span>
 <a id="__codelineno-7-28" name="__codelineno-7-28" href="#__codelineno-7-28"></a>
-<a id="__codelineno-7-29" name="__codelineno-7-29" href="#__codelineno-7-29"></a><span class="k">End</span><span class="w"> </span><span class="k">Namespace</span>
+<a id="__codelineno-7-29" name="__codelineno-7-29" href="#__codelineno-7-29"></a><span class="n">End</span> <span class="n">Namespace</span>
 </code></pre></div>
 <ul>
   <li>The class has a private field that is a reference to the singleton of type [IDomain], which provides access to the [Domain] layer. This field will be initialized by Spring (dependency injection) when the object is constructed.
@@ -862,35 +864,35 @@
 </ul>
 
 <p>A second implementation class, <strong>IControlImpl2</strong>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">Imports</span><span class="w"> </span><span class="nn">istia.st.spring3tier.domain</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">Imports</span> <span class="n">istia</span><span class="o">.</span><span class="n">st</span><span class="o">.</span><span class="n">spring3tier</span><span class="o">.</span><span class="n">domain</span>
 <a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>
-<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="k">Namespace</span><span class="w"> </span><span class="nn">istia.st.spring3tier.control</span>
-<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">    </span><span class="k">Public</span><span class="w"> </span><span class="k">Class</span><span class="w"> </span><span class="nc">ControlImpl2</span>
-<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">        </span><span class="k">Implements</span><span class="w"> </span><span class="n">istia</span><span class="p">.</span><span class="n">st</span><span class="p">.</span><span class="n">spring3tier</span><span class="p">.</span><span class="n">control</span><span class="p">.</span><span class="n">IControl</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="n">Namespace</span> <span class="n">istia</span><span class="o">.</span><span class="n">st</span><span class="o">.</span><span class="n">spring3tier</span><span class="o">.</span><span class="n">control</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>    <span class="n">Public</span> <span class="n">Class</span> <span class="n">ControlImpl2</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>        <span class="n">Implements</span> <span class="n">istia</span><span class="o">.</span><span class="n">st</span><span class="o">.</span><span class="n">spring3tier</span><span class="o">.</span><span class="n">control</span><span class="o">.</span><span class="n">IControl</span>
 <a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>
-<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="w">        </span><span class="c">&#39; private fields</span>
-<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="w">        </span><span class="k">Private</span><span class="w"> </span><span class="n">_domain</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="n">IDomain</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>         <span class="s1">&#39; private fields</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>        <span class="n">Private</span> <span class="n">_domain</span> <span class="n">As</span> <span class="n">IDomain</span>
 <a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>
-<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="w">        </span><span class="c">&#39; associated property</span>
-<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="w">        </span><span class="k">Public</span><span class="w"> </span><span class="k">WriteOnly</span><span class="w"> </span><span class="k">Property</span><span class="w"> </span><span class="nf">domain</span><span class="p">()</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="n">IDomain</span>
-<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="w">            </span><span class="k">Set</span><span class="p">(</span><span class="k">ByVal</span><span class="w"> </span><span class="n">Value</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="n">IDomain</span><span class="p">)</span>
-<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a><span class="w">                </span><span class="n">_domain</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Value</span>
-<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a><span class="w">            </span><span class="k">End</span><span class="w"> </span><span class="k">Set</span>
-<a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a><span class="w">        </span><span class="k">End</span><span class="w"> </span><span class="k">Property</span>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>         <span class="s1">&#39; associated property</span>
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>        <span class="n">Public</span> <span class="n">WriteOnly</span> <span class="n">Property</span> <span class="n">domain</span><span class="p">()</span> <span class="n">As</span> <span class="n">IDomain</span>
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>            <span class="n">Set</span><span class="p">(</span><span class="n">ByVal</span> <span class="n">Value</span> <span class="n">As</span> <span class="n">IDomain</span><span class="p">)</span>
+<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a>                <span class="n">_domain</span> <span class="o">=</span> <span class="n">Value</span>
+<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a>            <span class="n">End</span> <span class="n">Set</span>
+<a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a>        <span class="n">End</span> <span class="n">Property</span>
 <a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a>
-<a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a><span class="w">        </span><span class="c">&#39; default builder</span>
-<a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a><span class="w">        </span><span class="k">Public</span><span class="w"> </span><span class="k">Sub</span><span class="w"> </span><span class="nf">New</span><span class="p">()</span>
-<a id="__codelineno-8-19" name="__codelineno-8-19" href="#__codelineno-8-19"></a><span class="w">        </span><span class="k">End</span><span class="w"> </span><span class="k">Sub</span>
+<a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a>         <span class="s1">&#39; default builder</span>
+<a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a>        <span class="n">Public</span> <span class="n">Sub</span> <span class="n">New</span><span class="p">()</span>
+<a id="__codelineno-8-19" name="__codelineno-8-19" href="#__codelineno-8-19"></a>        <span class="n">End</span> <span class="n">Sub</span>
 <a id="__codelineno-8-20" name="__codelineno-8-20" href="#__codelineno-8-20"></a>
-<a id="__codelineno-8-21" name="__codelineno-8-21" href="#__codelineno-8-21"></a><span class="w">        </span><span class="c">&#39; do something in the [control] layer</span>
-<a id="__codelineno-8-22" name="__codelineno-8-22" href="#__codelineno-8-22"></a><span class="w">        </span><span class="k">Public</span><span class="w"> </span><span class="k">Function</span><span class="w"> </span><span class="nf">doSomethingInControlLayer</span><span class="p">(</span><span class="k">ByVal</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Integer</span><span class="p">,</span><span class="w"> </span><span class="k">ByVal</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Integer</span><span class="p">)</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Integer</span><span class="w"> </span><span class="k">Implements</span><span class="w"> </span><span class="n">IControl</span><span class="p">.</span><span class="n">doSomethingInControlLayer</span>
-<a id="__codelineno-8-23" name="__codelineno-8-23" href="#__codelineno-8-23"></a><span class="w">            </span><span class="n">a</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="mi">1</span>
-<a id="__codelineno-8-24" name="__codelineno-8-24" href="#__codelineno-8-24"></a><span class="w">            </span><span class="n">b</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="mi">1</span>
-<a id="__codelineno-8-25" name="__codelineno-8-25" href="#__codelineno-8-25"></a><span class="w">            </span><span class="k">Return</span><span class="w"> </span><span class="n">_domain</span><span class="p">.</span><span class="n">doSomethingInDomainLayer</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">)</span>
-<a id="__codelineno-8-26" name="__codelineno-8-26" href="#__codelineno-8-26"></a><span class="w">        </span><span class="k">End</span><span class="w"> </span><span class="k">Function</span>
-<a id="__codelineno-8-27" name="__codelineno-8-27" href="#__codelineno-8-27"></a><span class="w">    </span><span class="k">End</span><span class="w"> </span><span class="k">Class</span>
+<a id="__codelineno-8-21" name="__codelineno-8-21" href="#__codelineno-8-21"></a>         <span class="s1">&#39; do something in the [control] layer</span>
+<a id="__codelineno-8-22" name="__codelineno-8-22" href="#__codelineno-8-22"></a>        <span class="n">Public</span> <span class="n">Function</span> <span class="n">doSomethingInControlLayer</span><span class="p">(</span><span class="n">ByVal</span> <span class="n">a</span> <span class="n">As</span> <span class="n">Integer</span><span class="p">,</span> <span class="n">ByVal</span> <span class="n">b</span> <span class="n">As</span> <span class="n">Integer</span><span class="p">)</span> <span class="n">As</span> <span class="n">Integer</span> <span class="n">Implements</span> <span class="n">IControl</span><span class="o">.</span><span class="n">doSomethingInControlLayer</span>
+<a id="__codelineno-8-23" name="__codelineno-8-23" href="#__codelineno-8-23"></a>            <span class="n">a</span> <span class="o">-=</span> <span class="mi">1</span>
+<a id="__codelineno-8-24" name="__codelineno-8-24" href="#__codelineno-8-24"></a>            <span class="n">b</span> <span class="o">-=</span> <span class="mi">1</span>
+<a id="__codelineno-8-25" name="__codelineno-8-25" href="#__codelineno-8-25"></a>            <span class="n">Return</span> <span class="n">_domain</span><span class="o">.</span><span class="n">doSomethingInDomainLayer</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<a id="__codelineno-8-26" name="__codelineno-8-26" href="#__codelineno-8-26"></a>        <span class="n">End</span> <span class="n">Function</span>
+<a id="__codelineno-8-27" name="__codelineno-8-27" href="#__codelineno-8-27"></a>    <span class="n">End</span> <span class="n">Class</span>
 <a id="__codelineno-8-28" name="__codelineno-8-28" href="#__codelineno-8-28"></a>
-<a id="__codelineno-8-29" name="__codelineno-8-29" href="#__codelineno-8-29"></a><span class="k">End</span><span class="w"> </span><span class="k">Namespace</span>
+<a id="__codelineno-8-29" name="__codelineno-8-29" href="#__codelineno-8-29"></a><span class="n">End</span> <span class="n">Namespace</span>
 </code></pre></div>
 <ul>
   <li>The class has a private field that is a reference to the singleton of type [IDomain], which provides access to the [Domain] layer. This field will be initialized by Spring (dependency injection) when the object is constructed.
@@ -941,64 +943,64 @@
 <a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a><span class="w">    </span><span class="nt">&lt;/object&gt;</span>
 <a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a><span class="nt">&lt;/objects&gt;</span>
 </code></pre></div>
-<h2 id="76-the-test-package-istiastspring3tiertests">7.6. <span style="color: #4f81bd">The test package [istia.st.spring3tier.tests]</span></h2>
+<h2 id="76-the-istiastspring3tiertests-test-suite">7.6. <span style="color: #4f81bd">The [istia.st.spring3tier.tests] test suite</span></h2>
 <p>A NUnit test [NunitTestSpring3tier.vb]:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">Imports</span><span class="w"> </span><span class="nn">System</span>
-<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="k">Imports</span><span class="w"> </span><span class="nn">Spring.Objects.Factory.Xml</span>
-<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="k">Imports</span><span class="w"> </span><span class="nn">System.IO</span>
-<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="k">Imports</span><span class="w"> </span><span class="nn">NUnit.Framework</span>
-<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="k">Imports</span><span class="w"> </span><span class="nn">istia.st.spring3tier.control</span>
-<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="k">Imports</span><span class="w"> </span><span class="nn">istia.st.spring3tier.domain</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nx">Imports</span><span class="w"> </span><span class="nx">System</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="nx">Imports</span><span class="w"> </span><span class="nx">Spring</span><span class="p">.</span><span class="nx">Objects</span><span class="p">.</span><span class="nx">Factory</span><span class="p">.</span><span class="nx">Xml</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="nx">Imports</span><span class="w"> </span><span class="nx">System</span><span class="p">.</span><span class="nx">IO</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="nx">Imports</span><span class="w"> </span><span class="nx">NUnit</span><span class="p">.</span><span class="nx">Framework</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="nx">Imports</span><span class="w"> </span><span class="nx">istia</span><span class="p">.</span><span class="nx">st</span><span class="p">.</span><span class="nx">spring3tier</span><span class="p">.</span><span class="nx">control</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="nx">Imports</span><span class="w"> </span><span class="nx">istia</span><span class="p">.</span><span class="nx">st</span><span class="p">.</span><span class="nx">spring3tier</span><span class="p">.</span><span class="nx">domain</span>
 <a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>
-<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="k">Namespace</span><span class="w"> </span><span class="nn">istia.st.springioc.tests</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="nx">Namespace</span><span class="w"> </span><span class="nx">istia</span><span class="p">.</span><span class="nx">st</span><span class="p">.</span><span class="nx">springioc</span><span class="p">.</span><span class="nx">tests</span>
 <a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>
-<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="w">    </span><span class="o">&lt;</span><span class="n">TestFixture</span><span class="p">()</span><span class="o">&gt;</span><span class="w"> </span>_
-<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="w">    </span><span class="k">Public</span><span class="w"> </span><span class="k">Class</span><span class="w"> </span><span class="nc">NunitTestSpring3tier</span>
-<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a><span class="w">        </span><span class="c">&#39; the singleton factories</span>
-<a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a><span class="w">        </span><span class="k">Private</span><span class="w"> </span><span class="n">factory1</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="n">XmlObjectFactory</span>
-<a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a><span class="w">        </span><span class="k">Private</span><span class="w"> </span><span class="n">factory2</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="n">XmlObjectFactory</span>
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="w">    </span><span class="o">&lt;</span><span class="nx">TestFixture</span><span class="p">()</span><span class="o">&gt;</span><span class="w"> </span><span class="nx">_</span>
+<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="w">    </span><span class="nx">Public</span><span class="w"> </span><span class="nx">Class</span><span class="w"> </span><span class="nx">NunitTestSpring3tier</span>
+<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a><span class="w">         </span><span class="s1">&#39; the singleton factories</span>
+<a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a><span class="s1">        Private factory1 As XmlObjectFactory</span>
+<a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a><span class="s1">        Private factory2 As XmlObjectFactory</span>
 <a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a>
-<a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a><span class="w">        </span><span class="o">&lt;</span><span class="n">SetUp</span><span class="p">()</span><span class="o">&gt;</span><span class="w"> </span>_
-<a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a><span class="w">        </span><span class="k">Public</span><span class="w"> </span><span class="k">Sub</span><span class="w"> </span><span class="nf">init</span><span class="p">()</span>
-<a id="__codelineno-11-18" name="__codelineno-11-18" href="#__codelineno-11-18"></a><span class="w">            </span><span class="c">&#39; singleton factories are created</span>
-<a id="__codelineno-11-19" name="__codelineno-11-19" href="#__codelineno-11-19"></a><span class="w">            </span><span class="n">factory1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">New</span><span class="w"> </span><span class="n">XmlObjectFactory</span><span class="p">(</span><span class="k">New</span><span class="w"> </span><span class="n">FileStream</span><span class="p">(</span><span class="s">&quot;spring-config-3tier-1.xml&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">FileMode</span><span class="p">.</span><span class="n">Open</span><span class="p">))</span>
-<a id="__codelineno-11-20" name="__codelineno-11-20" href="#__codelineno-11-20"></a><span class="w">            </span><span class="n">factory2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">New</span><span class="w"> </span><span class="n">XmlObjectFactory</span><span class="p">(</span><span class="k">New</span><span class="w"> </span><span class="n">FileStream</span><span class="p">(</span><span class="s">&quot;spring-config-3tier-2.xml&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">FileMode</span><span class="p">.</span><span class="n">Open</span><span class="p">))</span>
-<a id="__codelineno-11-21" name="__codelineno-11-21" href="#__codelineno-11-21"></a><span class="w">        </span><span class="k">End</span><span class="w"> </span><span class="k">Sub</span>
+<a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a><span class="s1">        &lt;SetUp()&gt; _</span>
+<a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a><span class="s1">        Public Sub init()</span>
+<a id="__codelineno-11-18" name="__codelineno-11-18" href="#__codelineno-11-18"></a><span class="s1">             &#39;</span><span class="w"> </span><span class="nx">singleton</span><span class="w"> </span><span class="nx">factories</span><span class="w"> </span><span class="nx">are</span><span class="w"> </span><span class="nx">created</span>
+<a id="__codelineno-11-19" name="__codelineno-11-19" href="#__codelineno-11-19"></a><span class="w">            </span><span class="nx">factory1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">New</span><span class="w"> </span><span class="nx">XmlObjectFactory</span><span class="p">(</span><span class="nx">New</span><span class="w"> </span><span class="nx">FileStream</span><span class="p">(</span><span class="s2">&quot;spring-config-3tier-1.xml&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">FileMode</span><span class="p">.</span><span class="nx">Open</span><span class="p">))</span>
+<a id="__codelineno-11-20" name="__codelineno-11-20" href="#__codelineno-11-20"></a><span class="w">            </span><span class="nx">factory2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">New</span><span class="w"> </span><span class="nx">XmlObjectFactory</span><span class="p">(</span><span class="nx">New</span><span class="w"> </span><span class="nx">FileStream</span><span class="p">(</span><span class="s2">&quot;spring-config-3tier-2.xml&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">FileMode</span><span class="p">.</span><span class="nx">Open</span><span class="p">))</span>
+<a id="__codelineno-11-21" name="__codelineno-11-21" href="#__codelineno-11-21"></a><span class="w">        </span><span class="nx">End</span><span class="w"> </span><span class="nx">Sub</span>
 <a id="__codelineno-11-22" name="__codelineno-11-22" href="#__codelineno-11-22"></a>
-<a id="__codelineno-11-23" name="__codelineno-11-23" href="#__codelineno-11-23"></a><span class="w">        </span><span class="o">&lt;</span><span class="n">TearDown</span><span class="p">()</span><span class="o">&gt;</span><span class="w"> </span>_
-<a id="__codelineno-11-24" name="__codelineno-11-24" href="#__codelineno-11-24"></a><span class="w">        </span><span class="k">Public</span><span class="w"> </span><span class="k">Sub</span><span class="w"> </span><span class="nf">destroy</span><span class="p">()</span>
-<a id="__codelineno-11-25" name="__codelineno-11-25" href="#__codelineno-11-25"></a><span class="w">            </span><span class="c">&#39; we destroy the singletons</span>
-<a id="__codelineno-11-26" name="__codelineno-11-26" href="#__codelineno-11-26"></a><span class="w">            </span><span class="n">factory1</span><span class="p">.</span><span class="n">Dispose</span><span class="p">()</span>
-<a id="__codelineno-11-27" name="__codelineno-11-27" href="#__codelineno-11-27"></a><span class="w">            </span><span class="n">factory2</span><span class="p">.</span><span class="n">Dispose</span><span class="p">()</span>
-<a id="__codelineno-11-28" name="__codelineno-11-28" href="#__codelineno-11-28"></a><span class="w">            </span><span class="c">&#39; we free the singletons factories</span>
-<a id="__codelineno-11-29" name="__codelineno-11-29" href="#__codelineno-11-29"></a><span class="w">            </span><span class="n">factory1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">Nothing</span>
-<a id="__codelineno-11-30" name="__codelineno-11-30" href="#__codelineno-11-30"></a><span class="w">            </span><span class="n">factory2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">Nothing</span>
-<a id="__codelineno-11-31" name="__codelineno-11-31" href="#__codelineno-11-31"></a><span class="w">        </span><span class="k">End</span><span class="w"> </span><span class="k">Sub</span>
+<a id="__codelineno-11-23" name="__codelineno-11-23" href="#__codelineno-11-23"></a><span class="w">        </span><span class="o">&lt;</span><span class="nx">TearDown</span><span class="p">()</span><span class="o">&gt;</span><span class="w"> </span><span class="nx">_</span>
+<a id="__codelineno-11-24" name="__codelineno-11-24" href="#__codelineno-11-24"></a><span class="w">        </span><span class="nx">Public</span><span class="w"> </span><span class="nx">Sub</span><span class="w"> </span><span class="nx">destroy</span><span class="p">()</span>
+<a id="__codelineno-11-25" name="__codelineno-11-25" href="#__codelineno-11-25"></a><span class="w">             </span><span class="s1">&#39; we destroy the singletons</span>
+<a id="__codelineno-11-26" name="__codelineno-11-26" href="#__codelineno-11-26"></a><span class="s1">            factory1.Dispose()</span>
+<a id="__codelineno-11-27" name="__codelineno-11-27" href="#__codelineno-11-27"></a><span class="s1">            factory2.Dispose()</span>
+<a id="__codelineno-11-28" name="__codelineno-11-28" href="#__codelineno-11-28"></a><span class="s1">             &#39;</span><span class="w"> </span><span class="nx">we</span><span class="w"> </span><span class="nx">free</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">singletons</span><span class="w"> </span><span class="nx">factories</span>
+<a id="__codelineno-11-29" name="__codelineno-11-29" href="#__codelineno-11-29"></a><span class="w">            </span><span class="nx">factory1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Nothing</span>
+<a id="__codelineno-11-30" name="__codelineno-11-30" href="#__codelineno-11-30"></a><span class="w">            </span><span class="nx">factory2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Nothing</span>
+<a id="__codelineno-11-31" name="__codelineno-11-31" href="#__codelineno-11-31"></a><span class="w">        </span><span class="nx">End</span><span class="w"> </span><span class="nx">Sub</span>
 <a id="__codelineno-11-32" name="__codelineno-11-32" href="#__codelineno-11-32"></a>
-<a id="__codelineno-11-33" name="__codelineno-11-33" href="#__codelineno-11-33"></a><span class="w">        </span><span class="o">&lt;</span><span class="n">Test</span><span class="p">()</span><span class="o">&gt;</span><span class="w"> </span>_
-<a id="__codelineno-11-34" name="__codelineno-11-34" href="#__codelineno-11-34"></a><span class="w">        </span><span class="k">Public</span><span class="w"> </span><span class="k">Sub</span><span class="w"> </span><span class="nf">test</span><span class="p">()</span>
-<a id="__codelineno-11-35" name="__codelineno-11-35" href="#__codelineno-11-35"></a><span class="w">            </span><span class="c">&#39;we retrieve an implementation of the IControl interface</span>
-<a id="__codelineno-11-36" name="__codelineno-11-36" href="#__codelineno-11-36"></a><span class="w">            </span><span class="k">Dim</span><span class="w"> </span><span class="n">control1</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="n">IControl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">CType</span><span class="p">(</span><span class="n">factory1</span><span class="p">.</span><span class="n">GetObject</span><span class="p">(</span><span class="s">&quot;control&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">IControl</span><span class="p">)</span>
-<a id="__codelineno-11-37" name="__codelineno-11-37" href="#__codelineno-11-37"></a><span class="w">            </span><span class="c">&#39; we use the</span>
-<a id="__codelineno-11-38" name="__codelineno-11-38" href="#__codelineno-11-38"></a><span class="w">            </span><span class="k">Dim</span><span class="w"> </span><span class="n">a1</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Integer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="n">b1</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Integer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span>
-<a id="__codelineno-11-39" name="__codelineno-11-39" href="#__codelineno-11-39"></a><span class="w">            </span><span class="k">Dim</span><span class="w"> </span><span class="n">res1</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Integer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">control1</span><span class="p">.</span><span class="n">doSomethingInControlLayer</span><span class="p">(</span><span class="n">a1</span><span class="p">,</span><span class="w"> </span><span class="n">b1</span><span class="p">)</span>
-<a id="__codelineno-11-40" name="__codelineno-11-40" href="#__codelineno-11-40"></a><span class="w">            </span><span class="n">Assert</span><span class="p">.</span><span class="n">AreEqual</span><span class="p">(</span><span class="mi">34</span><span class="p">,</span><span class="w"> </span><span class="n">res1</span><span class="p">)</span>
-<a id="__codelineno-11-41" name="__codelineno-11-41" href="#__codelineno-11-41"></a><span class="w">            </span><span class="c">&#39; we retrieve another implementation of the IControl interface</span>
-<a id="__codelineno-11-42" name="__codelineno-11-42" href="#__codelineno-11-42"></a><span class="w">            </span><span class="k">Dim</span><span class="w"> </span><span class="n">control2</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="n">IControl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">CType</span><span class="p">(</span><span class="n">factory2</span><span class="p">.</span><span class="n">GetObject</span><span class="p">(</span><span class="s">&quot;control&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">IControl</span><span class="p">)</span>
-<a id="__codelineno-11-43" name="__codelineno-11-43" href="#__codelineno-11-43"></a><span class="w">            </span><span class="c">&#39; we use the</span>
-<a id="__codelineno-11-44" name="__codelineno-11-44" href="#__codelineno-11-44"></a><span class="w">            </span><span class="k">Dim</span><span class="w"> </span><span class="n">a2</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Integer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="n">b2</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Integer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span>
-<a id="__codelineno-11-45" name="__codelineno-11-45" href="#__codelineno-11-45"></a><span class="w">            </span><span class="k">Dim</span><span class="w"> </span><span class="n">res2</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Integer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">control2</span><span class="p">.</span><span class="n">doSomethingInControlLayer</span><span class="p">(</span><span class="n">a2</span><span class="p">,</span><span class="w"> </span><span class="n">b2</span><span class="p">)</span>
-<a id="__codelineno-11-46" name="__codelineno-11-46" href="#__codelineno-11-46"></a><span class="w">            </span><span class="n">Assert</span><span class="p">.</span><span class="n">AreEqual</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="n">res2</span><span class="p">)</span>
-<a id="__codelineno-11-47" name="__codelineno-11-47" href="#__codelineno-11-47"></a><span class="w">        </span><span class="k">End</span><span class="w"> </span><span class="k">Sub</span>
+<a id="__codelineno-11-33" name="__codelineno-11-33" href="#__codelineno-11-33"></a><span class="w">        </span><span class="o">&lt;</span><span class="nx">Test</span><span class="p">()</span><span class="o">&gt;</span><span class="w"> </span><span class="nx">_</span>
+<a id="__codelineno-11-34" name="__codelineno-11-34" href="#__codelineno-11-34"></a><span class="w">        </span><span class="nx">Public</span><span class="w"> </span><span class="nx">Sub</span><span class="w"> </span><span class="nx">test</span><span class="p">()</span>
+<a id="__codelineno-11-35" name="__codelineno-11-35" href="#__codelineno-11-35"></a><span class="w">             </span><span class="s1">&#39;we retrieve an implementation of the IControl interface</span>
+<a id="__codelineno-11-36" name="__codelineno-11-36" href="#__codelineno-11-36"></a><span class="s1">            Dim control1 As IControl = CType(factory1.GetObject(&quot;control&quot;), IControl)</span>
+<a id="__codelineno-11-37" name="__codelineno-11-37" href="#__codelineno-11-37"></a><span class="s1">             &#39;</span><span class="w"> </span><span class="nx">we</span><span class="w"> </span><span class="nx">use</span><span class="w"> </span><span class="nx">the</span>
+<a id="__codelineno-11-38" name="__codelineno-11-38" href="#__codelineno-11-38"></a><span class="w">            </span><span class="nx">Dim</span><span class="w"> </span><span class="nx">a1</span><span class="w"> </span><span class="nx">As</span><span class="w"> </span><span class="nx">Integer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">10</span><span class="p">,</span><span class="w"> </span><span class="nx">b1</span><span class="w"> </span><span class="nx">As</span><span class="w"> </span><span class="nx">Integer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">20</span>
+<a id="__codelineno-11-39" name="__codelineno-11-39" href="#__codelineno-11-39"></a><span class="w">            </span><span class="nx">Dim</span><span class="w"> </span><span class="nx">res1</span><span class="w"> </span><span class="nx">As</span><span class="w"> </span><span class="nx">Integer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">control1</span><span class="p">.</span><span class="nx">doSomethingInControlLayer</span><span class="p">(</span><span class="nx">a1</span><span class="p">,</span><span class="w"> </span><span class="nx">b1</span><span class="p">)</span>
+<a id="__codelineno-11-40" name="__codelineno-11-40" href="#__codelineno-11-40"></a><span class="w">            </span><span class="nx">Assert</span><span class="p">.</span><span class="nx">AreEqual</span><span class="p">(</span><span class="mf">34</span><span class="p">,</span><span class="w"> </span><span class="nx">res1</span><span class="p">)</span>
+<a id="__codelineno-11-41" name="__codelineno-11-41" href="#__codelineno-11-41"></a><span class="w">             </span><span class="s1">&#39; we retrieve another implementation of the IControl interface</span>
+<a id="__codelineno-11-42" name="__codelineno-11-42" href="#__codelineno-11-42"></a><span class="s1">            Dim control2 As IControl = CType(factory2.GetObject(&quot;control&quot;), IControl)</span>
+<a id="__codelineno-11-43" name="__codelineno-11-43" href="#__codelineno-11-43"></a><span class="s1">             &#39;</span><span class="w"> </span><span class="nx">we</span><span class="w"> </span><span class="nx">use</span><span class="w"> </span><span class="nx">the</span>
+<a id="__codelineno-11-44" name="__codelineno-11-44" href="#__codelineno-11-44"></a><span class="w">            </span><span class="nx">Dim</span><span class="w"> </span><span class="nx">a2</span><span class="w"> </span><span class="nx">As</span><span class="w"> </span><span class="nx">Integer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">10</span><span class="p">,</span><span class="w"> </span><span class="nx">b2</span><span class="w"> </span><span class="nx">As</span><span class="w"> </span><span class="nx">Integer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">20</span>
+<a id="__codelineno-11-45" name="__codelineno-11-45" href="#__codelineno-11-45"></a><span class="w">            </span><span class="nx">Dim</span><span class="w"> </span><span class="nx">res2</span><span class="w"> </span><span class="nx">As</span><span class="w"> </span><span class="nx">Integer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">control2</span><span class="p">.</span><span class="nx">doSomethingInControlLayer</span><span class="p">(</span><span class="nx">a2</span><span class="p">,</span><span class="w"> </span><span class="nx">b2</span><span class="p">)</span>
+<a id="__codelineno-11-46" name="__codelineno-11-46" href="#__codelineno-11-46"></a><span class="w">            </span><span class="nx">Assert</span><span class="p">.</span><span class="nx">AreEqual</span><span class="p">(</span><span class="o">-</span><span class="mf">10</span><span class="p">,</span><span class="w"> </span><span class="nx">res2</span><span class="p">)</span>
+<a id="__codelineno-11-47" name="__codelineno-11-47" href="#__codelineno-11-47"></a><span class="w">        </span><span class="nx">End</span><span class="w"> </span><span class="nx">Sub</span>
 <a id="__codelineno-11-48" name="__codelineno-11-48" href="#__codelineno-11-48"></a>
-<a id="__codelineno-11-49" name="__codelineno-11-49" href="#__codelineno-11-49"></a><span class="w">    </span><span class="k">End</span><span class="w"> </span><span class="k">Class</span>
-<a id="__codelineno-11-50" name="__codelineno-11-50" href="#__codelineno-11-50"></a><span class="k">End</span><span class="w"> </span><span class="k">Namespace</span>
+<a id="__codelineno-11-49" name="__codelineno-11-49" href="#__codelineno-11-49"></a><span class="w">    </span><span class="nx">End</span><span class="w"> </span><span class="nx">Class</span>
+<a id="__codelineno-11-50" name="__codelineno-11-50" href="#__codelineno-11-50"></a><span class="nx">End</span><span class="w"> </span><span class="nx">Namespace</span>
 </code></pre></div>
 <p>Running this test yields the following results:</p>
 <p><img src="images/10000000000002BE0000009B6B9368AE.png" width="562" height="124" style="width:14.861cm;height:3.281cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000002BE0000009B6B9368AE.png" /></p>
-<p>Readers viewing a color version of this document will see that the results are &quot;green,&quot; indicating that the test was successful.</p>
+<p>A reader viewing this document in version with colors will see that the results are &quot;green,&quot; indicating that the test was successful.</p>
 <h2 id="77-another-type-of-spring-configuration-file">7.7. <span style="color: #4f81bd">Another type of Spring configuration file</span></h2>
-<p>A VB.NET application can be configured using a file called [App.config]. This file is placed at the root of the Visual Studio project:</p>
+<p>A VB.net application can be configured using a file named [App.config]. This file is placed in the root of the Visual Studio project:</p>
 <p><img src="images/10000000000000B200000091EFEC80C3.png" width="178" height="145" style="width:4.71cm;height:3.836cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000000B200000091EFEC80C3.png" /></p>
 <p>Spring can utilize this configuration file. Consider the following [App.config] file, inspired by examples from the [Spring.net] documentation:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;iso-8859-1&quot; ?&gt;</span>
@@ -1051,86 +1053,86 @@
 <hr style="border:0; border-top:0.99pt solid #000000; margin:0.75em 0;" data-odt-border="top" />
 <p><strong>Note</strong>: The information below is provided with reservations. I am not sure I have correctly understood the meaning of all the elements in the configuration file above.</p>
 <hr style="border:0; border-top:0.99pt solid #000000; margin:0.75em 0;" data-odt-border="bottom" />
-<p>The XML syntax of the [App.config] file requires that it follow this format:</p>
+<p>The XML syntax of the [App.config] file requires that it follow the syntax:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nt">&lt;configuration&gt;</span>
 <a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>....
 <a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="nt">&lt;/configuration&gt;</span>
 </code></pre></div>
-<p>Management of the various sections of [App.config] can be delegated to external programs. This is what is done here in the [ConfigSections] section:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="w">    </span><span class="nt">&lt;configSections&gt;</span>
-<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="w">        </span><span class="nt">&lt;sectionGroup</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;spring&quot;</span><span class="nt">&gt;</span>
-<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="w">            </span><span class="nt">&lt;section</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;context&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;Spring.Context.Support.ContextHandler, Spring.Core&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
-<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="w">            </span><span class="nt">&lt;section</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;objects&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;Spring.Context.Support.DefaultSectionHandler, Spring.Core&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
-<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="w">        </span><span class="nt">&lt;/sectionGroup&gt;</span>
-<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="w">    </span><span class="nt">&lt;/configSections&gt;</span>
+<p>The management of the various sections of [App.config] can be delegated to external programs. This is what is done here in the [ConfigSections] section:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>    &lt;configSections&gt;
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>        &lt;sectionGroup name=&quot;spring&quot;&gt;
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>            &lt;section name=&quot;context&quot; type=&quot;Spring.Context.Support.ContextHandler, Spring.Core&quot; /&gt;
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>            &lt;section name=&quot;objects&quot; type=&quot;Spring.Context.Support.DefaultSectionHandler, Spring.Core&quot; /&gt;
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>        &lt;/sectionGroup&gt;
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>    &lt;/configSections&gt;
 </code></pre></div>
-<p>The code above means that the section named [<strong>spring/context</strong>] must be managed by the class [<strong>Spring.Context.Support.ContextHandler</strong>] found in the [<strong>Spring.Core.dll</strong>] assembly, and that the section named [<strong>spring/objects</strong>] must be handled by the class [<strong>Spring.Context.Support.DefaultSectionHandler</strong>], which is also found in the [<strong>Spring.Core.dll</strong>] assembly.</p>
-<p>The [spring/context] section is as follows:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="w">    </span><span class="nt">&lt;spring&gt;</span>
-<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="w">        </span><span class="nt">&lt;context</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;Spring.Context.Support.XmlApplicationContext, Spring.Core&quot;</span><span class="nt">&gt;</span>
-<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="w">            </span><span class="nt">&lt;resource</span><span class="w"> </span><span class="na">uri=</span><span class="s">&quot;config://spring/objects&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
-<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="w">        </span><span class="nt">&lt;/context&gt;</span>
+<p>The code above means that the section named [spring/context] must be managed by the class [Spring.Context.Support.ContextHandler], whichis found in the [Spring.Core.dll] assembly, and that the section named [spring/objects] must be handled by the [Spring.Context.Support.DefaultSectionHandler] class, which is also found in the [Spring.Core.dll] assembly.</p>
+<p>The section [spring/context] is as follows:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>    &lt;spring&gt;
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>        &lt;context type=&quot;Spring.Context.Support.XmlApplicationContext, Spring.Core&quot;&gt;
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>            &lt;resource uri=&quot;config://spring/objects&quot; /&gt;
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>        &lt;/context&gt;
 <a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>...
-<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="w">    </span><span class="nt">&lt;/spring&gt;</span>
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>    &lt;/spring&gt;
 </code></pre></div>
-<p>This appears to indicate that the [spring/objects] section of the configuration file must be managed by the [<strong>Spring.Context.Support.XmlApplicationHandler</strong>] class, which can be found in the [<strong>Spring.Core.dll</strong>] assembly. This class must use an XML resource located at [config://spring/objects], i.e., the [spring/objects] section of the current configuration file.</p>
+<p>This appears to indicate that the [spring/objects] section of the configuration file must be managed by the [Spring.Context.Support.XmlApplicationHandler] class, which can be found in the [Spring.Core.dll] assembly. This class must use a resource named XML, located at [ config://spring/objects], c.a.d, and the [spring/objects] section of the current configuration file.</p>
 <p>In the [spring/objects] section, we find the Spring syntax we are now familiar with. </p>
-<p>In the <strong>&lt;objects&gt;... &lt;/objects&gt;</strong> section of the [<strong>App.config</strong>] file, we have defined two possible configurations for our 3-tier application:</p>
+<p>In the <strong>&lt;objects&gt;... &lt;/objects&gt;</strong> section of the [App.config] file, we have defined two possible configurations for our 3-tier application:</p>
 <ul>
   <li>one that uses version 1 of the interface implementations
   </li>
-  <li>another that uses version 2 of those same implementations
+  <li>another that uses version 2 of these same implementations
   </li>
 </ul>
 
-<p>Now, how do you use the [App.config] file?</p>
+<p>Now, how do we use the [App.config] file?</p>
 <p>The following code shows a console application that uses the previous [App.config] file:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="k">Imports</span><span class="w"> </span><span class="nn">System</span>
-<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="k">Imports</span><span class="w"> </span><span class="nn">Spring.Context</span>
-<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="k">Imports</span><span class="w"> </span><span class="nn">System.IO</span>
-<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="k">Imports</span><span class="w"> </span><span class="nn">NUnit.Framework</span>
-<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="k">Imports</span><span class="w"> </span><span class="nn">istia.st.spring3tier.control</span>
-<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="k">Imports</span><span class="w"> </span><span class="nn">istia.st.spring3tier.domain</span>
-<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="k">Imports</span><span class="w"> </span><span class="nn">System.Configuration</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="n">Imports</span><span class="w"> </span><span class="n">System</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="n">Imports</span><span class="w"> </span><span class="n">Spring</span><span class="p">.</span><span class="n">Context</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="n">Imports</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">IO</span>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="n">Imports</span><span class="w"> </span><span class="n">NUnit</span><span class="p">.</span><span class="n">Framework</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="n">Imports</span><span class="w"> </span><span class="n">istia</span><span class="p">.</span><span class="n">st</span><span class="p">.</span><span class="n">spring3tier</span><span class="p">.</span><span class="n">control</span>
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="n">Imports</span><span class="w"> </span><span class="n">istia</span><span class="p">.</span><span class="n">st</span><span class="p">.</span><span class="n">spring3tier</span><span class="p">.</span><span class="n">domain</span>
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="n">Imports</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Configuration</span>
 <a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>
-<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a><span class="k">Namespace</span><span class="w"> </span><span class="nn">istia.st.springioc.tests</span>
+<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a><span class="n">Namespace</span><span class="w"> </span><span class="n">istia</span><span class="p">.</span><span class="n">st</span><span class="p">.</span><span class="n">springioc</span><span class="p">.</span><span class="n">tests</span>
 <a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a>
-<a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a><span class="w">    </span><span class="k">Module</span><span class="w"> </span><span class="nn">MainTestSpring3tier</span>
+<a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a><span class="w">    </span><span class="n">Module</span><span class="w"> </span><span class="n">MainTestSpring3tier</span>
 <a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a>
-<a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a><span class="w">        </span><span class="k">Public</span><span class="w"> </span><span class="k">Sub</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
-<a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a><span class="w">            </span><span class="c">&#39; the Spring context that will allow us to retrieve singletons</span>
-<a id="__codelineno-16-15" name="__codelineno-16-15" href="#__codelineno-16-15"></a><span class="w">            </span><span class="k">Dim</span><span class="w"> </span><span class="n">contexte</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="n">IApplicationContext</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">CType</span><span class="p">(</span><span class="n">ConfigurationSettings</span><span class="p">.</span><span class="n">GetConfig</span><span class="p">(</span><span class="s">&quot;spring/context&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">IApplicationContext</span><span class="p">)</span>
-<a id="__codelineno-16-16" name="__codelineno-16-16" href="#__codelineno-16-16"></a><span class="w">            </span><span class="c">&#39; we retrieve a 1st implementation of the IControl interface</span>
-<a id="__codelineno-16-17" name="__codelineno-16-17" href="#__codelineno-16-17"></a><span class="w">            </span><span class="k">Dim</span><span class="w"> </span><span class="n">control1</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="n">IControl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">CType</span><span class="p">(</span><span class="n">contexte</span><span class="p">.</span><span class="n">GetObject</span><span class="p">(</span><span class="s">&quot;control1&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">IControl</span><span class="p">)</span>
-<a id="__codelineno-16-18" name="__codelineno-16-18" href="#__codelineno-16-18"></a><span class="w">            </span><span class="c">&#39; we use the</span>
-<a id="__codelineno-16-19" name="__codelineno-16-19" href="#__codelineno-16-19"></a><span class="w">            </span><span class="k">Dim</span><span class="w"> </span><span class="n">a1</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Integer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="n">b1</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Integer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span>
+<a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a><span class="w">        </span><span class="n">Public</span><span class="w"> </span><span class="n">Sub</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+<a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a><span class="w">             </span><span class="err">&#39;</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">Spring</span><span class="w"> </span><span class="n">context</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">allow</span><span class="w"> </span><span class="n">us</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">retrieve</span><span class="w"> </span><span class="n">singletons</span>
+<a id="__codelineno-16-15" name="__codelineno-16-15" href="#__codelineno-16-15"></a><span class="w">            </span><span class="n">Dim</span><span class="w"> </span><span class="n">contexte</span><span class="w"> </span><span class="n">As</span><span class="w"> </span><span class="n">IApplicationContext</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CType</span><span class="p">(</span><span class="n">ConfigurationSettings</span><span class="p">.</span><span class="n">GetConfig</span><span class="p">(</span><span class="s">&quot;spring/context&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">IApplicationContext</span><span class="p">)</span>
+<a id="__codelineno-16-16" name="__codelineno-16-16" href="#__codelineno-16-16"></a><span class="w">             </span><span class="err">&#39;</span><span class="w"> </span><span class="n">we</span><span class="w"> </span><span class="n">retrieve</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="mi">1</span><span class="n">st</span><span class="w"> </span><span class="n">implementation</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">IControl</span><span class="w"> </span><span class="k">interface</span>
+<a id="__codelineno-16-17" name="__codelineno-16-17" href="#__codelineno-16-17"></a><span class="w">            </span><span class="n">Dim</span><span class="w"> </span><span class="n">control1</span><span class="w"> </span><span class="n">As</span><span class="w"> </span><span class="n">IControl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CType</span><span class="p">(</span><span class="n">contexte</span><span class="p">.</span><span class="n">GetObject</span><span class="p">(</span><span class="s">&quot;control1&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">IControl</span><span class="p">)</span>
+<a id="__codelineno-16-18" name="__codelineno-16-18" href="#__codelineno-16-18"></a><span class="w">             </span><span class="err">&#39;</span><span class="w"> </span><span class="n">we</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="n">the</span>
+<a id="__codelineno-16-19" name="__codelineno-16-19" href="#__codelineno-16-19"></a><span class="w">            </span><span class="n">Dim</span><span class="w"> </span><span class="n">a1</span><span class="w"> </span><span class="n">As</span><span class="w"> </span><span class="n">Integer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="n">b1</span><span class="w"> </span><span class="n">As</span><span class="w"> </span><span class="n">Integer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span>
 <a id="__codelineno-16-20" name="__codelineno-16-20" href="#__codelineno-16-20"></a><span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;res1({0},{1})={2}&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">a1</span><span class="p">,</span><span class="w"> </span><span class="n">b1</span><span class="p">,</span><span class="w"> </span><span class="n">control1</span><span class="p">.</span><span class="n">doSomethingInControlLayer</span><span class="p">(</span><span class="n">a1</span><span class="p">,</span><span class="w"> </span><span class="n">b1</span><span class="p">))</span>
-<a id="__codelineno-16-21" name="__codelineno-16-21" href="#__codelineno-16-21"></a><span class="w">            </span><span class="c">&#39; we retrieve another implementation of the IControl interface</span>
-<a id="__codelineno-16-22" name="__codelineno-16-22" href="#__codelineno-16-22"></a><span class="w">            </span><span class="k">Dim</span><span class="w"> </span><span class="n">control2</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="n">IControl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">CType</span><span class="p">(</span><span class="n">contexte</span><span class="p">.</span><span class="n">GetObject</span><span class="p">(</span><span class="s">&quot;control2&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">IControl</span><span class="p">)</span>
-<a id="__codelineno-16-23" name="__codelineno-16-23" href="#__codelineno-16-23"></a><span class="w">            </span><span class="c">&#39; we use the</span>
-<a id="__codelineno-16-24" name="__codelineno-16-24" href="#__codelineno-16-24"></a><span class="w">            </span><span class="k">Dim</span><span class="w"> </span><span class="n">a2</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Integer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="n">b2</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Integer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span>
+<a id="__codelineno-16-21" name="__codelineno-16-21" href="#__codelineno-16-21"></a><span class="w">             </span><span class="err">&#39;</span><span class="w"> </span><span class="n">we</span><span class="w"> </span><span class="n">retrieve</span><span class="w"> </span><span class="n">another</span><span class="w"> </span><span class="n">implementation</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">IControl</span><span class="w"> </span><span class="k">interface</span>
+<a id="__codelineno-16-22" name="__codelineno-16-22" href="#__codelineno-16-22"></a><span class="w">            </span><span class="n">Dim</span><span class="w"> </span><span class="n">control2</span><span class="w"> </span><span class="n">As</span><span class="w"> </span><span class="n">IControl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CType</span><span class="p">(</span><span class="n">contexte</span><span class="p">.</span><span class="n">GetObject</span><span class="p">(</span><span class="s">&quot;control2&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">IControl</span><span class="p">)</span>
+<a id="__codelineno-16-23" name="__codelineno-16-23" href="#__codelineno-16-23"></a><span class="w">             </span><span class="err">&#39;</span><span class="w"> </span><span class="n">we</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="n">the</span>
+<a id="__codelineno-16-24" name="__codelineno-16-24" href="#__codelineno-16-24"></a><span class="w">            </span><span class="n">Dim</span><span class="w"> </span><span class="n">a2</span><span class="w"> </span><span class="n">As</span><span class="w"> </span><span class="n">Integer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="n">b2</span><span class="w"> </span><span class="n">As</span><span class="w"> </span><span class="n">Integer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span>
 <a id="__codelineno-16-25" name="__codelineno-16-25" href="#__codelineno-16-25"></a><span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;res2({0},{1})={2}&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">a2</span><span class="p">,</span><span class="w"> </span><span class="n">b2</span><span class="p">,</span><span class="w"> </span><span class="n">control2</span><span class="p">.</span><span class="n">doSomethingInControlLayer</span><span class="p">(</span><span class="n">a2</span><span class="p">,</span><span class="w"> </span><span class="n">b2</span><span class="p">))</span>
-<a id="__codelineno-16-26" name="__codelineno-16-26" href="#__codelineno-16-26"></a><span class="w">            </span><span class="c">&#39; break</span>
+<a id="__codelineno-16-26" name="__codelineno-16-26" href="#__codelineno-16-26"></a><span class="w">             </span><span class="err">&#39;</span><span class="w"> </span><span class="k">break</span>
 <a id="__codelineno-16-27" name="__codelineno-16-27" href="#__codelineno-16-27"></a><span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;Tapez [entrée] pour continuer...&quot;</span><span class="p">)</span>
 <a id="__codelineno-16-28" name="__codelineno-16-28" href="#__codelineno-16-28"></a><span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">ReadLine</span><span class="p">()</span>
-<a id="__codelineno-16-29" name="__codelineno-16-29" href="#__codelineno-16-29"></a><span class="w">        </span><span class="k">End</span><span class="w"> </span><span class="k">Sub</span>
+<a id="__codelineno-16-29" name="__codelineno-16-29" href="#__codelineno-16-29"></a><span class="w">        </span><span class="n">End</span><span class="w"> </span><span class="n">Sub</span>
 <a id="__codelineno-16-30" name="__codelineno-16-30" href="#__codelineno-16-30"></a>
-<a id="__codelineno-16-31" name="__codelineno-16-31" href="#__codelineno-16-31"></a><span class="w">    </span><span class="k">End</span><span class="w"> </span><span class="k">Module</span>
-<a id="__codelineno-16-32" name="__codelineno-16-32" href="#__codelineno-16-32"></a><span class="k">End</span><span class="w"> </span><span class="k">Namespace</span>
+<a id="__codelineno-16-31" name="__codelineno-16-31" href="#__codelineno-16-31"></a><span class="w">    </span><span class="n">End</span><span class="w"> </span><span class="n">Module</span>
+<a id="__codelineno-16-32" name="__codelineno-16-32" href="#__codelineno-16-32"></a><span class="n">End</span><span class="w"> </span><span class="n">Namespace</span>
 </code></pre></div>
 <p><strong>Comments</strong>:</p>
 <ul>
-  <li>In the NUnit examples we’ve used so far, we used an [XmlObjectFactory] object to obtain the singletons we needed. Here, the object used is of type [IApplicationContext], a Spring interface. It is obtained from [App.config] using the [ConfigurationSettings] class, a class traditionally used in .NET to process configuration files.
+  <li>In the NUnit examples we have used so far, we used a [XmlObjectFactory] object to obtain the singletons we needed. Here, the object used is of type [IApplicationContext], a Spring interface. It is obtained from [App.config] via the [ConfigurationSettings] class, a class traditionally used in .NET to process configuration files.
   </li>
-  <li>We request the handler for the [spring/context] section. If we refer to the [App.config] file, we see that this handler is of type [XmlApplicationContext] and is responsible for managing the [spring/objects] section of [App.config].
+  <li>We request the handler for the [spring/context] section. If we refer to the file [App.config], we find that it is of type [XmlApplicationContext] and that it is responsible for managing the section [spring/objects] of [App.config].
   </li>
-  <li>Once the [IApplicationContext] object is retrieved, it is used just like the [XmlObjectFactory] object we have been using up to now.
+  <li>Once the object of type [IApplicationContext] has been retrieved, it is used in the same way as the [XmlObjectFactory] object we have been using up to now.
   </li>
 </ul>
 
 <p>The previous program is named [MainTestSpring3tier.vb] and is located in the [tests] package:</p>
 <p><img src="images/10000000000001060000010C93E15CB4.png" width="210" height="214" style="width:5.547cm;height:5.674cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000001060000010C93E15CB4.png" /></p>
-<p>The [spring3tier] project is configured so that [MainTestSpring3tier]:</p>
+<p>The [spring3tier] project is configured for [MainTestSpring3tier]:</p>
 <p><img src="images/100000000000023D000000B906CF66BC.png" width="573" height="185" style="width:15.159cm;height:4.895cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000000000023D000000B906CF66BC.png" /></p>
 <p>Running the project yields the following results:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>res1(10,20)=34
@@ -1138,34 +1140,34 @@
 <a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>Tapez [entrée] pour continuer...
 </code></pre></div>
 <h2 id="78-conclusion">7.8. <span style="color: #4f81bd">Conclusion</span></h2>
-<p>The Spring framework offers true flexibility in both application architecture and configuration. We used the IoC concept, one of Spring’s two pillars. The other pillar is AOP (Aspect-Oriented Programming), which we did not cover. It allows you to add “behavior” to a class method via configuration without modifying the method’s code. In simple terms, AOP allows you to filter calls to certain methods:</p>
-<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/100000000000041C000000C4498DF1C9.png" width="526" height="98" style="display:inline-block; margin:4px;width:13.917cm;height:2.593cm;" class="odt-zoomable" data-zoom-src="images/100000000000041C000000C4498DF1C9.png" /></td></tr></table>
+<p>The Spring framework offers true flexibility in both application architecture and configuration. We used the IoC concept, one of Spring’s two pillars. The other pillar is AOP (Aspect-Oriented Programming), which we have not covered. It allows you to add &quot;behavior&quot; to a class method through configuration without modifying the method’s code. In simple terms, AOP allows you to filter calls to certain methods:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/100000000000041C000000C4498DF1C9.png" width="526" height="98" style="display:inline-block; margin:4px;width:13.917cm;height:2.593cm;" class="odt-zoomable" data-zoom-src="images/100000000000041C000000C4498DF1C9.png" /></td></tr></table>
 
 <ul>
   <li>the filter can be executed before or after the target method M, or both.
   </li>
   <li>The method M is unaware of these filters. They are defined in the Spring configuration file.
   </li>
-  <li>the code of method M is not modified. Filters are Java classes that must be implemented. Spring provides predefined filters, particularly for managing DBMS transactions.
+  <li>The code of method M is not modified. Filters are Java classes to be constructed. Spring provides predefined filters, notably for managing SGBD transactions.
   </li>
   <li>Filters are beans and, as such, are defined in the Spring configuration file as beans.
   </li>
 </ul>
 
-<p>A common filter is the transaction filter. Consider a business layer method M that performs two inseparable operations on data (a unit of work). It calls two DAO layer methods, M1 and M2, to perform these two operations.</p>
-<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/100000000000023B00000111AB925E35.png" width="286" height="137" style="display:inline-block; margin:4px;width:7.555cm;height:3.612cm;" class="odt-zoomable" data-zoom-src="images/100000000000023B00000111AB925E35.png" /></td></tr></table>
+<p>A common filter is the transactional filter. Consider a method M in the business layer that performs two inseparable operations on data (a unit of work). It calls two methods, M1 and M2, in the DAO layer to perform these two operations.</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/100000000000023B00000111AB925E35.png" width="286" height="137" style="display:inline-block; margin:4px;width:7.555cm;height:3.612cm;" class="odt-zoomable" data-zoom-src="images/100000000000023B00000111AB925E35.png" /></td></tr></table>
 
-<p>Because it is in the business layer, method M abstracts away the underlying data storage. It does not, for example, need to assume that the data is in a DBMS and that it needs to place the two calls to methods M1 and M2 within a DBMS transaction. It is up to the DAO layer to handle these details. One solution to the previous problem is to create a method in the DAO layer that would itself call methods M1 and M2, wrapping these calls within a DBMS transaction.</p>
-<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/100000000000034B0000013F1B7FA371.png" width="422" height="159" style="display:inline-block; margin:4px;width:11.153cm;height:4.219cm;" class="odt-zoomable" data-zoom-src="images/100000000000034B0000013F1B7FA371.png" /></td></tr></table>
+<p>Because it is in the business layer, method M abstracts away the data storage. It does not, for example, need to assume that the data is in a SGBD or that it needs to place the two calls to methods M1 and M2 within a SGBD transaction. It is up to the DAO layer to handle these details. One solution to the previous problem is to create a method in the DAO layer that would itself call methods M1 and M2, calls that it would enclose within a SGBD transaction.</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/100000000000034B0000013F1B7FA371.png" width="422" height="159" style="display:inline-block; margin:4px;width:11.153cm;height:4.219cm;" class="odt-zoomable" data-zoom-src="images/100000000000034B0000013F1B7FA371.png" /></td></tr></table>
 
 <p>The AOP filtering solution is more flexible. It allows you to define a filter that, before calling M, will start a transaction and, after the call, will perform a commit or rollback as appropriate.</p>
-<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/1000000000000518000000B9BB4915E7.png" width="652" height="92" style="display:inline-block; margin:4px;width:17.251cm;height:2.447cm;" class="odt-zoomable" data-zoom-src="images/1000000000000518000000B9BB4915E7.png" /></td></tr></table>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/1000000000000518000000B9BB4915E7.png" width="652" height="92" style="display:inline-block; margin:4px;width:17.251cm;height:2.447cm;" class="odt-zoomable" data-zoom-src="images/1000000000000518000000B9BB4915E7.png" /></td></tr></table>
 
 <p>There are several advantages to this approach:</p>
 <ul>
   <li>once the filter is defined, it can be applied to multiple methods, for example, all those that require a transaction
   </li>
-  <li>the filtered methods do not need to be rewritten
+  <li>the methods filtered in this way do not need to be rewritten
   </li>
   <li>since the filters to be used are defined by configuration, they can be changed
   </li>

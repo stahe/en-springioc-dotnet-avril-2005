@@ -57,6 +57,8 @@
     
       <link rel="stylesheet" href="stylesheets/focus.css">
     
+      <link rel="stylesheet" href="stylesheets/bidi.css">
+    
     <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -364,7 +366,7 @@
   <span class="md-ellipsis">
     
   
-    3. Inversion of Control (IoC)
+    3. Inversion of Control IoC
   
 
     
@@ -512,7 +514,7 @@
   <a href="#62-the-data-access-layer" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6.2. The Data Access Layer
+        6.2. The data access layer
       
     </span>
   </a>
@@ -635,68 +637,68 @@
 <p>Here, we will use an example to explore how Spring can be used to configure three-tier applications. A common example of this type of application is web applications.</p>
 <h2 id="61-the-problem">6.1. <span style="color: #4f81bd">The Problem</span></h2>
 <p>We want to build a three-tier application with the following structure:</p>
-<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/10000000000006D1000001251119C6A2.png" width="680" height="114" style="display:inline-block; margin:4px;width:17.997cm;height:3.022cm;" class="odt-zoomable" data-zoom-src="images/10000000000006D1000001251119C6A2.png" /></td></tr></table>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000006D1000001251119C6A2.png" width="680" height="114" style="display:inline-block; margin:4px;width:17.997cm;height:3.022cm;" class="odt-zoomable" data-zoom-src="images/10000000000006D1000001251119C6A2.png" /></td></tr></table>
 
 <ul>
-  <li>The three layers will be made independent through the use of interfaces
+  <li>the three layers will be made independent through the use of interfaces
   </li>
   <li>The integration of the three layers will be handled by Spring
   </li>
-  <li>We will create separate packages for each of the three layers, which we will call [<b>control]</b>, [<b>domain], </b>and [<b>dao]</b>. An additional [<b>tests] </b>package will contain the test applications.
+  <li>We will create separate packages for each of the three layers, which we will name [control], [domain], and [dao]. An additional package, [tests], will contain the test applications.
   </li>
 </ul>
-<h2 id="62-the-data-access-layer">6.2. <span style="color: #4f81bd">The Data Access Layer</span></h2>
+<h2 id="62-the-data-access-layer">6.2. <span style="color: #4f81bd">The data access layer</span></h2>
 <p>The DAO layer will implement the following interface:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">Namespace</span><span class="w"> </span><span class="nn">istia.st.spring3tier.dao</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="k">Public</span><span class="w"> </span><span class="k">Interface</span><span class="w"> </span><span class="n">IDao</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">        </span><span class="c">&#39; do something in the diaper [dao]</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">        </span><span class="k">Function</span><span class="w"> </span><span class="nf">doSomethingInDaoLayer</span><span class="p">(</span><span class="k">ByVal</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Integer</span><span class="p">,</span><span class="w"> </span><span class="k">ByVal</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Integer</span><span class="p">)</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Integer</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="k">End</span><span class="w"> </span><span class="k">Interface</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="k">End</span><span class="w"> </span><span class="k">Namespace</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Namespace istia.st.spring3tier.dao
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    Public Interface IDao
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>         &#39; do something in the [dao] layer
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>        Function doSomethingInDaoLayer(ByVal a As Integer, ByVal b As Integer) As Integer
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    End Interface
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>End Namespace
 </code></pre></div>
 <ul>
-  <li>Write two classes, <b>Dao1Impl1 </b>and <b>Dao1Impl2</b>, that implement the <b>IDao</b> interface. The <b>Dao1Impl1</b>.<b>doSomethingInDaoLayer </b>method will return a+b, and the <b>Dao1Impl2</b>.<b>doSomethingInDaoLayer </b>method will return a-b.
+  <li>Write two classes, <b>Dao1Impl1 </b>and <b>Dao1Impl2, </b>that implement the <b>IDao</b> interface. The method <b>Dao1Impl1</b>.<b>doSomethingInDaoLayer </b>will return a+b, and the method <b>Dao1Impl2</b>.<b>doSomethingInDaoLayer </b>will return a-b.
   </li>
-  <li>Write a NUnit test class to test the two previous classes
+  <li>Write a test class NUnit that tests the two previous classes
   </li>
 </ul>
 <h2 id="63-the-business-layer">6.3. <span style="color: #4f81bd">The business layer</span></h2>
 <p>The business layer will implement the following interface:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">Namespace</span><span class="w"> </span><span class="nn">istia.st.spring3tier.domain</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="k">Public</span><span class="w"> </span><span class="k">Interface</span><span class="w"> </span><span class="n">IDomain</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">        </span><span class="c">&#39; do something in the [domain] layer</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">        </span><span class="k">Function</span><span class="w"> </span><span class="nf">doSomethingInDomainLayer</span><span class="p">(</span><span class="k">ByVal</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Integer</span><span class="p">,</span><span class="w"> </span><span class="k">ByVal</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Integer</span><span class="p">)</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Integer</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="k">End</span><span class="w"> </span><span class="k">Interface</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="k">End</span><span class="w"> </span><span class="k">Namespace</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Namespace istia.st.spring3tier.domain
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    Public Interface IDomain
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>         &#39; do something in the [domain] layer
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>        Function doSomethingInDomainLayer(ByVal a As Integer, ByVal b As Integer) As Integer
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    End Interface
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>End Namespace
 </code></pre></div>
 <ul>
-  <li>Write two classes, <b>Domain1Impl1 </b>and <b>Domain1Impl2, </b>that implement the <b>IDomain</b> interface. These classes will have a private field of type <b>IDao </b>that can be initialized via a public property. The <b>doSomethingInDomainLayer</b> method of the [<b>DomainImpl1] </b>class will increment a and b by one, then pass these two parameters to the <b>doSomethingInDaoLayer</b> method of the received <b>IDao1</b> object. The <b>doSomethingInDomainLayer</b> method of the [Domain1Impl2] class will decrement a and b by one before doing the same thing.
+  <li>Write two classes, <b>Domain1Impl1 </b>and <b>Domain1Impl2</b>, that implement the <b>IDomain</b> interface. These classes will have a private field of type <b>IDao </b>that can be initialized via a public property. The <b>doSomethingInDomainLayer</b> method of the [DomainImpl1] class will increment a and b by one, then pass these two parameters to the <b>doSomethingInDaoLayer</b> method of the received object of type <b>IDao1</b>. The <b>doSomethingInDomainLayer</b> method of the [<b>Domain1Impl2elle</b>] class will decrement a and b by one before doing the same thing.
   </li>
-  <li>Write a NUnit test class to test the two previous classes
+  <li>Write a test class NUnit that tests the two previous classes
   </li>
 </ul>
-<h2 id="64-the-user-interface-layer">6.4. <span style="color: #4f81bd"><strong>The user interface layer</strong></span></h2>
+<h2 id="64-the-user-interface-layer">6.4. <span style="color: #4f81bd">The user interface layer</span></h2>
 <p>The user interface layer will implement the following interface:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">Namespace</span><span class="w"> </span><span class="nn">istia.st.spring3tier.control</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="k">Public</span><span class="w"> </span><span class="k">Interface</span><span class="w"> </span><span class="n">IControl</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">        </span><span class="c">&#39; do something in the [control] layer</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">        </span><span class="k">Function</span><span class="w"> </span><span class="nf">doSomethingInControlLayer</span><span class="p">(</span><span class="k">ByVal</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Integer</span><span class="p">,</span><span class="w"> </span><span class="k">ByVal</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Integer</span><span class="p">)</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Integer</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="k">End</span><span class="w"> </span><span class="k">Interface</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="k">End</span><span class="w"> </span><span class="k">Namespace</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Namespace istia.st.spring3tier.control
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    Public Interface IControl
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>         &#39; do something in the [control] layer
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>        Function doSomethingInControlLayer(ByVal a As Integer, ByVal b As Integer) As Integer
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    End Interface
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>End Namespace
 </code></pre></div>
 <ul>
-  <li>Write two classes, <b>Control1Impl1 </b>and <b>Control1Impl2, </b>that implement the <b>IControl1</b> interface. These classes will have a private field of type <b>IDomain </b>that can be initialized via a public property. The <b>doSomethingInControlLayer</b> method of the [<b>Control1Impl1] </b>class will increment a and b by one, then pass these two parameters to the <b>doSomethingInDomainLayer</b> method of the received <b>IDomain1</b> object. The <b>doSomethingInControlLayer</b> method of the [<b>Control1Impl2] </b>class, on the other hand, will decrement a and b by one before doing the same thing.
+  <li>Write two classes, <b>Control1Impl1 </b>and <b>Control1Impl2</b>, that implement the <b>IContro1</b> interface. These classes will have a private field of type <b>IDomain </b>that can be initialized via a public property. The <b>doSomethingInControlLayer</b> method of the [Control1Impl1] class will increment a and b by one, then pass these two parameters to the <b>doSomethingInDomainLayer</b> method of the received object of type <b>IDomain1</b>. The <b>doSomethingInControlLayer</b> method of the [Control11Impl2] class, on the other hand, will decrement a and b by one before doing the same thing.
   </li>
-  <li>Write a NUnit test class to test the two previous classes
+  <li>Write a test class NUnit to test the two previous classes
   </li>
 </ul>
 <h2 id="65-integration-with-spring">6.5. <span style="color: #4f81bd">Integration with Spring</span></h2>
 <ul>
   <li>Write a Spring configuration file that will determine which classes each of the three previous layers should use
   </li>
-  <li>Write a NUnit test class using different Spring configurations to highlight the flexibility of the application
+  <li>Write a test class NUnit using different Spring configurations to highlight the flexibility of the application
   </li>
-  <li>Write a standalone application (main method) that passes two parameters to the [doSomethingInControlLayer] method of the implemented <b>IControl</b> interface and displays the result returned by the interface.
+  <li>Write a standalone application (main method) that passes two parameters to the [doSomethingInControlLayer] method of the implemented <b>IControl</b> interface and displays the result rendered by the interface.
   </li>
 </ul>
 

@@ -55,6 +55,8 @@
     
       <link rel="stylesheet" href="stylesheets/focus.css">
     
+      <link rel="stylesheet" href="stylesheets/bidi.css">
+    
     <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -362,7 +364,7 @@
   <span class="md-ellipsis">
     
   
-    3. Inversion of Control (IoC)
+    3. Inversion of Control IoC
   
 
     
@@ -561,10 +563,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#82-where-can-you-find-nunit" class="md-nav__link">
+  <a href="#82-where-can-i-find-nunit" class="md-nav__link">
     <span class="md-ellipsis">
       
-        8.2. Where can you find NUnit?
+        8.2. Where can I find Nunit?
       
     </span>
   </a>
@@ -598,9 +600,9 @@
 
 <h1 id="8-appendices">8. <span style="color: #365f91">Appendices</span></h1>
 <h2 id="81-where-can-i-find-spring">8.1. <span style="color: #4f81bd">Where can I find Spring?</span></h2>
-<p>The main Spring website is [<a href="http://www.springframework.org/"><u><span style="color: #0563c1">http://www.springframework.org/</span></u></a>]. This is the site for the Java version. The .NET version, currently under development (April 2005), can be found at [<a href="http://www.springframework.net/"><u><span style="color: #0563c1">http://www.springframework.net/</span></u></a>].</p>
+<p>The main Spring website is [http://www.springframework.org/]. This is the Java website. The version .NET currently under development (April 2005) is at url [http://www.springframework.net/].</p>
 <p><img src="images/100000000000024C000000FE6C7B1B5C.png" width="588" height="254" style="width:15.556cm;height:6.72cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000000000024C000000FE6C7B1B5C.png" /></p>
-<p>The download site is on [SourceForge]:</p>
+<p>The download site is at [SourceForge]:</p>
 <p><img src="images/10000000000000FD00000072F66EC4CE.png" width="253" height="114" style="width:6.692cm;height:3.014cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000000FD00000072F66EC4CE.png" /></p>
 <p>Once you have downloaded the zip file above, unzip it:</p>
 <p><img src="images/1000000000000121000000E3DA222279.png" width="289" height="227" style="width:7.645cm;height:6.004cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/1000000000000121000000E3DA222279.png" /></p>
@@ -613,168 +615,168 @@
   <li>add a reference to the [Spring.Core.dll] assembly to the project
   </li>
 </ul>
-<h2 id="82-where-can-you-find-nunit">8.2. <span style="color: #4f81bd">Where can you find NUnit?</span></h2>
-<p>The main NUnit website is [<a href="http://www.nunit.org/"><u><span style="color: #0563c1">http://www.nunit.org/</span></u></a>]. The version available in April 2005 is 2.2.0:</p>
+<h2 id="82-where-can-i-find-nunit">8.2. <span style="color: #4f81bd">Where can I find Nunit?</span></h2>
+<p>The main NUnit website is [http://www.nunit.org/]. The version available in April 2005 is 2.2.0:</p>
 <p><img src="images/1000000000000290000000CBDD474B0A.png" width="656" height="203" style="width:17.353cm;height:5.369cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/1000000000000290000000CBDD474B0A.png" /></p>
-<p>Download this version and install it. The installation creates a folder containing the graphical testing interface:</p>
+<p>Download this version and install it. The installation creates a folder where you will find the version test graphics:</p>
 <p>The interesting part is in the [bin] folder:</p>
 <p><img src="images/100000000000007A00000049BCD87A2C.png" width="122" height="73" style="width:3.226cm;height:1.93cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000000000007A00000049BCD87A2C.png" /></p>
 <p><img src="images/10000000000001DF0000033A89CD5EB4.png" width="240" height="413" style="width:6.338cm;height:10.929cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000001DF0000033A89CD5EB4.png" /></p>
-<p>The arrow above points to the graphical testing utility. The installation also added new items to the Visual Studio assembly repository, which we will explore now.</p>
+<p>The arrow above points to the graphical test utility. The installation also added new items to the Visual Studio assembly repository, which we will explore now.</p>
 <p>Let’s create the following Visual Studio project:</p>
-<p>The class being tested is in [Person.vb]:</p>
+<p>The class being tested is in [Personne.vb]:</p>
 <p><img src="images/10000000000000BB000000AECC96C4FF.png" width="150" height="139" style="width:3.958cm;height:3.683cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000000BB000000AECC96C4FF.png" /></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">Public</span><span class="w"> </span><span class="k">Class</span><span class="w"> </span><span class="nc">Personne</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">Public</span><span class="w"> </span><span class="n">Class</span><span class="w"> </span><span class="n">Personne</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="c">&#39; private fields</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="k">Private</span><span class="w"> </span><span class="n">_nom</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">String</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="k">Private</span><span class="w"> </span><span class="n">_age</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Integer</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">     </span><span class="err">&#39;</span><span class="w"> </span><span class="k">private</span><span class="w"> </span><span class="n">fields</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="n">Private</span><span class="w"> </span><span class="n">_nom</span><span class="w"> </span><span class="n">As</span><span class="w"> </span><span class="n">String</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="n">Private</span><span class="w"> </span><span class="n">_age</span><span class="w"> </span><span class="n">As</span><span class="w"> </span><span class="n">Integer</span>
 <a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="c">&#39; default builder</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="k">Public</span><span class="w"> </span><span class="k">Sub</span><span class="w"> </span><span class="nf">New</span><span class="p">()</span>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="k">End</span><span class="w"> </span><span class="k">Sub</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">     </span><span class="err">&#39;</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="n">builder</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="n">Public</span><span class="w"> </span><span class="n">Sub</span><span class="w"> </span><span class="nf">New</span><span class="p">()</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="n">End</span><span class="w"> </span><span class="n">Sub</span>
 <a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">    </span><span class="c">&#39; properties associated with private fields</span>
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">    </span><span class="k">Public</span><span class="w"> </span><span class="k">Property</span><span class="w"> </span><span class="nf">nom</span><span class="p">()</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">String</span>
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">        </span><span class="k">Get</span>
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">            </span><span class="k">Return</span><span class="w"> </span><span class="n">_nom</span>
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">        </span><span class="k">End</span><span class="w"> </span><span class="k">Get</span>
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">        </span><span class="k">Set</span><span class="p">(</span><span class="k">ByVal</span><span class="w"> </span><span class="n">Value</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">String</span><span class="p">)</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">     </span><span class="err">&#39;</span><span class="w"> </span><span class="n">properties</span><span class="w"> </span><span class="n">associated</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="k">private</span><span class="w"> </span><span class="n">fields</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">    </span><span class="n">Public</span><span class="w"> </span><span class="n">Property</span><span class="w"> </span><span class="nf">nom</span><span class="p">()</span><span class="w"> </span><span class="n">As</span><span class="w"> </span><span class="n">String</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">        </span><span class="n">Get</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">            </span><span class="n">Return</span><span class="w"> </span><span class="n">_nom</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">        </span><span class="n">End</span><span class="w"> </span><span class="n">Get</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">        </span><span class="nf">Set</span><span class="p">(</span><span class="n">ByVal</span><span class="w"> </span><span class="n">Value</span><span class="w"> </span><span class="n">As</span><span class="w"> </span><span class="n">String</span><span class="p">)</span>
 <a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">            </span><span class="n">_nom</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Value</span>
-<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">        </span><span class="k">End</span><span class="w"> </span><span class="k">Set</span>
-<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">    </span><span class="k">End</span><span class="w"> </span><span class="k">Property</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">        </span><span class="n">End</span><span class="w"> </span><span class="n">Set</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">    </span><span class="n">End</span><span class="w"> </span><span class="n">Property</span>
 <a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>
-<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">    </span><span class="k">Public</span><span class="w"> </span><span class="k">Property</span><span class="w"> </span><span class="nf">age</span><span class="p">()</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Integer</span>
-<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">        </span><span class="k">Get</span>
-<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="w">            </span><span class="k">Return</span><span class="w"> </span><span class="n">_age</span>
-<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="w">        </span><span class="k">End</span><span class="w"> </span><span class="k">Get</span>
-<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">        </span><span class="k">Set</span><span class="p">(</span><span class="k">ByVal</span><span class="w"> </span><span class="n">Value</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Integer</span><span class="p">)</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">    </span><span class="n">Public</span><span class="w"> </span><span class="n">Property</span><span class="w"> </span><span class="nf">age</span><span class="p">()</span><span class="w"> </span><span class="n">As</span><span class="w"> </span><span class="n">Integer</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">        </span><span class="n">Get</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="w">            </span><span class="n">Return</span><span class="w"> </span><span class="n">_age</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="w">        </span><span class="n">End</span><span class="w"> </span><span class="n">Get</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">        </span><span class="nf">Set</span><span class="p">(</span><span class="n">ByVal</span><span class="w"> </span><span class="n">Value</span><span class="w"> </span><span class="n">As</span><span class="w"> </span><span class="n">Integer</span><span class="p">)</span>
 <a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="w">            </span><span class="n">_age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Value</span>
-<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="w">        </span><span class="k">End</span><span class="w"> </span><span class="k">Set</span>
-<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="w">    </span><span class="k">End</span><span class="w"> </span><span class="k">Property</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="w">        </span><span class="n">End</span><span class="w"> </span><span class="n">Set</span>
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="w">    </span><span class="n">End</span><span class="w"> </span><span class="n">Property</span>
 <a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>
-<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="w">    </span><span class="c">&#39; identity chain</span>
-<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="w">    </span><span class="k">Public</span><span class="w"> </span><span class="k">Overrides</span><span class="w"> </span><span class="k">Function</span><span class="w"> </span><span class="nf">tostring</span><span class="p">()</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">String</span>
-<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a><span class="w">        </span><span class="k">Return</span><span class="w"> </span><span class="kt">String</span><span class="p">.</span><span class="n">Format</span><span class="p">(</span><span class="s">&quot;[{0},{1}]&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">nom</span><span class="p">,</span><span class="w"> </span><span class="n">age</span><span class="p">)</span>
-<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="w">    </span><span class="k">End</span><span class="w"> </span><span class="k">Function</span>
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="w">     </span><span class="err">&#39;</span><span class="w"> </span><span class="n">identity</span><span class="w"> </span><span class="n">chain</span>
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="w">    </span><span class="n">Public</span><span class="w"> </span><span class="n">Overrides</span><span class="w"> </span><span class="n">Function</span><span class="w"> </span><span class="nf">tostring</span><span class="p">()</span><span class="w"> </span><span class="n">As</span><span class="w"> </span><span class="n">String</span>
+<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a><span class="w">        </span><span class="n">Return</span><span class="w"> </span><span class="n">String</span><span class="p">.</span><span class="n">Format</span><span class="p">(</span><span class="s">&quot;[{0},{1}]&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">nom</span><span class="p">,</span><span class="w"> </span><span class="n">age</span><span class="p">)</span>
+<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="w">    </span><span class="n">End</span><span class="w"> </span><span class="n">Function</span>
 <a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>
-<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a><span class="w">    </span><span class="c">&#39; init method</span>
-<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a><span class="w">    </span><span class="k">Public</span><span class="w"> </span><span class="k">Sub</span><span class="w"> </span><span class="nf">init</span><span class="p">()</span>
-<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a><span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;init personne {0}&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">Me</span><span class="p">.</span><span class="n">ToString</span><span class="p">)</span>
-<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a><span class="w">    </span><span class="k">End</span><span class="w"> </span><span class="k">Sub</span>
+<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a><span class="w">     </span><span class="err">&#39;</span><span class="w"> </span><span class="k">init</span><span class="w"> </span><span class="n">method</span>
+<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a><span class="w">    </span><span class="n">Public</span><span class="w"> </span><span class="n">Sub</span><span class="w"> </span><span class="nf">init</span><span class="p">()</span>
+<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a><span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;init personne {0}&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Me</span><span class="p">.</span><span class="n">ToString</span><span class="p">)</span>
+<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a><span class="w">    </span><span class="n">End</span><span class="w"> </span><span class="n">Sub</span>
 <a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a>
-<a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a><span class="w">    </span><span class="c">&#39; close method</span>
-<a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a><span class="w">    </span><span class="k">Public</span><span class="w"> </span><span class="k">Sub</span><span class="w"> </span><span class="nf">close</span><span class="p">()</span>
-<a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a><span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;destroy personne {0}&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">Me</span><span class="p">.</span><span class="n">ToString</span><span class="p">)</span>
-<a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a><span class="w">    </span><span class="k">End</span><span class="w"> </span><span class="k">Sub</span>
+<a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a><span class="w">     </span><span class="err">&#39;</span><span class="w"> </span><span class="n">close</span><span class="w"> </span><span class="n">method</span>
+<a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a><span class="w">    </span><span class="n">Public</span><span class="w"> </span><span class="n">Sub</span><span class="w"> </span><span class="nf">close</span><span class="p">()</span>
+<a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a><span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;destroy personne {0}&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Me</span><span class="p">.</span><span class="n">ToString</span><span class="p">)</span>
+<a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a><span class="w">    </span><span class="n">End</span><span class="w"> </span><span class="n">Sub</span>
 <a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a>
-<a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a><span class="k">End</span><span class="w"> </span><span class="k">Class</span>
+<a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a><span class="n">End</span><span class="w"> </span><span class="n">Class</span>
 </code></pre></div>
 <p>The test class is in [NunitTestPersonne-1.vb]:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">Imports</span><span class="w"> </span><span class="nn">System</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="k">Imports</span><span class="w"> </span><span class="nn">NUnit.Framework</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">Imports</span><span class="w"> </span><span class="n">System</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">Imports</span><span class="w"> </span><span class="n">NUnit</span><span class="p">.</span><span class="n">Framework</span>
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="na">&lt;TestFixture()&gt;</span><span class="w"> </span>_
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w"> </span><span class="k">Public</span><span class="w"> </span><span class="k">Class</span><span class="w"> </span><span class="nc">NunitTestPersonne</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="o">&lt;</span><span class="n">TestFixture</span><span class="p">()</span><span class="o">&gt;</span><span class="w"> </span><span class="n">_</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w"> </span><span class="n">Public</span><span class="w"> </span><span class="n">Class</span><span class="w"> </span><span class="n">NunitTestPersonne</span>
 <a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span><span class="c">&#39; object tested</span>
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span><span class="k">Private</span><span class="w"> </span><span class="n">personne1</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="n">Personne</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">     </span><span class="err">&#39;</span><span class="w"> </span><span class="kt">object</span><span class="w"> </span><span class="n">tested</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span><span class="n">Private</span><span class="w"> </span><span class="n">personne1</span><span class="w"> </span><span class="n">As</span><span class="w"> </span><span class="n">Personne</span>
 <a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>
-<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">    </span><span class="o">&lt;</span><span class="n">SetUp</span><span class="p">()</span><span class="o">&gt;</span><span class="w"> </span>_
-<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">    </span><span class="k">Public</span><span class="w"> </span><span class="k">Sub</span><span class="w"> </span><span class="nf">init</span><span class="p">()</span>
-<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">        </span><span class="c">&#39; create an instance of Person</span>
-<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">        </span><span class="n">personne1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">New</span><span class="w"> </span><span class="n">Personne</span>
-<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">        </span><span class="c">&#39; log</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">    </span><span class="o">&lt;</span><span class="n">SetUp</span><span class="p">()</span><span class="o">&gt;</span><span class="w"> </span><span class="n">_</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">    </span><span class="n">Public</span><span class="w"> </span><span class="n">Sub</span><span class="w"> </span><span class="nf">init</span><span class="p">()</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">         </span><span class="err">&#39;</span><span class="w"> </span><span class="n">create</span><span class="w"> </span><span class="n">an</span><span class="w"> </span><span class="n">instance</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">Person</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">        </span><span class="n">personne1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">New</span><span class="w"> </span><span class="n">Personne</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">         </span><span class="err">&#39;</span><span class="w"> </span><span class="n">log</span>
 <a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;setup test&quot;</span><span class="p">)</span>
-<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">    </span><span class="k">End</span><span class="w"> </span><span class="k">Sub</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">    </span><span class="n">End</span><span class="w"> </span><span class="n">Sub</span>
 <a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>
-<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">    </span><span class="o">&lt;</span><span class="n">Test</span><span class="p">()</span><span class="o">&gt;</span><span class="w"> </span>_
-<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">    </span><span class="k">Public</span><span class="w"> </span><span class="k">Sub</span><span class="w"> </span><span class="nf">demo</span><span class="p">()</span>
-<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">        </span><span class="c">&#39; log screen</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">    </span><span class="o">&lt;</span><span class="n">Test</span><span class="p">()</span><span class="o">&gt;</span><span class="w"> </span><span class="n">_</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">    </span><span class="n">Public</span><span class="w"> </span><span class="n">Sub</span><span class="w"> </span><span class="nf">demo</span><span class="p">()</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">         </span><span class="err">&#39;</span><span class="w"> </span><span class="n">log</span><span class="w"> </span><span class="n">screen</span>
 <a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;début test&quot;</span><span class="p">)</span>
-<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="w">        </span><span class="c">&#39; init person1</span>
-<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="w">        </span><span class="k">With</span><span class="w"> </span><span class="n">personne1</span>
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="w">         </span><span class="err">&#39;</span><span class="w"> </span><span class="k">init</span><span class="w"> </span><span class="n">person1</span>
+<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="w">        </span><span class="n">With</span><span class="w"> </span><span class="n">personne1</span>
 <a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="w">            </span><span class="p">.</span><span class="n">nom</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;paul&quot;</span>
 <a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="w">            </span><span class="p">.</span><span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span>
-<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="w">        </span><span class="k">End</span><span class="w"> </span><span class="k">With</span>
-<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="w">        </span><span class="c">&#39; tests</span>
+<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="w">        </span><span class="n">End</span><span class="w"> </span><span class="n">With</span>
+<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="w">         </span><span class="err">&#39;</span><span class="w"> </span><span class="n">tests</span>
 <a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a><span class="w">        </span><span class="n">Assert</span><span class="p">.</span><span class="n">AreEqual</span><span class="p">(</span><span class="s">&quot;paul&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">personne1</span><span class="p">.</span><span class="n">nom</span><span class="p">)</span>
 <a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a><span class="w">        </span><span class="n">Assert</span><span class="p">.</span><span class="n">AreEqual</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="n">personne1</span><span class="p">.</span><span class="n">age</span><span class="p">)</span>
-<a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a><span class="w">        </span><span class="c">&#39; log screen</span>
+<a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a><span class="w">         </span><span class="err">&#39;</span><span class="w"> </span><span class="n">log</span><span class="w"> </span><span class="n">screen</span>
 <a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a><span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;fin test&quot;</span><span class="p">)</span>
-<a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a><span class="w">    </span><span class="k">End</span><span class="w"> </span><span class="k">Sub</span>
+<a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a><span class="w">    </span><span class="n">End</span><span class="w"> </span><span class="n">Sub</span>
 <a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a>
-<a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a><span class="w">    </span><span class="o">&lt;</span><span class="n">TearDown</span><span class="p">()</span><span class="o">&gt;</span><span class="w"> </span>_
-<a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a><span class="w">    </span><span class="k">Public</span><span class="w"> </span><span class="k">Sub</span><span class="w"> </span><span class="nf">destroy</span><span class="p">()</span>
-<a id="__codelineno-1-36" name="__codelineno-1-36" href="#__codelineno-1-36"></a><span class="w">        </span><span class="c">&#39; follow-up</span>
+<a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a><span class="w">    </span><span class="o">&lt;</span><span class="n">TearDown</span><span class="p">()</span><span class="o">&gt;</span><span class="w"> </span><span class="n">_</span>
+<a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a><span class="w">    </span><span class="n">Public</span><span class="w"> </span><span class="n">Sub</span><span class="w"> </span><span class="nf">destroy</span><span class="p">()</span>
+<a id="__codelineno-1-36" name="__codelineno-1-36" href="#__codelineno-1-36"></a><span class="w">         </span><span class="err">&#39;</span><span class="w"> </span><span class="n">follow</span><span class="o">-</span><span class="n">up</span>
 <a id="__codelineno-1-37" name="__codelineno-1-37" href="#__codelineno-1-37"></a><span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;teardown test&quot;</span><span class="p">)</span>
-<a id="__codelineno-1-38" name="__codelineno-1-38" href="#__codelineno-1-38"></a><span class="w">    </span><span class="k">End</span><span class="w"> </span><span class="k">Sub</span>
+<a id="__codelineno-1-38" name="__codelineno-1-38" href="#__codelineno-1-38"></a><span class="w">    </span><span class="n">End</span><span class="w"> </span><span class="n">Sub</span>
 <a id="__codelineno-1-39" name="__codelineno-1-39" href="#__codelineno-1-39"></a>
-<a id="__codelineno-1-40" name="__codelineno-1-40" href="#__codelineno-1-40"></a><span class="k">End</span><span class="w"> </span><span class="k">Class</span>
+<a id="__codelineno-1-40" name="__codelineno-1-40" href="#__codelineno-1-40"></a><span class="n">End</span><span class="w"> </span><span class="n">Class</span>
 </code></pre></div>
-<p>Several things to note:</p>
+<p>Several things are worth noting:</p>
 <ul>
-  <li>methods are assigned attributes such as &lt;Setup()&gt;, &lt;TearDown()&gt;, ...
+  <li>the methods are marked with attributes such as &lt;Setup()&gt;, &lt;TearDown()&gt;, ...
   </li>
   <li>for these attributes to be recognized, the following must be true:
     <ul>
-      <li>the project references the assembly [nunit.framework.dll]
+      <li>the project references the [nunit.framework.dll] assembly
       </li>
-      <li>the test class imports the namespace [NUnit.Framework]
+      <li>the test class imports the [NUnit.Framework] namespace
       </li>
     </ul>
   </li>
 </ul>
 
-<p>The reference is added by right-clicking on [References] in the Solution Explorer:</p>
-<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/10000000000000C3000000ACA85DC4E9.png" width="156" height="138" style="display:inline-block; margin:4px;width:4.128cm;height:3.641cm;" class="odt-zoomable" data-zoom-src="images/10000000000000C3000000ACA85DC4E9.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/10000000000000C10000005E3DA93E5B.png" width="193" height="94" style="display:inline-block; margin:4px;width:5.105cm;height:2.485cm;" class="odt-zoomable" data-zoom-src="images/10000000000000C10000005E3DA93E5B.png" /></td></tr></table>
+<p>The reference is obtained by right-clicking on [References] in Solution Explorer:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000000C3000000ACA85DC4E9.png" width="156" height="138" style="display:inline-block; margin:4px;width:4.128cm;height:3.641cm;" class="odt-zoomable" data-zoom-src="images/10000000000000C3000000ACA85DC4E9.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000000C10000005E3DA93E5B.png" width="193" height="94" style="display:inline-block; margin:4px;width:5.105cm;height:2.485cm;" class="odt-zoomable" data-zoom-src="images/10000000000000C10000005E3DA93E5B.png" /></td></tr></table>
 
 <p><img src="images/1000000000000232000000A4F106777B.png" width="562" height="164" style="width:14.868cm;height:4.339cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/1000000000000232000000A4F106777B.png" /></p>
-<p>The assembly [nunit.framework.dll] should be in the list if the [NUnit] installation was successful. Simply double-click the assembly to add it to the project:</p>
+<p>The [nunit.framework.dll] assembly should be in the list if the installation of [Nunit] was successful. Simply double-click the assembly to add it to the project:</p>
 <p><img src="images/10000000000000C0000000AC52CEBAF8.png" width="192" height="172" style="width:5.078cm;height:4.549cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000000C0000000AC52CEBAF8.png" /></p>
-<p>Once this is done, the test class [NunitTestPersonne] must import the [NUnit.Framework] namespace:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">Imports</span><span class="w"> </span><span class="nn">NUnit.Framework</span>
+<p>Once this is done, the [NunitTestPersonne] test class must import the [NUnit.Framework] namespace:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Imports NUnit.Framework
 </code></pre></div>
-<p>The attributes of the test class [NunitTestPersonne] should then be recognized.</p>
+<p>The attributes of the [NunitTestPersonne] test class must then be recognized.</p>
 <ul>
   <li>The &lt;Test()&gt; attribute designates a method to be tested
   </li>
   <li>The &lt;Setup()&gt; attribute designates the method to be executed before each method being tested
   </li>
-  <li>The &lt;TearDown()&gt; attribute designates the method to be executed after each method being tested
+  <li>The &lt;TearDown()&gt; attribute designates the method to be executed after each tested method
   </li>
-  <li>The <b>Assert.AreEqual </b>method allows you to test the equality of two entities. There are many other methods of the <b>Assert.xx </b>type.
+  <li>The method <b>Assert.AreEqual </b>allows testing the equality of two entités.Il. There are many other methods of type <b>Assert.xx</b>.
   </li>
-  <li>The NUnit utility stops the execution of a tested method as soon as an [Assert] method fails and displays an error message. Otherwise, it displays a success message.
+  <li>The NUnit utility stops the execution of a tested method as soon as a [Assert] method fails and displays an error message. Otherwise, it displays a success message.
   </li>
 </ul>
 
 <p>Let’s configure our project to generate a DLL:</p>
 <p><img src="images/1000000000000130000000CDDB7B18BF.png" width="304" height="205" style="width:8.042cm;height:5.422cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/1000000000000130000000CDDB7B18BF.png" /></p>
-<p>The generated DLL will be named [nunit-demos-1.dll] and will be placed by default in the project’s [bin] folder. Let’s build our project. We get the following in the [bin] folder:</p>
+<p>The generated DLL will be named [nunit-demos-1.dll] and will be placed by default in the [bin] folder of the project. Let’s build our project. We get the following in the [bin] folder:</p>
 <p><img src="images/10000000000000810000003D57B3268D.png" width="129" height="61" style="width:3.411cm;height:1.612cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000000810000003D57B3268D.png" /></p>
-<p>Now let’s launch the Nunit graphical testing utility. Remember that it is located in &lt;Nunit&gt;\bin and is named [nunit-gui.exe]. &lt;Nunit&gt; refers to the [Nunit] installation folder. We get the following interface:</p>
+<p>Now let’s launch the Nunit graphical testing utility. Remember that it is located in &lt;Nunit&gt;\bin and is named [nunit-gui.exe]. &lt;Nunit&gt; refers to the installation folder of [Nunit]. We get the following interface:</p>
 <p><img src="images/1000000000000245000000A96481ADAD.png" width="465" height="135" style="width:12.3cm;height:3.577cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/1000000000000245000000A96481ADAD.png" /></p>
-<p>Let’s use the [File/Open] menu option to load the [nunit-demos-1.dll] DLL from our project:</p>
+<p>Let’s use the option menu item to load the DLL and [nunit-demos-1.dll] files from our project:</p>
 <p><img src="images/1000000000000366000000A60EB520A5.png" width="680" height="130" style="width:17.995cm;height:3.434cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/1000000000000366000000A60EB520A5.png" /></p>
-<p>[Nunit] can automatically detect the test classes contained in the loaded DLL. Here, it finds the [NunitTestPersonne] class. It then displays all the methods of the class that have the &lt;Test()&gt; attribute. The [Run] button allows you to run the tests on the selected object. If this is the [NunitTestPersonne] class, all displayed methods are tested. You can test a specific method by selecting it and clicking [Run]. Let’s run the class:</p>
+<p>[Nunit] can automatically detect the test classes found in the loaded DLL. Here, it finds the [NunitTestPersonne] class. It then displays all methods of the class that have the &lt;Test()&gt; attribute. The [Run] button allows you to run tests on the selected object. If this is the [NunitTestPersonne] class, all displayed methods are tested. You can request a test for a specific method by selecting it and requesting its execution via [Run]. Let’s request the execution of the class:</p>
 <p><img src="images/1000000000000244000000EDF63FB623.png" width="580" height="237" style="width:15.342cm;height:6.269cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/1000000000000244000000EDF63FB623.png" /></p>
 <p>A successful test on a method is indicated by a green dot next to the method in the left window. A failed test is indicated by a red dot.</p>
-<p>The [Console.Out] window on the right shows the screen output produced by the tested methods. Here, we wanted to follow the progress of a test:</p>
+<p>The [Console.Out] window on the right shows the screen displays produced by the tested methods. Here, we wanted to track the progress of a test:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
 <span class="normal"><a href="#__codelineno-3-2">2</a></span>
 <span class="normal"><a href="#__codelineno-3-3">3</a></span>
 <span class="normal"><a href="#__codelineno-3-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>setup test
-<a id="__codelineno-3-2" name="__codelineno-3-2"></a>test start
-<a id="__codelineno-3-3" name="__codelineno-3-3"></a>end of test
-<a id="__codelineno-3-4" name="__codelineno-3-4"></a>test teardown
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a>début test
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a>fin test
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a>teardown test
 </code></pre></div></td></tr></table></div>
 <ul>
   <li>Line 1 shows that the &lt;Setup()&gt; attribute method is executed before the test
   </li>
-  <li>Lines 2–3 are generated by the [demo] method being tested (see the code above)
+  <li>Lines 2–3 are generated by the tested method [demo] (see the code above)
   </li>
-  <li>Line 4 shows that the &lt;TearDown()&gt; attribute method is executed after the test
+  <li>Line 4 shows that the attribute method &lt;TearDown()&gt; is executed after the test
   </li>
 </ul>
 
